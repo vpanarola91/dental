@@ -13,7 +13,7 @@ class Admin_users_model extends CI_Model {
      */
     public function get_all_users() {        
         
-        $this->db->select('id,id AS test_id,fname,lname,email_id,DATE_FORMAT(created_date,"%d %b %Y <br> %l:%i %p") AS created_date,is_blocked', false);
+        $this->db->select('id,id AS test_id,fname,lname,email_id,DATE_FORMAT(created_at,"%d %b %Y <br> %l:%i %p") AS created_date,is_blocked', false);
         
         $this->db->where('role_id', 2);
         $this->db->where('is_deleted !=', 1);

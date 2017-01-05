@@ -97,7 +97,7 @@
                 },
                 {
                     sortable: false,
-                    data: "created_date",
+                    data: "created_at",
                     visible: true
                 },
                 {
