@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
 
     public function __construct() {
-        parent::__construct();              
+        parent::__construct();             
         $this->load->model(array('Users_model'));
     }
 
@@ -25,7 +25,7 @@ class Login extends CI_Controller {
             $remember_me = $this->input->post('remember_me');
 
             //check_if_user_exist - three params 1->where condition 2->is get num_rows for query 3->is fetech single or all data
-            $user_data = $this->Users_model->check_if_user_exist(['email_id' => $email, 'role_id' => 1], false, true);
+            $user_data = $this->Users_model->check_if_user_exist(['email_id' => $email, 'role_id' => 1], false, true);            
             if (!empty($user_data)) {
 
                 $db_pass = $this->encrypt->decode($user_data['password']);
@@ -40,7 +40,7 @@ class Login extends CI_Controller {
                     }
 
                     $this->session->set_userdata(['admin' => $user_data, 'loggedin' => TRUE]); // Start Loggedin User Session
-                    $this->session->set_flashdata('message', ['message' => 'Login Successfull', 'class' => 'alert alert-success']);                    
+                    $this->session->set_flashdata('message', ['message' => 'Login Successfull', 'class' => 'alert alert-success']);
                     $this->Users_model->update_user_data($user_data['id'], ['last_login' => date('Y-m-d H:i:s')]); // update last login time
                     redirect('admin/dashboard');
                 } else {

@@ -13,23 +13,19 @@
 </div>
 <?php
 if ($this->session->flashdata('success')) {
-    ?>
-    <!--<div class="content pt0">-->
-        <div class="alert alert-success">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('success') ?></strong>
-        </div>
-    <!--</div>-->
+    ?>    
+    <div class="alert alert-success">
+        <a class="close" data-dismiss="alert">X</a>
+        <strong><?= $this->session->flashdata('success') ?></strong>
+    </div>    
     <?php
     $this->session->set_flashdata('success', false);
 } else if ($this->session->flashdata('error')) {
-    ?>
-    <!--<div class="content pt0">-->
-        <div class="alert alert-danger">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('error') ?></strong>
-        </div>
-    <!--</div>-->
+    ?>    
+    <div class="alert alert-danger">
+        <a class="close" data-dismiss="alert">X</a>
+        <strong><?= $this->session->flashdata('error') ?></strong>
+    </div>    
     <?php
     $this->session->set_flashdata('error', false);
 } 
@@ -54,13 +50,7 @@ if ($this->session->flashdata('success')) {
                             <div class="col-lg-3">
                                 <input type="text" name="lname" id="lname" placeholder="Enter last name" class="form-control" value="<?php echo (isset($user_data['lname'])) ? $user_data['lname'] : set_value('lname'); ?>">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Display AS:</label>
-                            <div class="col-lg-3">
-                                <input type="text" name="display_name" id="display_name" placeholder="Enter display name" class="form-control" value="<?php echo (isset($user_data['display_name'])) ? $user_data['display_name'] : set_value('display_name'); ?>">
-                            </div>
-                        </div>
+                        </div>                        
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Email:</label>
                             <div class="col-lg-3">

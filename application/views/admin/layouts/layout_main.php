@@ -1,19 +1,19 @@
+<?php
+    if (!empty($user_data['user_image'])) {
+        $image = base_url() . $user_data['user_image'];
+    } else {
+        $image = DEFAULT_IMAGE_PATH . "user-img.jpg";
+    }
+?>
+
 <!DOCTYPE html>
-    <?php
-        if (!empty($user_data['user_image'])) {
-            $image = base_url() . $user_data['user_image'];
-        } else {
-            $image = DEFAULT_IMAGE_PATH . "user-img.jpg";
-        }
-    ?>
-<html lang="en">
-    <?php ?>
+<html lang="en">        
         <?php $this->load->view('admin/layouts/layout_header'); ?>
-        <body>
+    <body>
         <!-- Main navbar -->
         <div class="navbar navbar-inverse">
             <div class="navbar-header">
-                <h4><i class="icon-tree5"></i><a href="<?php echo base_url() . "admin/dashboard" ?>"> DROPE</a></h4>
+                <h4><i class="icon-tree5"></i><a href="<?php echo base_url() . "admin/dashboard" ?>"> Dental Project</a></h4>
 
                 <ul class="nav navbar-nav visible-xs-block">
                     <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -33,8 +33,7 @@
                         if (!empty($user_data) && isset($user_data)) {
                             ?>
                             <a class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?php echo $image ?>" alt="">
-                                <span><?php echo $user_data['display_name']; ?></span>
+                                <img src="<?php echo $image ?>" alt="">                                
                                 <i class="caret"></i>
                             </a>
 
@@ -70,8 +69,7 @@
                                 <div class="media">
 
                                     <a href="#" class="media-left"><img src="<?php echo $image ?>" class="img-circle img-sm" alt=""></a>
-                                    <div class="media-body">
-                                        <span class="media-heading text-semibold"><?php echo $user_data['display_name']; ?></span>                                        
+                                    <div class="media-body">                                        
                                     </div>
 
                                 </div>
@@ -88,18 +86,11 @@
                                 ?>
                                 <ul class="navigation navigation-main navigation-accordion">
 
-                                    <!-- Main -->
-                                    <!--<li class="navigation-header"><span></span> <i class="icon-menu" title="Main pages"></i></li>-->
+                                    <!-- Main -->                                    
                                     <li class="<?php echo ($controller == 'dashboard') ? 'active' : ''; ?>"><a href="<?php echo base_url() . "admin/dashboard" ?>"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
                                     <li class="<?php echo ($controller == 'users') ? 'active' : ''; ?>">
                                         <a href="<?php echo base_url() . 'admin/users'; ?>"><i class="icon-users4"></i> <span>Users</span></a>
-                                    </li>                                    
-                                    <li class="<?php echo ($controller == 'pages') ? 'active' : ''; ?>">
-                                        <a href="<?php echo base_url() . 'admin/pages'; ?>"><i class="icon-stack2"></i> <span>Static pages</span></a>
-                                    </li>
-                                    <li class="<?php echo ($controller == 'header_footer_control') ? 'active' : ''; ?>">
-                                        <a href="<?php echo base_url() . 'admin/header_footer_control'; ?>"><i class="icon-stack2"></i> <span>Header/Footer Setting</span></a>
-                                    </li>                                                                        
+                                    </li>                                                            
                                     <li class="">
                                         <a href="<?php echo base_url() . "admin/logout"; ?>"><i class="icon-switch2"></i> <span>Logout</span></a>
                                     </li>
@@ -114,15 +105,11 @@
                 <!-- Main content -->
                 <div class="content-wrapper">
                     <?php $this->load->view($subview); ?>
-
                 </div>
                 <!-- /main content -->
-
             </div>
             <!-- /page content -->
-
         </div>
         <!-- /page container -->
-
     </body>
 </html>

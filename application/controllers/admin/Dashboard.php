@@ -26,7 +26,7 @@ class Dashboard extends MY_Controller {
     /**
      * function use for logout from admin panel.(HDA)
      */
-    public function log_out() {
+    public function log_out() {        
         $this->session->sess_destroy();
         delete_cookie('Remember_me');
         $this->session->set_flashdata('message', array('message' => 'Log out Successfully.', 'class' => 'alert alert-success'));
@@ -38,8 +38,7 @@ class Dashboard extends MY_Controller {
         $data['user_data'] = $this->Users_model->check_if_user_exist(['id' => $session_data['id'], 'role_id' => 1], false, true);
         if (empty($data['user_data'])) {
             redirect('admin/login');
-        }        
-        $data['all_countries'] = $this->Users_model->get_all_countries();
+        }                
         $data['heading'] = 'Edit Profile';
         $email = $session_data['email_id'];
         $post_email = $this->input->post('email_id');
@@ -49,8 +48,7 @@ class Dashboard extends MY_Controller {
         }
 
         $this->form_validation->set_rules('fname', 'First name', 'trim|required', array('required' => 'Please fill the field' . ' %s .'));
-        $this->form_validation->set_rules('lname', 'Last Name', 'trim|required', array('required' => 'Please fill the field' . ' %s .'));
-        $this->form_validation->set_rules('display_name', 'Display As', 'trim|required', array('required' => 'Please fill the field' . ' %s .'));
+        $this->form_validation->set_rules('lname', 'Last Name', 'trim|required', array('required' => 'Please fill the field' . ' %s .'));        
         $this->form_validation->set_rules('email_id', 'Email', 'trim|required|valid_email' . $email_unique_str, array('required' => 'Please fill the field' . ' %s .', 'valid_email' => 'Please enter valid E-mail'));
         $this->form_validation->set_rules('phone_no', 'Phone Number', 'numeric|regex_match[/^[0-9]{9}$/]', array('numeric' => 'Please enter number in phone number', 'regex_match' => 'Please enter 9 number in phone'));
 
@@ -61,8 +59,7 @@ class Dashboard extends MY_Controller {
             $user_id = $session_data['id'];
             $fname = $this->input->post('fname');
             $lname = $this->input->post('lname');
-            $email_id = $this->input->post('email_id');
-            $display_as = $this->input->post('display_name');
+            $email_id = $this->input->post('email_id');            
             $gender = $this->input->post('gender');
             $birth_year = $this->input->post('birth_year');
             $country_code = $this->input->post('country_code');
@@ -80,8 +77,7 @@ class Dashboard extends MY_Controller {
             //update_user_data
             $upd_data = [
                 'fname' => $fname,
-                'lname' => $lname,
-                'display_name' => $display_as,
+                'lname' => $lname,                
                 'email_id' => $email_id,
                 'gender' => $gender,
                 'birth_year' => $birth_year,

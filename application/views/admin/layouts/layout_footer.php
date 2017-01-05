@@ -64,11 +64,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-
-                <div class="copyright">
-                    <p>© Copyright 2016. <span>Drope.ch</span> Allright Reserved.</p>
-                </div>
+                </div>                
 
             </div>
         </div>

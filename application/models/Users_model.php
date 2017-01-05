@@ -13,9 +13,7 @@ class Users_model extends CI_Model {
       v! Function will check if user is exist or not (spark id - vpa)
       check_if_user_exist - three params 1->where condition 2->is get num_rows for query 3->is fetech single or all data
      */
-
     public function check_if_user_exist($data = array(), $is_total_rows = false, $is_single = false) {
-        $data['is_account_close'] = '0';
         $this->db->where($data);
         $this->db->where('(is_blocked != 1 AND is_deleted != 1)');
         if ($is_total_rows == true) {
@@ -52,8 +50,6 @@ class Users_model extends CI_Model {
         return $last_id;
     }
 
- 
-
     // -------------------------------------------------------- Table - forgot_pass----------------------------------------------------
 
     public function check_if_user_forgot_pass($data = array(), $is_total_rows = false, $is_single = false) {
@@ -71,7 +67,6 @@ class Users_model extends CI_Model {
     }
 
     /* v! Insert data into forgot_pass table */
-
     public function insert_forgot_pass_data($data) {
         $user_id = $data['user_id'];
         $all_rows_no = $this->db->get_where('forgot_pass', ['user_id' => $user_id])->row_array();
@@ -85,13 +80,6 @@ class Users_model extends CI_Model {
         }
         return $user_id;
     }
-
- 
- 
-
- 
- 
- 
 
 }
 
