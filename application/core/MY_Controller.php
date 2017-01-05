@@ -5,7 +5,7 @@ class MY_Controller extends CI_Controller {
 
 	public function __construct(){
 		
-		parent::__construct();		
+		parent::__construct();  		
 		$exceptional_url = array('admin','user/facebook_callback','user/email_alert/set_email_alert');
 
 		if(in_array(uri_string(), $exceptional_url) == FALSE){			
