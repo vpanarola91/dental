@@ -60,12 +60,9 @@ $route['admin/logout'] = "admin/dashboard/log_out";
 
 $route['admin/edit_profile'] = "admin/dashboard/edit";
 $route['admin/change_password'] = "admin/dashboard/change_password";
+
 $route['admin/(:any)'] = "admin/$1";
-$route['admin/users/add'] = 'admin/users/edit';
-$route['admin/pages/add'] = 'admin/pages/edit';
 $route['admin/(:any)/(:any)'] = "admin/$1/$2";
-$route['admin/pages/delete/(:any)'] = 'admin/pages/action/delete/$1';
-$route['admin/pages/activate/(:any)'] = 'admin/pages/action/activate/$1';
 $route['admin/(:any)/(:any)/(:any)'] = "admin/$1/$2/$3";
 
 

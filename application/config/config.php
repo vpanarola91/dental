@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['base_url'] = "http://localhost/dental";
 
-$config['site_name'] = 'Drope';
+$config['site_name'] = 'Lorem Ipsum';
 /*
   |--------------------------------------------------------------------------
   | Index File

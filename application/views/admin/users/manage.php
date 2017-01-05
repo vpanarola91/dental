@@ -56,12 +56,6 @@ if ($this->session->flashdata('success')) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Display AS:</label>
-                            <div class="col-lg-3">
-                                <input type="text" name="display_name" id="display_name" placeholder="Enter display name" class="form-control" value="<?php echo (isset($user_datas['display_name'])) ? $user_datas['display_name'] : set_value('display_name'); ?>">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-lg-3 control-label">Email:</label>
                             <div class="col-lg-3">
                                 <input type="text" name="email_id" id="email_id" placeholder="Enter Email" class="form-control" value="<?php echo (isset($user_datas['email_id'])) ? $user_datas['email_id'] : set_value('email_id'); ?>">

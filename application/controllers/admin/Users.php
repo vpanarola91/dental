@@ -84,17 +84,15 @@ class Users extends MY_Controller {
             $check_user = $this->Admin_users_model->get_result('users', $where);
             if ($check_user) {
                 $data['user_datas'] = $check_user[0];
-                $data['title'] = 'Drope - Admin edit user';
-                $data['heading'] = 'Edit user';
-                $data['all_countries'] = $this->Users_model->get_all_countries();
+                $data['title'] = 'Admin edit user';
+                $data['heading'] = 'Edit user';                
             } else {
                 show_404();
             }
         }
         if ($this->input->post()) {
             $this->form_validation->set_rules('fname', 'first name', 'trim|required');
-            $this->form_validation->set_rules('lname', 'last name', 'trim|required');
-            $this->form_validation->set_rules('display_name', 'display name', 'trim|required');
+            $this->form_validation->set_rules('lname', 'last name', 'trim|required');            
             $this->form_validation->set_rules('email_id', 'email', 'trim|required');
 
             if ($this->form_validation->run() == FALSE) {

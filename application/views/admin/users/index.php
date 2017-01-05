@@ -20,22 +20,18 @@
 <?php
     if ($this->session->flashdata('success')) {
         ?>
-        <div class="content pt0">
-            <div class="alert alert-success">
-                <a class="close" data-dismiss="alert">X</a>
-                <strong><?= $this->session->flashdata('success') ?></strong>
-            </div>
+        <div class="alert alert-success">
+            <a class="close" data-dismiss="alert">X</a>
+            <strong><?= $this->session->flashdata('success') ?></strong>
         </div>
         <?php
         $this->session->set_flashdata('success', false);
     } else if ($this->session->flashdata('error')) {
-        ?>
-        <div class="content pt0">
-            <div class="alert alert-danger">
-                <a class="close" data-dismiss="alert">X</a>
-                <strong><?= $this->session->flashdata('error') ?></strong>
-            </div>
-        </div>
+        ?>        
+        <div class="alert alert-danger">
+            <a class="close" data-dismiss="alert">X</a>
+            <strong><?= $this->session->flashdata('error') ?></strong>
+        </div>        
         <?php
         $this->session->set_flashdata('error', false);
     } else {
@@ -57,10 +53,8 @@
                         <th>User ID.</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Display Name</th>
-                        <th>Registration Date</th>
-                        <!--<th>Status</th>-->
+                        <th>Email</th>                        
+                        <th>Created Date</th>                        
                         <th width="100px">Action</th>
                     </tr>
                 </thead>
@@ -87,22 +81,22 @@
                     visible: true
                 },
                 {
+                    sortable: false,
                     data: "fname",
                     visible: true
                 },
                 {
+                    sortable: false,
                     data: "lname",
                     visible: true
                 },
                 {
+                    sortable: false,
                     data: "email_id",
                     visible: true
                 },
                 {
-                    data: "display_name",
-                    visible: true
-                },
-                {
+                    sortable: false,
                     data: "created_date",
                     visible: true
                 },
