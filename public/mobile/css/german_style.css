@@ -1,0 +1,20 @@
+:hover, :focus, a:hover, a:focus{ outline:none !important;}
+.header-r{ margin:9px 0 0 0;}
+.header-r a { font-size: 12px; min-width: initial; padding:3px 0; width: 90px; line-height: normal;}
+#header { padding:0; height:56px; }
+.logo { margin:13px 0 0;}
+.logo img { height:36px; width:auto;}
+.body-space { padding:54px 0 48px;}
+.partners-page ul li a img{ max-width:100%;}
+.radiobutton-div .radio-box-white label { max-width: 210px;}
+.schedule-datetime-content:last-child{ margin-bottom:0;}
+.input-css { padding:10px 10px 7px 44px;}
+.app-structure-content .app-structure-01 ul li:last-child{ margin-bottom:0;}
+
+@media(max-width:359px){
+.schedule-date-time .offer-head-title .checkbox-white label { line-height:14px;}
+.schedule-date-time .checkbox-white { width:66px;}
+
+
+}
+

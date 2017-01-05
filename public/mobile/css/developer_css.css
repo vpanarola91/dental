@@ -1,0 +1,8 @@
+.not-member a {
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.journy-map{ height: 260px; }
+.for_pointer { cursor:pointer; }
