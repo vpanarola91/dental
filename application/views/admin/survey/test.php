@@ -23,11 +23,10 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	<script type="text/javascript" src="<?php echo base_url().'public/back/'; ?>ckeditor/ckeditor.js"></script>
-	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>plugins/forms/selects/select2.min.js"></script>
+	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>plugins/editors/ace/ace.js"></script>
 
 	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>core/app.js"></script>
-	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>pages/editor_ckeditor.js"></script>
+	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>pages/editor_code.js"></script>
 	<!-- /theme JS files -->
 
 </head>
@@ -486,9 +485,9 @@
 									<a href="#"><i class="icon-spell-check"></i> <span>Editors</span></a>
 									<ul>
 										<li><a href="editor_summernote.html">Summernote editor</a></li>
-										<li class="active"><a href="editor_ckeditor.html">CKEditor</a></li>
+										<li><a href="editor_ckeditor.html">CKEditor</a></li>
 										<li><a href="editor_wysihtml5.html">WYSIHTML5 editor</a></li>
-										<li><a href="editor_code.html">Code editor</a></li>
+										<li class="active"><a href="editor_code.html">Code editor</a></li>
 									</ul>
 								</li>
 								<li>
@@ -1023,7 +1022,7 @@
 				<div class="page-header page-header-default">
 					<div class="page-header-content">
 						<div class="page-title">
-							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Editors</span> - CKEditor</h4>
+							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Editors</span> - Code</h4>
 						</div>
 
 						<div class="heading-elements">
@@ -1038,8 +1037,8 @@
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
 							<li><a href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
-							<li><a href="editors_ckeditor.html">Editors</a></li>
-							<li class="active">CKEditor</li>
+							<li><a href="editors_code.html">Editors</a></li>
+							<li class="active">Code</li>
 						</ul>
 
 						<ul class="breadcrumb-elements">
@@ -1068,10 +1067,10 @@
 				<!-- Content area -->
 				<div class="content">
 
-					<!-- CKEditor default -->
+					<!-- Ace code editor -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Full featured CKEditor</h5>
+							<h5 class="panel-title">Ace code editor</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 			                		<li><a data-action="collapse"></a></li>
@@ -1082,304 +1081,343 @@
 						</div>
 
 						<div class="panel-body">
-							<p class="content-group">CKEditor is a ready-for-use HTML text editor designed to simplify web content creation. It's a WYSIWYG editor that brings common word processor features directly to your web pages. It benefits from an active community that is constantly evolving the application with free add-ons and a transparent development process.</p>
-							<form action="#">
-								<div class="content-group">
-									<textarea name="editor-full" id="editor-full" rows="4" cols="4">
-										<h2>Apollo 11</h2>
-										<div class="pull-right" style="margin-left: 20px;"><img alt="Saturn V carrying Apollo 11" class="right" src="http://c.cksource.com/a/1/img/sample.jpg"></div>
+							<p class="content-group">Ace is an embeddable code editor written in JavaScript. It matches the features and performance of native editors such as Sublime, Vim and TextMate. It can be easily embedded in any web page and JavaScript application. Ace is maintained as the primary editor for Cloud9 IDE and is the successor of the Mozilla Skywriter (Bespin) project.</p>
 
-										<p><strong>Apollo 11</strong> was the spaceflight that landed the first humans, Americans <a href="#">Neil Armstrong</a> and <a href="#">Buzz Aldrin</a>, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.</p>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="content-group">
+										<p><span class="text-semibold">Javascript</span> mode</p>
+										<div id="javascript_editor">
+/**
+ * In fact, you're looking at ACE right now. Go ahead and play with it!
+ *
+ * We are currently showing off the JavaScript mode. ACE has support for 45
+ * language modes and 24 color themes!
+ */
 
-										<p class="mb-15">Armstrong spent about <s>three and a half</s> two and a half hours outside the spacecraft, Aldrin slightly less; and together they collected 47.5 pounds (21.5&nbsp;kg) of lunar material for return to Earth. A third member of the mission, <a href="#">Michael Collins</a>, piloted the <a href="#">command</a> spacecraft alone in lunar orbit until Armstrong and Aldrin returned to it for the trip back to Earth.</p>
+function add(x, y) {
+    var resultString = "Hello, ACE! The result of your math is: ";
+    var result = x + y;
+    return resultString + result;
+}
 
-										<h5 class="text-semibold">Technical details</h5>
-										<p>Launched by a <strong>Saturn V</strong> rocket from <a href="#">Kennedy Space Center</a> in Merritt Island, Florida on July 16, Apollo 11 was the fifth manned mission of <a href="#">NASA</a>'s Apollo program. The Apollo spacecraft had three parts:</p>
-										<ol>
-											<li><strong>Command Module</strong> with a cabin for the three astronauts which was the only part which landed back on Earth</li>
-											<li><strong>Service Module</strong> which supported the Command Module with propulsion, electrical power, oxygen and water</li>
-											<li><strong>Lunar Module</strong> for landing on the Moon.</li>
-										</ol>
-										<p class="mb-15">After being sent to the Moon by the Saturn V's upper stage, the astronauts separated the spacecraft from it and travelled for three days until they entered into lunar orbit. Armstrong and Aldrin then moved into the Lunar Module and landed in the <a href="#">Sea of Tranquility</a>. They stayed a total of about 21 and a half hours on the lunar surface. After lifting off in the upper part of the Lunar Module and rejoining Collins in the Command Module, they returned to Earth and landed in the <a href="#">Pacific Ocean</a> on July 24.</p>
-
-										<h5 class="text-semibold">Misson crew</h5>
-
-										<table class="table table-bordered" style="width: 100%">
-											<thead>
-												<tr>
-													<th>Position</th>
-													<th>Astronaut</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Commander</td>
-													<td>Neil A. Armstrong</td>
-												</tr>
-												<tr>
-													<td>Command Module Pilot</td>
-													<td>Michael Collins</td>
-												</tr>
-												<tr>
-													<td>Lunar Module Pilot</td>
-													<td>Edwin "Buzz" E. Aldrin, Jr.</td>
-												</tr>
-											</tbody>
-										</table>
-
-										Source: <a href="http://en.wikipedia.org/wiki/Apollo_11">Wikipedia.org</a>
-						            </textarea>
-					            </div>
-
-					            <div class="text-right">
-						            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-arrow-right14 position-right"></i></button>
-					            </div>
-				            </form>
-						</div>
-					</div>
-					<!-- /CKEditor default -->
-
-
-					<!-- CKEditor readonly API -->
-					<div class="panel panel-flat">
-						<div class="panel-heading">
-							<h5 class="panel-title">CKEditor readonly API</h5>
-							<div class="heading-elements">
-								<ul class="icons-list">
-			                		<li><a data-action="collapse"></a></li>
-			                		<li><a data-action="reload"></a></li>
-			                		<li><a data-action="close"></a></li>
-			                	</ul>
-		                	</div>
-						</div>
-
-						<div class="panel-body">
-							<p class="mb-15">This sample shows how to use the <code>setReadOnly</code> API to put editor into the read-only state that makes it impossible for users to change the editor contents. In readonly mode all toolbar buttons are disabled, except <code>copy</code>, <code>full screen</code> and <code>source</code> buttons, they are still accessible. Content is selectable, but not editable.</p>
-
-							<p class="content-group">
-					            <button type="button" class="btn btn-primary" id="readOnlyOn" style="display: none;"><i class="icon-eye2 position-left"></i> Make editor readonly</button>
-					            <button type="button" class="btn btn-success" id="readOnlyOff" style="display: none;"><i class="icon-eye-blocked2 position-left"></i> Make it editable</button>
-				            </p>
-
-							<form action="#">
-								<div class="content-group">
-									<textarea class="ckeditor" name="editor-readonly" id="editor-readonly" rows="4" cols="4">
-										<h2>Apollo 11</h2>
-										<div class="pull-right" style="margin-left: 20px;"><img alt="Saturn V carrying Apollo 11" class="right" src="http://c.cksource.com/a/1/img/sample.jpg"></div>
-
-										<p><strong>Apollo 11</strong> was the spaceflight that landed the first humans, Americans <a href="#">Neil Armstrong</a> and <a href="#">Buzz Aldrin</a>, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.</p>
-
-										<p class="mb-15">Armstrong spent about <s>three and a half</s> two and a half hours outside the spacecraft, Aldrin slightly less; and together they collected 47.5 pounds (21.5&nbsp;kg) of lunar material for return to Earth. A third member of the mission, <a href="#">Michael Collins</a>, piloted the <a href="#">command</a> spacecraft alone in lunar orbit until Armstrong and Aldrin returned to it for the trip back to Earth.</p>
-
-										<h5 class="text-semibold">Technical details</h5>
-										<p>Launched by a <strong>Saturn V</strong> rocket from <a href="#">Kennedy Space Center</a> in Merritt Island, Florida on July 16, Apollo 11 was the fifth manned mission of <a href="#">NASA</a>'s Apollo program. The Apollo spacecraft had three parts:</p>
-										<ol>
-											<li><strong>Command Module</strong> with a cabin for the three astronauts which was the only part which landed back on Earth</li>
-											<li><strong>Service Module</strong> which supported the Command Module with propulsion, electrical power, oxygen and water</li>
-											<li><strong>Lunar Module</strong> for landing on the Moon.</li>
-										</ol>
-										<p class="mb-15">After being sent to the Moon by the Saturn V's upper stage, the astronauts separated the spacecraft from it and travelled for three days until they entered into lunar orbit. Armstrong and Aldrin then moved into the Lunar Module and landed in the <a href="#">Sea of Tranquility</a>. They stayed a total of about 21 and a half hours on the lunar surface. After lifting off in the upper part of the Lunar Module and rejoining Collins in the Command Module, they returned to Earth and landed in the <a href="#">Pacific Ocean</a> on July 24.</p>
-
-										<h5 class="text-semibold">Misson crew</h5>
-
-										<table class="table table-bordered" style="width: 100%">
-											<thead>
-												<tr>
-													<th>Position</th>
-													<th>Astronaut</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Commander</td>
-													<td>Neil A. Armstrong</td>
-												</tr>
-												<tr>
-													<td>Command Module Pilot</td>
-													<td>Michael Collins</td>
-												</tr>
-												<tr>
-													<td>Lunar Module Pilot</td>
-													<td>Edwin "Buzz" E. Aldrin, Jr.</td>
-												</tr>
-											</tbody>
-										</table>
-
-										Source: <a href="http://en.wikipedia.org/wiki/Apollo_11">Wikipedia.org</a>
-						            </textarea>
-					            </div>
-
-					            <div class="text-right">
-						            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-arrow-right14 position-right"></i></button>
-					            </div>
-				            </form>
-						</div>
-					</div>
-					<!-- /CKEditor readonly API -->
-
-
-					<!-- Enter key configuration -->
-					<div class="panel panel-flat">
-						<div class="panel-heading">
-							<h5 class="panel-title">ENTER Key Configuration</h5>
-							<div class="heading-elements">
-								<ul class="icons-list">
-			                		<li><a data-action="collapse"></a></li>
-			                		<li><a data-action="reload"></a></li>
-			                		<li><a data-action="close"></a></li>
-			                	</ul>
-		                	</div>
-						</div>
-
-						<div class="panel-body">
-							<p class="content-group">This sample shows how to configure the <code>Enter</code> and <code>Shift+Enter</code> keys to perform actions specified in the enterMode and <code>shiftEnterMode</code> parameters, respectively. You can choose from the following options: <span class="text-semibold">ENTER_P</span> – new <code>&lt;p></code> paragraphs are created; <span class="text-semibold">ENTER_BR</span> – lines are broken with <code>&lt;br></code> elements; <span class="text-semibold">ENTER_DIV</span> – new <code>&lt;div></code> blocks are created.</p>
-
-							<form action="#">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="text-semibold">When <kbd>Enter</kbd> is pressed:</label>
-											<select class="select" id="xEnter">
-												<option selected="selected" value="1">Create a new &lt;P&gt; (recommended)</option>
-												<option value="3">Create a new &lt;DIV&gt;</option>
-												<option value="2">Break the line with a &lt;BR&gt;</option>
-											</select>
+var addResult = add(3, 2);
+console.log(addResult);
 										</div>
 									</div>
 
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="text-semibold">When <kbd>Shift+Enter</kbd> is pressed:</label>
-											<select class="select" id="xShiftEnter">
-												<option value="1">Create a new &lt;P&gt;</option>
-												<option value="3">Create a new &lt;DIV&gt;</option>
-												<option selected="selected" value="2">Break the line with a &lt;BR&gt; (recommended)</option>
-											</select>
+									<div class="content-group">
+										<p><span class="text-semibold">CSS</span> mode</p>
+										<div id="css_editor">
+.text-layer {
+    font-family: Monaco, "Courier New", monospace;
+    font-size: 12pX;
+    cursor: text;
+}
+
+.blinker {
+    animation-duration: 1s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    40.5% {
+        opacity: 1
+    }
+    100% {
+        opacity: 1
+    }
+}
+										</div>
+									</div>
+
+									<div class="content-group">
+										<p><span class="text-semibold">LESS</span> mode</p>
+										<div id="less_editor">
+/* styles.less */
+
+@base: #f938ab;
+
+.box-shadow(@style, @c) when (iscolor(@c)) {
+    box-shadow:         @style @c;
+    -webkit-box-shadow: @style @c;
+    -moz-box-shadow:    @style @c;
+}
+.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
+    .box-shadow(@style, rgba(0, 0, 0, @alpha));
+}
+
+// Box styles
+.box { 
+    color: saturate(@base, 5%);
+    border-color: lighten(@base, 30%);
+    
+    div { .box-shadow(0 0 5px, 30%) }
+  
+    a {
+        color: @base;
+        
+        &amp;:hover {
+            color: lighten(@base, 50%);
+        }
+    }
+}
+										</div>
+									</div>
+
+									<div class="content-group">
+										<p><span class="text-semibold">Ruby</span> mode</p>
+										<div id="ruby_editor">
+#!/usr/bin/ruby
+
+# Program to find the factorial of a number
+def fact(n)
+    if n == 0
+        1
+    else
+        n * fact(n-1)
+    end
+end
+
+puts fact(ARGV[0].to_i)
+
+class Range
+  def to_json(*a)
+    {
+      'json_class'   => self.class.name, # = 'Range'
+      'data'         => [ first, last, exclude_end? ]
+    }.to_json(*a)
+  end
+end
+
+{:id => 34, :key => "value"}
+
+
+    herDocs = [&lt;&lt;'FOO', &lt;&lt;BAR, &lt;&lt;-BAZ, &lt;&lt;-`EXEC`] #comment
+  FOO #{literal}
+FOO
+  BAR #{fact(10)}
+BAR
+  BAZ indented
+    BAZ
+        echo hi
+    EXEC
+puts herDocs
+										</div>
+									</div>
+
+
+									<div class="content-group">
+										<p><span class="text-semibold">Coffee</span> mode</p>
+										<div id="coffee_editor">
+#!/usr/bin/env coffee
+
+try
+    throw URIError decodeURI(0xC0ffee * 123456.7e-8 / .9)
+catch e
+    console.log 'qstring' + "qqstring" + '''
+        qdoc
+    ''' + """
+        qqdoc
+    """
+
+do ->
+    ###
+    herecommend
+    ###
+    re = /regex/imgy.test ///
+        heregex  # comment
+    ///imgy
+    this isnt: `just JavaScript`
+    undefined
+    
+sentence = "#{ 22 / 7 } is a decent approximation of π"
 										</div>
 									</div>
 								</div>
 
-								<div class="mb-15">
-									<textarea name="editor-enter" id="editor-enter" rows="4" cols="4">
-										<h2>Apollo 11</h2>
-										<div class="pull-right" style="margin-left: 20px;"><img alt="Saturn V carrying Apollo 11" class="right" src="http://c.cksource.com/a/1/img/sample.jpg"></div>
-
-										<p><strong>Apollo 11</strong> was the spaceflight that landed the first humans, Americans <a href="#">Neil Armstrong</a> and <a href="#">Buzz Aldrin</a>, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.</p>
-
-										<p class="mb-15">Armstrong spent about <s>three and a half</s> two and a half hours outside the spacecraft, Aldrin slightly less; and together they collected 47.5 pounds (21.5&nbsp;kg) of lunar material for return to Earth. A third member of the mission, <a href="#">Michael Collins</a>, piloted the <a href="#">command</a> spacecraft alone in lunar orbit until Armstrong and Aldrin returned to it for the trip back to Earth.</p>
-
-										<h5 class="text-semibold">Technical details</h5>
-										<p>Launched by a <strong>Saturn V</strong> rocket from <a href="#">Kennedy Space Center</a> in Merritt Island, Florida on July 16, Apollo 11 was the fifth manned mission of <a href="#">NASA</a>'s Apollo program. The Apollo spacecraft had three parts:</p>
-										<ol>
-											<li><strong>Command Module</strong> with a cabin for the three astronauts which was the only part which landed back on Earth</li>
-											<li><strong>Service Module</strong> which supported the Command Module with propulsion, electrical power, oxygen and water</li>
-											<li><strong>Lunar Module</strong> for landing on the Moon.</li>
-										</ol>
-										<p class="mb-15">After being sent to the Moon by the Saturn V's upper stage, the astronauts separated the spacecraft from it and travelled for three days until they entered into lunar orbit. Armstrong and Aldrin then moved into the Lunar Module and landed in the <a href="#">Sea of Tranquility</a>. They stayed a total of about 21 and a half hours on the lunar surface. After lifting off in the upper part of the Lunar Module and rejoining Collins in the Command Module, they returned to Earth and landed in the <a href="#">Pacific Ocean</a> on July 24.</p>
-
-										<h5 class="text-semibold">Misson crew</h5>
-
-										<table class="table table-bordered" style="width: 100%">
-											<thead>
-												<tr>
-													<th>Position</th>
-													<th>Astronaut</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Commander</td>
-													<td>Neil A. Armstrong</td>
-												</tr>
-												<tr>
-													<td>Command Module Pilot</td>
-													<td>Michael Collins</td>
-												</tr>
-												<tr>
-													<td>Lunar Module Pilot</td>
-													<td>Edwin "Buzz" E. Aldrin, Jr.</td>
-												</tr>
-											</tbody>
-										</table>
-
-										Source: <a href="http://en.wikipedia.org/wiki/Apollo_11">Wikipedia.org</a>
-						            </textarea>
-					            </div>
-
-					            <div class="text-right">
-						            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-arrow-right14 position-right"></i></button>
-					            </div>
-				            </form>
-						</div>
-					</div>
-					<!-- /enter key configuration -->
 
 
-					<!-- CKEditor inline -->
-					<div class="panel panel-flat">
-						<div class="panel-heading">
-							<h5 class="panel-title">Inline editor</h5>
-							<div class="heading-elements">
-								<ul class="icons-list">
-			                		<li><a data-action="collapse"></a></li>
-			                		<li><a data-action="reload"></a></li>
-			                		<li><a data-action="close"></a></li>
-			                	</ul>
-		                	</div>
-						</div>
 
-						<div class="panel-body">
-							<p class="content-group">This sample shows how to create an inline editor instance of CKEditor. You can also create an inline editor from a textarea element. In this case the <code>textarea</code> will be replaced by a <code>div</code> element with inline editing enabled. To enter edit mode, click on any element inside div or textarea elements, toolbar will be sticked to the top of this element.</p>
 
-							<hr>
 
-							<div id="editor-inline" contenteditable="true">
-								<h1>Apollo 11</h1>
-								<img alt="Saturn V carrying Apollo 11" class="pull-right" style="margin-left: 20px;" src="http://c.cksource.com/a/1/img/sample.jpg">
+								<div class="col-md-6">
+									<div class="content-group">
+										<p><span class="text-semibold">HTML</span> mode</p>
+										<div id="html_editor">
+&lt;!-- Default panel -->
+&lt;div class="panel panel-default">
+	&lt;div class="panel-heading">
+		&lt;h5 class="panel-title">
+			WYSIHTML5
+			&lt;span class="text-semibold">Default&lt;/span>
+			&lt;small>Full featured toolbar&lt;/small>
+		&lt;/h5>
+		
+    	&lt;ul class="panel-heading-icons">
+    		&lt;li>&lt;a href="#" data-panel="collapse">&lt;i class="icon-arrow-down2">&lt;/i>&lt;/a>&lt;/li>
+    		&lt;li>&lt;a href="#" data-panel="reload">&lt;i class="icon-reload">&lt;/i>&lt;/a>&lt;/li>
+    		&lt;li>&lt;a href="#" data-panel="move">&lt;i class="icon-move">&lt;/i>&lt;/a>&lt;/li>
+    		&lt;li>&lt;a href="#" data-panel="close">&lt;i class="icon-close">&lt;/i>&lt;/a>&lt;/li>
+    	&lt;/ul>
+	&lt;/div>
 
-								<p><strong>Apollo 11</strong> was the spaceflight that landed the first humans, Americans <a href="#">Neil Armstrong</a> and <a href="#">Buzz Aldrin</a>, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.</p>
+	&lt;div class="panel-body">
+		Panel body
+	&lt;/div>
+&lt;/div>
+&lt;!-- /default panel -->
+										</div>
+									</div>
 
-								<p class="mb-15">Armstrong spent about <s>three and a half</s> two and a half hours outside the spacecraft, Aldrin slightly less; and together they collected 47.5 pounds (21.5&nbsp;kg) of lunar material for return to Earth. A third member of the mission, <a href="#">Michael Collins</a>, piloted the <a href="#">command</a> spacecraft alone in lunar orbit until Armstrong and Aldrin returned to it for the trip back to Earth.</p>
+									<div class="content-group">
+										<p><span class="text-semibold">JSON</span> mode</p>
+										<div id="json_editor">
+{
+ "query": {
+  "count": 10,
+  "created": "2011-06-21T08:10:46Z",
+  "lang": "en-US",
+  "results": {
+   "photo": [
+    {
+     "farm": "6",
+     "id": "5855620975",
+     "isfamily": "0",
+     "isfriend": "0",
+     "ispublic": "1",
+     "owner": "32021554@N04",
+     "secret": "f1f5e8515d",
+     "server": "5110",
+     "title": "7087 bandit cat"
+    },
+    {
+     "farm": "4",
+     "id": "5856170534",
+     "isfamily": "0",
+     "isfriend": "0",
+     "ispublic": "1",
+     "owner": "32021554@N04",
+     "secret": "ff1efb2a6f",
+     "server": "3217",
+     "title": "6975 rusty cat"
+    },
+    {
+     "farm": "6",
+     "id": "5856172972",
+     "isfamily": "0",
+     "isfriend": "0",
+     "ispublic": "1",
+     "owner": "51249875@N03",
+     "secret": "6c6887347c",
+     "server": "5192",
+     "title": "watermarked-cats"
+    }
+   ]
+  }
+ }
+}
+										</div>
+									</div>
 
-								<h5 class="text-semibold">Technical details</h5>
-								<p>Launched by a <strong>Saturn V</strong> rocket from <a href="#">Kennedy Space Center</a> in Merritt Island, Florida on July 16, Apollo 11 was the fifth manned mission of <a href="#">NASA</a>'s Apollo program. The Apollo spacecraft had three parts:</p>
-								<ol>
-									<li><strong>Command Module</strong> with a cabin for the three astronauts which was the only part which landed back on Earth</li>
-									<li><strong>Service Module</strong> which supported the Command Module with propulsion, electrical power, oxygen and water</li>
-									<li><strong>Lunar Module</strong> for landing on the Moon.</li>
-								</ol>
-								<p class="mb-15">After being sent to the Moon by the Saturn V's upper stage, the astronauts separated the spacecraft from it and travelled for three days until they entered into lunar orbit. Armstrong and Aldrin then moved into the Lunar Module and landed in the <a href="#">Sea of Tranquility</a>. They stayed a total of about 21 and a half hours on the lunar surface. After lifting off in the upper part of the Lunar Module and rejoining Collins in the Command Module, they returned to Earth and landed in the <a href="#">Pacific Ocean</a> on July 24.</p>
+									<div class="content-group">
+										<p><span class="text-semibold">PHP</span> mode</p>
+										<div id="php_editor">
+&lt;?php
 
-								<h5 class="text-semibold">Misson crew</h5>
+function nfact($n) {
+    if ($n == 0) {
+        return 1;
+    }
+    else {
+        return $n * nfact($n - 1);
+    }
+}
 
-								<table class="table table-bordered content-group" style="width: 100%">
-									<thead>
-										<tr>
-											<th>Position</th>
-											<th>Astronaut</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Commander</td>
-											<td>Neil A. Armstrong</td>
-										</tr>
-										<tr>
-											<td>Command Module Pilot</td>
-											<td>Michael Collins</td>
-										</tr>
-										<tr>
-											<td>Lunar Module Pilot</td>
-											<td>Edwin "Buzz" E. Aldrin, Jr.</td>
-										</tr>
-									</tbody>
-								</table>
+echo "\n\nPlease enter a whole number ... ";
+$num = trim(fgets(STDIN));
 
-								Source: <a href="http://en.wikipedia.org/wiki/Apollo_11">Wikipedia.org</a>
+// ===== PROCESS - Determing the factorial of the input number =====
+$output = "\n\nFactorial " . $num . " = " . nfact($num) . "\n\n";
+echo $output;
+
+?>
+										</div>
+									</div>
+
+									<div class="content-group">
+										<p><span class="text-semibold">SASS</span> mode</p>
+										<div id="sass_editor">
+// sass ace mode;
+
+@import url(http://fonts.googleapis.com/css?family=Ace:700)
+
+html, body
+  :background-color #ace
+  text-align: center
+  height: 100%
+  /*;*********;
+    ;comment  ;
+    ;*********;
+
+.toggle
+  $size: 14px
+
+  :background url(http://subtlepatterns.com/patterns/dark_stripes.png)
+  border-radius: 8px
+  height: $size
+
+  &amp;:before
+    $radius: $size * 0.845
+    $glow: $size * 0.125
+
+    box-shadow: 0 0 $glow $glow / 2 #fff
+    border-radius: $radius
+    
+    &amp;:active
+      ~ .button
+        box-shadow: 0 15px 25px -4px rgba(0,0,0,0.4)      
+      ~ .label
+        font-size: 40px
+        color: rgba(0,0,0,0.45)
+
+    &amp;:checked      
+      ~ .button
+        box-shadow: 0 15px 25px -4px #ace
+      ~ .label
+        font-size: 40px
+        color: #c9c9c9
+										</div>
+									</div>
+
+
+									<div class="content-group">
+										<p><span class="text-semibold">Handlebars</span> mode</p>
+										<div id="handlebars_editor">
+{{!-- Ace + :-}} --}}
+
+&lt;div id="comments">
+  {{#each comments}}
+  &lt;h2>&lt;a href="/posts/{{../permalink}}#{{id}}">{{title}}&lt;/a>&lt;/h2>
+  &lt;div>{{body}}&lt;/div>
+  {{/each}}
+&lt;/div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<!-- /CKEditor inline -->
+					<!-- ace code editor -->
 
 
 					<!-- Footer -->

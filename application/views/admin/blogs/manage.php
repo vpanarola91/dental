@@ -1,8 +1,3 @@
-<script type="text/javascript" src="<?php echo base_url().'public/back/'; ?>ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/form_inputs.js"></script>
-<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/editor_ckeditor.js"></script>
-
-
 <div class="page-header page-header-default">
     <div class="page-header-content">
         <div class="page-title">
@@ -84,9 +79,41 @@ if ($this->session->flashdata('success')) {
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Blog Description:</label>
                             <div class="col-lg-12">
-                                <textarea name="blog_description" id="editor-full" placeholder="Enter blog Description"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
+                                <textarea name="blog_description" id="editor1" placeholder="Enter blog Description"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
                             </div>
                         </div>
+
+
+                        <div id="css_editor">
+.text-layer {
+    font-family: Monaco, "Courier New", monospace;
+    font-size: 12pX;
+    cursor: text;
+}
+
+.blinker {
+    animation-duration: 1s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    40.5% {
+        opacity: 1
+    }
+    100% {
+        opacity: 1
+    }
+}
+                                        </div>
                         <div class="text-right">
                             <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
                         </div>
@@ -97,6 +124,16 @@ if ($this->session->flashdata('success')) {
     </div>
 </div>
 <script>
+
+$(function(){
+        // CSS editor
+    var css_editor = ace.edit("css_editor");
+    css_editor.setTheme("ace/theme/monokai");
+    css_editor.getSession().setMode("ace/mode/css");
+    css_editor.setShowPrintMargin(false);
+});
+
+
 $("#blog_title").blur(function () {
     var Text = $(this).val();
     Text = Text.toLowerCase();
@@ -151,3 +188,7 @@ $("#frmblog").validate({
 //$(element).closest('.form-group').removeClass('has-error');
 
 </script>
+
+<script type="text/javascript" src="<?php echo base_url().'public/back/'; ?>ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/form_inputs.js"></script>
+<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/editor_ckeditor.js"></script>

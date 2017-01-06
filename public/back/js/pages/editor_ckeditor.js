@@ -12,7 +12,7 @@
 $(function() {
 
     // Full featured editor
-    CKEDITOR.replace( 'editor-full', {
+    CKEDITOR.replace( 'editor1', {
         height: '400px',
         extraPlugins: 'forms'
     });
