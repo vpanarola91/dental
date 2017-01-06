@@ -92,8 +92,11 @@
                                         <a href="<?php echo base_url() . 'admin/users'; ?>"><i class="icon-users4"></i> <span>Users</span></a>
                                     </li>  
                                      <li class="<?php echo ($controller == 'blogs') ? 'active' : ''; ?>">
-                                        <a href="<?php echo base_url() . 'admin/blogs'; ?>"><i class="icon-users4"></i> <span>Blogs</span></a>
-                                    </li>                                                             
+                                        <a href="<?php echo base_url() . 'admin/blogs'; ?>"><i class="icon-bubble"></i> <span>Blogs</span></a>
+                                    </li>  
+                                    <li class="<?php echo ($controller == 'cms') ? 'active' : ''; ?>">
+                                        <a href="<?php echo base_url() . 'admin/cms'; ?>"><i class="icon-file-text"></i> <span>Cms Page</span></a>
+                                    </li>                                                            
                                     <li class="">
                                         <a href="<?php echo base_url() . "admin/logout"; ?>"><i class="icon-switch2"></i> <span>Logout</span></a>
                                     </li>

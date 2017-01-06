@@ -1,6 +1,6 @@
 <?php
 
-class Admin_blogs_model extends CI_Model {
+class Blogs_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -22,8 +22,6 @@ class Admin_blogs_model extends CI_Model {
         if (!empty($keyword['value'])) {
             $this->db->having('blog_title LIKE "%' . $keyword['value'] . '%"', NULL);
         }
-        
-        
 
         $this->db->limit($this->input->get('length'), $this->input->get('start'));
         $res_data = $this->db->get('blog,(SELECT @a:= 0) AS a')->result_array();
@@ -31,7 +29,7 @@ class Admin_blogs_model extends CI_Model {
     }
 
     /**
-     * @uses : this function is used to count rows of users based on datatable in user list page
+     * @uses : this function is used to count rows of blogs based on datatable in blog list page
      * @param : @table 
      * @author : HPA
      */
@@ -57,7 +55,7 @@ class Admin_blogs_model extends CI_Model {
 
     /**
      * @uses : This function is used to update record
-     * @param : @table, @user_id, @user_array = array of update  
+     * @param : @table, @blog_id, @blog_array = array of update  
      * @author : HPA
      */
     public function update_record($table, $condition, $blog_array) {
@@ -69,6 +67,11 @@ class Admin_blogs_model extends CI_Model {
         }
     }
 
+    /**
+     * @uses : This function is used to insert record
+     * @param : @table, @blog_array = array of update  
+     * @author : HPA
+     */
     public function insert_record($table, $blog_array) {
         if ($this->db->insert($table, $blog_array)) {
             return 1;
@@ -77,6 +80,11 @@ class Admin_blogs_model extends CI_Model {
         }
     }
 
+    /**
+     * @uses : This function is used to check blog title exist or not
+     * @param : @Title, @blog_id  
+     * @author : DHK
+     */
     public function CheckExist($Title, $BlogId = 0) {
         $this->db->from('blog');
         $this->db->where('blog_title', $Title);
