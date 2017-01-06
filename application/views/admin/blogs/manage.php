@@ -79,7 +79,7 @@ if ($this->session->flashdata('success')) {
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Blog Description:</label>
                             <div class="col-lg-12">
-                                <textarea name="blog_description" id="editor1" placeholder="Enter blog Description"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
+                                <textarea name="blog_description" id="editor19" placeholder="Enter blog Description"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
                             </div>
                         </div>
 
@@ -184,11 +184,8 @@ $("#frmblog").validate({
 
     }
 });
-
 //$(element).closest('.form-group').removeClass('has-error');
-
 </script>
-
 <script type="text/javascript" src="<?php echo base_url().'public/back/'; ?>ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/form_inputs.js"></script>
 <script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/editor_ckeditor.js"></script>

@@ -17,50 +17,50 @@
     </div>
 </div>
 <!-- /page header -->
-<?php
-    if ($this->session->flashdata('success')) {
-        ?>
-        <div class="alert alert-success">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('success') ?></strong>
-        </div>
-        <?php
-        $this->session->set_flashdata('success', false);
-    } else if ($this->session->flashdata('error')) {
-        ?>        
-        <div class="alert alert-danger">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('error') ?></strong>
-        </div>        
-        <?php
-        $this->session->set_flashdata('error', false);
-    } else {
-        echo validation_errors();
-    }
-?>
 
 <!-- Content area -->
 <div class="content">
-    <!-- content area -->
-    <div class="content">
-        <div class="panel panel-flat">
-            <!--<div class="panel-heading text-right">
-                <a href="<?php echo site_url('admin/users/add'); ?>" class="btn btn-success btn-labeled"><b><i class="icon-user-plus"></i></b> Add new user</a>
-            </div>-->
-            <table class="table datatable-basic">
-                <thead>
-                    <tr>
-                        <th>User ID.</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>                        
-                        <th>Created Date</th>                        
-                        <th width="100px">Action</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
+
+    <?php
+        if ($this->session->flashdata('success')) {
+            ?>
+            <div class="alert alert-success">
+                <a class="close" data-dismiss="alert">X</a>
+                <strong><?= $this->session->flashdata('success') ?></strong>
+            </div>
+            <?php
+            $this->session->set_flashdata('success', false);
+        } else if ($this->session->flashdata('error')) {
+            ?>        
+            <div class="alert alert-danger">
+                <a class="close" data-dismiss="alert">X</a>
+                <strong><?= $this->session->flashdata('error') ?></strong>
+            </div>        
+            <?php
+            $this->session->set_flashdata('error', false);
+        } else {
+            echo validation_errors();
+        }
+    ?>
+
+    <!-- content area -->    
+    <div class="panel panel-flat">
+        <!--<div class="panel-heading text-right">
+            <a href="<?php echo site_url('admin/users/add'); ?>" class="btn btn-success btn-labeled"><b><i class="icon-user-plus"></i></b> Add new user</a>
+        </div>-->
+        <table class="table datatable-basic">
+            <thead>
+                <tr>
+                    <th>User ID.</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>                        
+                    <th>Created Date</th>                        
+                    <th width="100px">Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>    
 </div>
 <script>
     $(function () {
