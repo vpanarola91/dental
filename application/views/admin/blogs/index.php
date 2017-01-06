@@ -5,14 +5,14 @@
 <div class="page-header page-header-default">
     <div class="page-header-content">
         <div class="page-title">
-            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Admin</span> - User List</h4>
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Admin</span> - Blog List</h4>
         </div>
     </div>
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
             <li><a href="<?php echo base_url() . "admin/dashboard" ?>"><i class="icon-home2 position-left"></i> Admin</a></li>
-            <li><i class="icon-users4 position-left"></i> Users</li>
+            <li><i class="icon-users4 position-left"></i> Blogs</li>
         </ul>
     </div>
 </div>
@@ -50,10 +50,8 @@
             <table class="table datatable-basic">
                 <thead>
                     <tr>
-                        <th>User ID.</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>                        
+                        <th>Blog ID.</th>
+                        <th>Blog Title</th>                     
                         <th>Created Date</th>                        
                         <th width="100px">Action</th>
                     </tr>
@@ -74,25 +72,15 @@
             },
             dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
             order: [[0, "asc"]],
-            ajax: 'users/list_user',
+            ajax: 'blogs/list_blog',
             columns: [
                 {
-                    data: "test_id",
+                    data: "id",
                     visible: true
                 },
                 {
                     sortable: false,
-                    data: "fname",
-                    visible: true
-                },
-                {
-                    sortable: false,
-                    data: "lname",
-                    visible: true
-                },
-                {
-                    sortable: false,
-                    data: "email_id",
+                    data: "blog_title",
                     visible: true
                 },
                 {
@@ -101,7 +89,7 @@
                     visible: true
                 },
                 {
-                    data: "is_account_close",
+                    data: "is_blocked",
                     visible: true,
                     searchable: false,
                     sortable: false,
@@ -109,12 +97,12 @@
                     render: function (data, type, full, meta) {
                         var action = '';
                         if (full.is_blocked == '0') {
-                            action += '<a href="<?php echo base_url(); ?>admin/users/edit/' + full.id + '" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm" title="Edit"><i class="icon-pencil3"></i></a>';
-                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/users/block/' + full.id + '" class="btn border-warning text-warning-600 btn-flat btn-icon btn-rounded"  title="Block"><i class="icon-user-block"></i></a>'
-                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/users/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded" title="Delete"><i class="icon-cross2"></i></a>'
+                            action += '<a href="<?php echo base_url(); ?>admin/blogs/edit/' + full.id + '" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm" title="Edit"><i class="icon-pencil3"></i></a>';
+                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/blogs/action/block/' + full.id + '" class="btn border-warning text-warning-600 btn-flat btn-icon btn-rounded"  title="Block"><i class="icon-user-block"></i></a>'
+                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/blogs/action/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded" title="Delete"><i class="icon-cross2"></i></a>'
                         } else if (full.is_blocked == 1) {
-                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/users/activate/' + full.id + '" class="btn border-success text-success-600 btn-flat btn-icon btn-rounded"  title="Unblock"><i class="icon-user-plus"></i></a>'
-                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/users/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded" title="Delete"><i class="icon-cross2"></i></a>'
+                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/blogs/action/activate/' + full.id + '" class="btn border-success text-success-600 btn-flat btn-icon btn-rounded"  title="Unblock"><i class="icon-user-plus"></i></a>'
+                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/blogs/action/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded" title="Delete"><i class="icon-cross2"></i></a>'
                         }
                         return action;
                     }

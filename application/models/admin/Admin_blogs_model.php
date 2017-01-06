@@ -13,7 +13,7 @@ class Admin_blogs_model extends CI_Model {
      */
     public function get_all_blogs() {        
         
-        $this->db->select('id,blog_title,DATE_FORMAT(created_at,"%d %b %Y <br> %l:%i %p") AS created_date,status', false);
+        $this->db->select('id,blog_title,DATE_FORMAT(created_at,"%d %b %Y <br> %l:%i %p") AS created_date,is_blocked', false);
         $this->db->where('is_deleted !=', 1);
         
         $keyword = $this->input->get('search');
@@ -60,13 +60,29 @@ class Admin_blogs_model extends CI_Model {
      * @param : @table, @user_id, @user_array = array of update  
      * @author : HPA
      */
-    public function update_record($table, $condition, $user_array) {
+    public function update_record($table, $condition, $blog_array) {
         $this->db->where($condition);
-        if ($this->db->update($table, $user_array)) {
+        if ($this->db->update($table, $blog_array)) {
             return 1;
         } else {
             return 0;
         }
+    }
+
+    public function insert_record($table, $blog_array) {
+        if ($this->db->insert($table, $blog_array)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    public function CheckExist($Title, $BlogId = 0) {
+        $this->db->from('blog');
+        $this->db->where('blog_title', $Title);
+        $this->db->where('id !=' . $BlogId);
+        $query = $this->db->get();
+        return $query->num_rows();
     }
 
 

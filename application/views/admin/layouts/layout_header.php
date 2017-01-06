@@ -11,7 +11,7 @@
     <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "core.css"; ?>" rel="stylesheet" type="text/css">
     <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "components.css"; ?>" rel="stylesheet" type="text/css">
     <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "colors.css"; ?>" rel="stylesheet" type="text/css">
-    <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "components.min.css"; ?>" rel="stylesheet" type="text/css">
+    <!-- <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "components.min.css"; ?>" rel="stylesheet" type="text/css"> -->
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
@@ -24,9 +24,7 @@
     <!-- Theme JS files -->
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/forms/validation/validate.min.js"; ?>"></script>
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/forms/styling/uniform.min.js"; ?>"></script>
-    <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/visualization/d3/d3.min.js"; ?>"></script>
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/forms/styling/switchery.min.js"; ?>"></script>
-    <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/forms/styling/uniform.min.js"; ?>"></script>
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/forms/selects/bootstrap_multiselect.js"; ?>"></script>
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/ui/moment/moment.min.js"; ?>"></script>
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/pickers/daterangepicker.js"; ?>"></script>
