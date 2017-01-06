@@ -61,7 +61,11 @@
                             <div class="col-lg-3">
                                 <input type="text" name="email_id" id="email_id" placeholder="Enter Email" class="form-control" >
                             </div>
-                        </div>                        
+                        </div>    
+
+                      
+
+
                         <div class="text-right">
                             <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
                         </div>

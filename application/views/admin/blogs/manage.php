@@ -148,4 +148,7 @@ $("#frmblog").validate({
 
     }
 });
+
+//$(element).closest('.form-group').removeClass('has-error');
+
 </script>

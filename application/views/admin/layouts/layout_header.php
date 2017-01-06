@@ -10,8 +10,7 @@
     <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "bootstrap.css"; ?>" rel="stylesheet" type="text/css">
     <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "core.css"; ?>" rel="stylesheet" type="text/css">
     <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "components.css"; ?>" rel="stylesheet" type="text/css">
-    <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "colors.css"; ?>" rel="stylesheet" type="text/css">
-    <!-- <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "components.min.css"; ?>" rel="stylesheet" type="text/css"> -->
+    <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "colors.css"; ?>" rel="stylesheet" type="text/css">    
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
@@ -29,10 +28,9 @@
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/ui/moment/moment.min.js"; ?>"></script>
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/pickers/daterangepicker.js"; ?>"></script>
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/notifications/bootbox.min.js"; ?>"></script>    
-
-
+    
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "core/app.js"; ?>"></script>
-    <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "pages/user_pages_list.js"; ?>"></script>    
+    <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "pages/user_pages_list.js"; ?>"></script>
     <script type="text/javascript" src="<?php echo base_url().'public/back/'; ?>ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "pages/login_validation.js"; ?>"></script>
     <!-- /theme JS files -->
