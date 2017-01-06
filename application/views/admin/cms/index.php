@@ -15,7 +15,11 @@
     </div>
 </div>
 <!-- /page header -->
-<?php
+
+
+<!-- Content area -->
+<div class="content">
+    <?php
     if ($this->session->flashdata('success')) {
         ?>
         <div class="alert alert-success">
@@ -32,15 +36,10 @@
         </div>        
         <?php
         $this->session->set_flashdata('error', false);
-    } else {
-        echo validation_errors();
-    }
-?>
-
-<!-- Content area -->
-<div class="content">
+    } 
+?>    
     <!-- content area -->
-    <div class="content">
+    
         <div class="panel panel-flat">
             <div class="panel-heading text-right">
                 <a href="<?php echo site_url('admin/cms/add'); ?>" class="btn btn-success btn-labeled"><b><i class="icon-user-plus"></i></b> Add New Page</a>
@@ -58,7 +57,7 @@
             </table>
         </div>
     </div>
-</div>
+
 <script>
     $(function () {
         $('.datatable-basic').dataTable({

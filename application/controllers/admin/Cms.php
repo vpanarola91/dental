@@ -83,7 +83,17 @@ class Cms extends MY_Controller {
         }
         if ($this->input->post()) {
 
-            $update_array = $this->input->post(null);
+             $update_array = [
+                'slug'           => $this->input->post('slug'),
+                'title'          => $this->input->post('title'),
+                'seo_title'      => $this->input->post('seo_title'),
+                'seo_keyword'    => $this->input->post('seo_keyword'),
+                'seo_description'=> $this->input->post('seo_description'),
+                'description'    => $this->input->post('description'),
+                'css_style'      => $this->input->post('css_style'),
+                'is_blocked'      => $this->input->post('is_blocked'),
+            ];
+
             $result=$this->Cms_model->update_record('cms_page', $where, $update_array);
             if($result){
                 $this->session->set_flashdata('success', 'Cms Page successfully updated!');
@@ -104,25 +114,34 @@ class Cms extends MY_Controller {
 
      public function add() {
 
-       $data['title'] = 'Admin Add Cms Page';
-       $data['heading'] = 'Add Cms Page';
-       if ($this->input->post()) {
+         $data['title'] = 'Admin Add Cms Page';
+         $data['heading'] = 'Add Cms Page';
+         if ($this->input->post()) {
 
-        $_POST['created_at']=date("Y-m-d H:i:s a");
-        $insert_array = $this->input->post(null);
-        $result=$this->Cms_model->insert_record('cms_page',$insert_array);
-        if($result){
-            $this->session->set_flashdata('success', 'Cms Page successfully Inserted!');
+            $insert_array = [
+            'slug'           => $this->input->post('slug'),
+            'title'          => $this->input->post('title'),
+            'seo_title'      => $this->input->post('seo_title'),
+            'seo_keyword'    => $this->input->post('seo_keyword'),
+            'seo_description'=> $this->input->post('seo_description'),
+            'description'    => $this->input->post('description'),
+            'css_style'      => $this->input->post('css_style'),
+            'created_at'     => date("Y-m-d H:i:s a"),
+            'is_blocked'      => $this->input->post('is_blocked'),
+            ];
+
+            $result=$this->Cms_model->insert_record('cms_page',$insert_array);
+            if($result){
+                $this->session->set_flashdata('success', 'Cms Page successfully Inserted!');
+            }
+            else{
+                $this->session->set_flashdata('error', 'Error Into Insert Cms Page!');
+            }       
+            redirect('admin/cms');
         }
-        else{
-            $this->session->set_flashdata('error', 'Error Into Insert Cms Page!');
-        }       
-        redirect('admin/cms');
-
+        $data['subview'] = 'admin/cms/manage';
+        $this->load->view('admin/layouts/layout_main', $data);
     }
-    $data['subview'] = 'admin/cms/manage';
-    $this->load->view('admin/layouts/layout_main', $data);
-}
 
     /**
      * Check For Cms Title Already Exist or Not

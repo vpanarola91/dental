@@ -1,3 +1,8 @@
+<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>plugins/editors/summernote/summernote.min.js"></script>
+<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/editor_summernote.js"></script>
+
+<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/form_inputs.js"></script>
+
 <div class="page-header page-header-default">
     <div class="page-header-content">
         <div class="page-title">
@@ -12,29 +17,6 @@
         </ul>
     </div>
 </div>
-<?php
-if ($this->session->flashdata('success')) {
-    ?>
-    <div class="content pt0">
-        <div class="alert alert-success">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('success') ?></strong>
-        </div>
-    </div>
-    <?php
-    $this->session->set_flashdata('success', false);
-} else if ($this->session->flashdata('error')) {
-    ?>
-    <div class="content pt0">
-        <div class="alert alert-danger">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('error') ?></strong>
-        </div>
-    </div>
-    <?php
-    $this->session->set_flashdata('error', false);
-} 
-?>
 <div class="content">
     <div class="row">
         <div class="col-md-12">
@@ -58,62 +40,31 @@ if ($this->session->flashdata('success')) {
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Status:</label>
                             <div class="col-lg-3">
+
                                 <label class="radio-inline">
-                                    <input type="radio" class="styled" name="is_blocked" value="1" checked <?php
-                                    if (isset($record['is_blocked']) && $record['is_blocked'] == '1') {
-                                        echo 'checked';
-                                    }
-                                    ?>>
-                                    Block
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" class="styled" name="is_blocked" value="0" <?php
+                                    <input type="radio" class="styled" name="is_blocked" value="0" checked <?php
                                     if (isset($record['is_blocked']) && $record['is_blocked'] == '0') {
                                         echo 'checked';
                                     }
                                     ?>>
                                     Unblock
                                 </label>
+                                <label class="radio-inline">
+                                    <input type="radio" class="styled" name="is_blocked" value="1" <?php
+                                    if (isset($record['is_blocked']) && $record['is_blocked'] == '1') {
+                                        echo 'checked';
+                                    }
+                                    ?>>
+                                    Block
+                                </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Blog Description:</label>
                             <div class="col-lg-12">
-                                <textarea name="blog_description" id="editor1" placeholder="Enter blog Description"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
+                                <textarea name="blog_description" id="blog_description" placeholder="Enter blog Description" class="summernote form-control"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
                             </div>
                         </div>
-
-
-                        <div id="css_editor">
-.text-layer {
-    font-family: Monaco, "Courier New", monospace;
-    font-size: 12pX;
-    cursor: text;
-}
-
-.blinker {
-    animation-duration: 1s;
-    animation-name: blink;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: linear;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 0;
-    }
-    40% {
-        opacity: 0;
-    }
-    40.5% {
-        opacity: 1
-    }
-    100% {
-        opacity: 1
-    }
-}
-                                        </div>
                         <div class="text-right">
                             <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
                         </div>
@@ -124,15 +75,6 @@ if ($this->session->flashdata('success')) {
     </div>
 </div>
 <script>
-
-$(function(){
-        // CSS editor
-    var css_editor = ace.edit("css_editor");
-    css_editor.setTheme("ace/theme/monokai");
-    css_editor.getSession().setMode("ace/mode/css");
-    css_editor.setShowPrintMargin(false);
-});
-
 
 $("#blog_title").blur(function () {
     var Text = $(this).val();
@@ -189,6 +131,3 @@ $("#frmblog").validate({
 
 </script>
 
-<script type="text/javascript" src="<?php echo base_url().'public/back/'; ?>ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/form_inputs.js"></script>
-<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/editor_ckeditor.js"></script>

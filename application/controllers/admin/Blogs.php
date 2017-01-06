@@ -100,9 +100,15 @@ class Blogs extends MY_Controller {
                $this->session->set_flashdata('error', $avtar['msg']);
            }
            else{
-            unset($_POST['Himg_path']);
-            $_POST['img_path']=$avtar['msg'];
-            $update_array = $this->input->post(null);
+            $update_array = [
+                'blog_title'        => $this->input->post('blog_title'),
+                'blog_slug'         => $this->input->post('blog_slug'),
+                'blog_description'  => $this->input->post('blog_description'),
+                'img_path'          => $avtar['msg'],
+                'created_by'        => $this->session->userdata['admin']['id'],
+                'is_blocked'        => $this->input->post('is_blocked'),
+            ];
+
             $result=$this->Blogs_model->update_record('blog', $where, $update_array);
             if($result){
                 $this->session->set_flashdata('success', 'Blog successfully updated!');
@@ -144,10 +150,15 @@ class Blogs extends MY_Controller {
                    $this->session->set_flashdata('error', $avtar['msg']);
                }
                else{
-                $_POST['created_at']=date("Y-m-d H:i:s a");
-                $_POST['img_path']=$avtar['msg'];
-                unset($_POST['Himg_path']);
-                $insert_array = $this->input->post(null);
+                $insert_array = [
+                    'blog_title'        => $this->input->post('blog_title'),
+                    'blog_slug'         => $this->input->post('blog_slug'),
+                    'blog_description'  => $this->input->post('blog_description'),
+                    'img_path'          => $avtar['msg'],
+                    'created_by'        => $this->session->userdata['admin']['id'],
+                    'is_blocked'        => $this->input->post('is_blocked'),
+                    'created_at'        => date("Y-m-d H:i:s a"),
+                ];
                 $result=$this->Blogs_model->insert_record('blog',$insert_array);
                 if($result){
                     $this->session->set_flashdata('success', 'Blog successfully Inserted!');
