@@ -11,13 +11,13 @@ class Admin_users_model extends CI_Model {
      * @param : @table 
      * @author : HPA
      */
-    public function get_all_users() {        
+    public function get_all_users() {
         
         $this->db->select('id,id AS test_id,fname,lname,email_id,DATE_FORMAT(created_at,"%d %b %Y <br> %l:%i %p") AS created_at,is_blocked', false);
-        
+
         $this->db->where('role_id', 2);
         $this->db->where('is_deleted !=', 1);
-        
+
         $keyword = $this->input->get('search');
         $keyword = str_replace('"', '', $keyword);
         
@@ -25,8 +25,6 @@ class Admin_users_model extends CI_Model {
             $this->db->having('fname LIKE "%' . $keyword['value'] . '%" OR lname LIKE "%' . $keyword['value'] . '%" OR email_id LIKE "%' . $keyword['value'] . '%"', NULL);
         }
         
-        
-
         $this->db->limit($this->input->get('length'), $this->input->get('start'));
         $res_data = $this->db->get('users,(SELECT @a:= 0) AS a')->result_array();
         return $res_data;

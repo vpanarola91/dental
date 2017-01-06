@@ -13,12 +13,7 @@ class Users extends MY_Controller {
     /**
      * Function load view of users list.(HPA)
      */
-    public function index() {
-        $session_data = $this->session->userdata('admin');
-        $data['user_data'] = $this->Users_model->check_if_user_exist(['id' => $session_data['id'], 'role_id' => 1], false, true);
-        if (empty($data['user_data'])) {
-            redirect('admin/login');
-        }        
+    public function index() {        
         $data['subview'] = 'admin/users/index';
         $this->load->view('admin/layouts/layout_main', $data);
     }
@@ -26,19 +21,13 @@ class Users extends MY_Controller {
     /**
      * Function is used to get result based on datatable in user list page
      */
-    public function list_user() {
-        $session_data = $this->session->userdata('admin');
-        $data['user_data'] = $this->Users_model->check_if_user_exist(['id' => $session_data['id'], 'role_id' => 1], false, true);
-        if (empty($data['user_data'])) {
-            redirect('admin/login');
-        }
+    public function list_user() {        
         $final['recordsTotal'] = $this->Admin_users_model->get_users_count();
         $final['redraw'] = 1;
         // $final['recordsFiltered'] = $this->admin_users_model->get_users_result(TBL_USER,$select,'count');
         $final['recordsFiltered'] = $final['recordsTotal'];
-        $final['data'] = $this->Admin_users_model->get_all_users();
+    $final['data'] = $this->Admin_users_model->get_all_users();
         echo json_encode($final);
-        
 
     }
 
@@ -67,7 +56,7 @@ class Users extends MY_Controller {
         } else {
             $this->session->set_flashdata('error', 'Invalid request. Please try again!');
         }
-        redirect(site_url('admin/users'));
+        redirect('admin/users');
     }
 
     /**
