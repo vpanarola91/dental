@@ -18,6 +18,10 @@ class Survey extends CI_Controller {
         $this->load->view('admin/layouts/layout_main', $data);	
 	}
 
+	public function test(){
+		$this->load->view('admin/survey/test');	
+	}
+
 	// v! AJAX call to get list of survey list
 	public function list_survey(){
 

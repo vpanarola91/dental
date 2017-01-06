@@ -13,30 +13,31 @@
     </div>
 </div>
 <?php
-if ($this->session->flashdata('success')) {
-    ?>
-    <div class="content pt0">
-        <div class="alert alert-success">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('success') ?></strong>
-        </div>
-    </div>
-    <?php
-    $this->session->set_flashdata('success', false);
-} else if ($this->session->flashdata('error')) {
-    ?>
-    <div class="content pt0">
-        <div class="alert alert-danger">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('error') ?></strong>
-        </div>
-    </div>
-    <?php
-    $this->session->set_flashdata('error', false);
-} else {
-    echo validation_errors();
-}
+    if ($this->session->flashdata('success')) {
 ?>
+        <div class="content pt0">
+            <div class="alert alert-success">
+                <a class="close" data-dismiss="alert">X</a>
+                <strong><?= $this->session->flashdata('success') ?></strong>
+            </div>
+        </div>
+    <?php
+        $this->session->set_flashdata('success', false);
+        } else if ($this->session->flashdata('error')) {
+    ?>
+        <div class="content pt0">
+            <div class="alert alert-danger">
+                <a class="close" data-dismiss="alert">X</a>
+                <strong><?= $this->session->flashdata('error') ?></strong>
+            </div>
+        </div>
+<?php
+        $this->session->set_flashdata('error', false);
+    } else {
+        echo validation_errors();
+    }
+?>
+
 <div class="content">
     <div class="row">
         <div class="col-md-12">
@@ -70,3 +71,11 @@ if ($this->session->flashdata('success')) {
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+    function delete_coinfo(){
+        bootbox.alert('Are you sure?');
+    }
+
+</script>
