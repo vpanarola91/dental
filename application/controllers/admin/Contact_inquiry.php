@@ -54,6 +54,42 @@ class Contact_inquiry extends MY_Controller {
         redirect(site_url('admin/contact_inquiry'));
     }
 
-    
+     /**
+     * Function is used to perform Fetch Inquiry Data Using Ajax
+     */
+     public function fetch_inquiry_data(){
+        $where = 'id = ' . $this->db->escape($this->input->post('id'));
+        $data=$this->Admin_contact_inquiry_model->get_result('contact_inquiry', $where);
+        echo json_encode($data[0]);
+    }
+
+     /**
+     * Function is used to perform Send Mail & Update Status
+     */
+     public function reply(){
+
+        $email_config = mail_config();
+        $this->email->initialize($email_config);
+                 
+        $this->email
+                ->from('dhk@narola.email', 'Dental')
+                ->to($this->input->post('email'))
+                ->subject('Dental - Contact Inquiry Reply')
+                ->message($this->input->post('message'));
+
+       if($this->email->send()){
+        $where = 'id = ' . $this->db->escape($this->input->post('id'));
+        $update_array = array(
+            'status' => 1
+            );
+        $this->Admin_contact_inquiry_model->update_record('contact_inquiry', $where, $update_array);
+        $this->session->set_flashdata('success', 'Replied to Contact Inquiry successfully !');
+    }else{
+        $this->session->set_flashdata('error', 'Error Into Contact Inquiry Reply.Please try again!');
+    }
+    redirect(site_url('admin/contact_inquiry'));
+}
+
+
 
 }

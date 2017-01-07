@@ -67,7 +67,8 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h6 class="modal-title">Contact Inquiry</h6>
             </div>
-            <form action="<?=base_url('admin/contact_inquiry/reply')?>" method="POST">
+            <form action="<?=base_url('admin/contact_inquiry/reply')?>" method="POST" id="frmcontact">
+                <input type="hidden" name="id" id="id">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="row">
@@ -96,7 +97,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <label>Your Message</label>
-                                <textarea name="message" class="form-control" readonly></textarea>
+                                <textarea name="message" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>
@@ -175,7 +176,7 @@ $(function () {
             width: 200,
             render: function (data, type, full, meta) {
                 var action = '';
-                action += '<a href="#" data-toggle="modal" data-target="#modal_theme_primary" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm" title="Reply"><i class="icon-reply"></i></a>';
+                action += '<a href="#" data-id="'+full.id+'" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm contact-reply" title="Reply"><i class="icon-reply"></i></a>';
                 action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/contact_inquiry/action/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded" title="Delete"><i class="icon-cross2"></i></a>'
                 return action;
             }
@@ -187,5 +188,51 @@ $('.dataTables_length select').select2({
     minimumResultsForSearch: Infinity,
     width: 'auto'
 });
+
+});
+
+
+$(document).on('click','.contact-reply',function(){
+    var contact_id=$(this).data('id');
+    $.post('<?=base_url("admin/contact_inquiry/fetch_inquiry_data")?>',{'id' : contact_id},function(data){
+       if(data){
+            $('#id').val(data['id']);
+            $('#name').val(data['name']);
+            $('#email').val(data['email']);
+            $('#subject').val(data['subject']);
+            $('#description').val(data['description']);
+            $('#modal_theme_primary').modal('show');
+       } 
+    },'json');
+        
+});
+
+
+//---------------------- Validation -------------------
+$("#frmcontact").validate({
+    errorClass: 'validation-error-label',
+    successClass: 'validation-valid-label',
+    highlight: function(element, errorClass) {
+        $(element).removeClass(errorClass);
+    },
+    unhighlight: function(element, errorClass) {
+        $(element).removeClass(errorClass);
+    },
+    validClass: "validation-valid-label",
+    success: function(label) {
+        label.addClass("validation-valid-label").text("Success.")
+    },
+    rules: {
+        message: {
+            required: true
+        }
+
+    },
+    messages: {
+        message: {
+            required: "Please provide a Message"
+        }
+
+    }
 });
 </script>
