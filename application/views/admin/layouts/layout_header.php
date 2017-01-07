@@ -32,6 +32,8 @@
     
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "core/app.js"; ?>"></script>
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "pages/user_pages_list.js"; ?>"></script>    
-    <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "pages/login_validation.js"; ?>"></script>    
+    <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "pages/login_validation.js"; ?>"></script> 
+
+    <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "core/cms_script.js"; ?>"></script>   
     <!-- /theme JS files -->
 </head>
