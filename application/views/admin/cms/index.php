@@ -70,6 +70,7 @@
             },
             dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
             order: [[0, "asc"]],
+            ordering: false,
             ajax: 'cms/list_cms',
             columns: [
                 {
