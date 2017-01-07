@@ -1,6 +1,6 @@
+
 <script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>plugins/editors/summernote/summernote.min.js"></script>
 <script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/editor_summernote.js"></script>
-
 <script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/form_inputs.js"></script>
 
 <div class="page-header page-header-default">
@@ -12,7 +12,7 @@
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
             <li><a href="<?php echo site_url('admin/home'); ?>"><i class="icon-home2 position-left"></i> Home</a></li>
-            <li><a href="<?php echo site_url('admin/blogs'); ?>"><i class="icon-bubble position-left"></i> Blogs</a></li>
+            <li><a href="<?php echo site_url('admin/blogs'); ?>"> Blogs</a></li>
             <li class="active"><?php echo $heading; ?></li>
         </ul>
     </div>
@@ -65,6 +65,20 @@
                                 <textarea name="blog_description" id="blog_description" placeholder="Enter blog Description" class="summernote form-control"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Status:</label>
+                            <div class="col-lg-9">
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio-inline-left" class="styled" checked="checked">
+                                    Selected styled
+                                </label>
+
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio-inline-left" class="styled">
+                                    Unselected styled
+                                </label>
+                            </div>
+                        </div>
                         <div class="text-right">
                             <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
                         </div>
@@ -74,7 +88,11 @@
         </div>
     </div>
 </div>
-<script>
+<script type="text/javascript">
+    $(".styled, .multiselect-container input").uniform({
+        radioClass: 'choice'
+    });
+
 
 $("#blog_title").blur(function () {
     var Text = $(this).val();
@@ -126,4 +144,9 @@ $("#frmblog").validate({
 
     }
 });
+
+
 //$(element).closest('.form-group').removeClass('has-error');
+
+</script>
+

@@ -24,7 +24,7 @@ class Survey extends CI_Controller {
 
 	// v! AJAX call to get list of survey list
 	public function list_survey(){
-
+		
         $final['recordsTotal'] = $this->Survey_model->get_survey_count();
         $final['redraw'] = 1;                       
         $final['recordsFiltered'] = $final['recordsTotal'];

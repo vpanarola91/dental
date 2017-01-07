@@ -23,10 +23,11 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>plugins/editors/ace/ace.js"></script>
+	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>plugins/forms/styling/uniform.min.js"></script>
+	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>plugins/forms/styling/switchery.min.js"></script>	
 
 	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>core/app.js"></script>
-	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>pages/editor_code.js"></script>
+	<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH; ?>pages/form_checkboxes_radios.js"></script>
 	<!-- /theme JS files -->
 
 </head>
@@ -445,7 +446,7 @@
 									<a href="#"><i class="icon-pencil3"></i> <span>Form components</span></a>
 									<ul>
 										<li><a href="form_inputs_basic.html">Basic inputs</a></li>
-										<li><a href="form_checkboxes_radios.html">Checkboxes &amp; radios</a></li>
+										<li class="active"><a href="form_checkboxes_radios.html">Checkboxes &amp; radios</a></li>
 										<li><a href="form_input_groups.html">Input groups</a></li>
 										<li><a href="form_controls_extended.html">Extended controls</a></li>
 										<li><a href="form_floating_labels.html">Floating labels</a></li>
@@ -487,7 +488,7 @@
 										<li><a href="editor_summernote.html">Summernote editor</a></li>
 										<li><a href="editor_ckeditor.html">CKEditor</a></li>
 										<li><a href="editor_wysihtml5.html">WYSIHTML5 editor</a></li>
-										<li class="active"><a href="editor_code.html">Code editor</a></li>
+										<li><a href="editor_code.html">Code editor</a></li>
 									</ul>
 								</li>
 								<li>
@@ -1022,7 +1023,7 @@
 				<div class="page-header page-header-default">
 					<div class="page-header-content">
 						<div class="page-title">
-							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Editors</span> - Code</h4>
+							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Forms</span> - Checkboxes &amp; Radios</h4>
 						</div>
 
 						<div class="heading-elements">
@@ -1037,8 +1038,8 @@
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
 							<li><a href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
-							<li><a href="editors_code.html">Editors</a></li>
-							<li class="active">Code</li>
+							<li><a href="form_checkboxes_radios.html">Forms</a></li>
+							<li class="active">Checkboxes &amp; radios</li>
 						</ul>
 
 						<ul class="breadcrumb-elements">
@@ -1067,10 +1068,487 @@
 				<!-- Content area -->
 				<div class="content">
 
-					<!-- Ace code editor -->
+					<!-- Checkboxes -->
+	            	<div class="panel panel-flat">
+						<div class="panel-heading">
+							<h5 class="panel-title">Checkboxes</h5>
+							<div class="heading-elements">
+								<ul class="icons-list">
+			                		<li><a data-action="collapse"></a></li>
+			                		<li><a data-action="reload"></a></li>
+			                		<li><a data-action="close"></a></li>
+			                	</ul>
+		                	</div>
+						</div>
+
+	                	<div class="panel-body">
+            				<p class="content-group">The HTML input element <code>&lt;input type=checkbox></code> is an input element to enter an array of different values. The <code>value</code> attribute is used to define the value submitted by the checkbox. The <code>checked</code> attribute is used to indicate whether this item is selected. The <code>indeterminate</code> attribute is used to indicate that the checkbox is in an indeterminate state (on most platforms, this draws a horizontal line across the checkbox).</p>
+
+            				<div class="row">
+            					<div class="col-md-6">
+									<div class="form-group">
+										<label class="text-semibold">Left stacked default</label>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked="checked">
+												Checked default
+											</label>
+										</div>
+
+										<div class="checkbox">
+											<label>
+												<input type="checkbox">
+												Unchecked default
+											</label>
+										</div>
+
+										<div class="checkbox disabled">
+											<label>
+												<input type="checkbox" checked="checked" disabled="disabled">
+												Disabled default
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="display-block text-semibold">Left inline default</label>
+										<label class="checkbox-inline">
+											<input type="checkbox" checked="checked">
+											Checked default
+										</label>
+
+										<label class="checkbox-inline">
+											<input type="checkbox">
+											Unchecked default
+										</label>
+									</div>
+
+									<div class="form-group pt-15">
+										<label class="display-block text-semibold">Left stacked styled</label>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" class="styled" checked="checked">
+												Checked styled
+											</label>
+										</div>
+
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" class="styled">
+												Unchecked styled
+											</label>
+										</div>
+
+										<div class="checkbox disabled">
+											<label>
+												<input type="checkbox" class="styled" disabled="disabled">
+												Disabled styled
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="display-block text-semibold">Lef inline styled</label>
+										<label class="checkbox-inline">
+											<input type="checkbox" class="styled" checked="checked">
+											Checked styled
+										</label>
+
+										<label class="checkbox-inline">
+											<input type="checkbox" class="styled">
+											Unchecked styled
+										</label>
+									</div>
+            					</div>
+
+            					<div class="col-md-6">
+									<div class="form-group">
+										<label class="text-semibold">Right stacked default</label>
+										<div class="checkbox checkbox-right">
+											<label>
+												<input type="checkbox" checked="checked">
+												Checked default
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-right">
+											<label>
+												<input type="checkbox">
+												Unchecked default
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-right disabled">
+											<label>
+												<input type="checkbox" checked="checked" disabled="disabled">
+												Disabled default
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="display-block text-semibold">Right inline default</label>
+										<label class="checkbox-inline checkbox-right">
+											<input type="checkbox" checked="checked">
+											Checked default
+										</label>
+
+										<label class="checkbox-inline checkbox-right">
+											<input type="checkbox">
+											Unchecked default
+										</label>
+									</div>
+
+									<div class="form-group pt-15">
+										<label class="display-block text-semibold">Right stacked styled</label>
+
+										<div class="checkbox checkbox-right">
+											<label>
+												<input type="checkbox" class="styled" checked="checked">
+												Checked styled
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-right">
+											<label>
+												<input type="checkbox" class="styled">
+												Unchecked styled
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-right disabled">
+											<label>
+												<input type="checkbox" class="styled" checked="checked" disabled="disabled">
+												Disabled styled
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="display-block text-semibold">Right inline styled</label>
+										<label class="checkbox-inline checkbox-right">
+											<input type="checkbox" class="styled" checked="checked">
+											Checked styled
+										</label>
+
+										<label class="checkbox-inline checkbox-right">
+											<input type="checkbox" class="styled">
+											Unchecked styled
+										</label>
+									</div>
+            					</div>
+        					</div>
+    					</div>
+					</div>
+					<!-- /checkboxes -->
+
+
+					<!-- Radio buttons -->
+	            	<div class="panel panel-flat">
+						<div class="panel-heading">
+							<h5 class="panel-title">Radio buttons</h5>
+							<div class="heading-elements">
+								<ul class="icons-list">
+			                		<li><a data-action="collapse"></a></li>
+			                		<li><a data-action="reload"></a></li>
+			                		<li><a data-action="close"></a></li>
+			                	</ul>
+		                	</div>
+						</div>
+
+	                	<div class="panel-body">
+            				<p class="content-group">Radio button is an element that can be turned on and off. Radio buttons are almost always grouped together in groups. Only one radio button within the same <code>radiogroup</code> may be selected at a time. The user can switch which radio button is turned on by selecting it with the mouse or keyboard. Other radio buttons in the same group are turned off. A label, specified with the <code>label</code> attribute may be added beside the radio button.</p>
+
+            				<div class="row">
+            					<div class="col-md-6">
+									<div class="form-group">
+										<label class="text-semibold">Left stacked default</label>
+										<div class="radio">
+											<label>
+												<input type="radio" name="unstyled-radio-left" checked="checked">
+												Selected default
+											</label>
+										</div>
+
+										<div class="radio">
+											<label>
+												<input type="radio" name="unstyled-radio-left">
+												Unselected default
+											</label>
+										</div>
+
+										<div class="radio disabled">
+											<label>
+												<input type="radio" checked="checked" disabled="disabled">
+												Disabled default
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="display-block text-semibold">Left inline default</label>
+										<label class="radio-inline">
+											<input type="radio" name="radio-unstyled-inline-left" checked="checked">
+											Selected default
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" name="radio-unstyled-inline-left">
+											Unselected default
+										</label>
+									</div>
+
+									<div class="form-group pt-15">
+										<label class="text-semibold">Left stacked styled</label>
+										<div class="radio">
+											<label>
+												<input type="radio" name="stacked-radio-left" class="styled" checked="checked">
+												Selected styled
+											</label>
+										</div>
+
+										<div class="radio">
+											<label>
+												<input type="radio" name="stacked-radio-left" class="styled">
+												Unselected styled
+											</label>
+										</div>
+
+										<div class="radio disabled">
+											<label>
+												<input type="radio" class="styled" disabled="disabled">
+												Disabled styled
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="display-block text-semibold">Left inline styled</label>
+										<label class="radio-inline">
+											<input type="radio" name="radio-inline-left" class="styled" checked="checked">
+											Selected styled
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" name="radio-inline-left" class="styled">
+											Unselected styled
+										</label>
+									</div>
+            					</div>
+
+            					<div class="col-md-6">
+									<div class="form-group">
+										<label class="text-semibold">Right stacked default</label>
+										<div class="radio radio-right">
+											<label>
+												<input type="radio" name="unstyled-radio-right" checked="checked">
+												Selected default
+											</label>
+										</div>
+
+										<div class="radio radio-right">
+											<label>
+												<input type="radio" name="unstyled-radio-right">
+												Unselected default
+											</label>
+										</div>
+
+										<div class="radio radio-right disabled">
+											<label>
+												<input type="radio" checked="checked" disabled="disabled">
+												Disabled default
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="display-block text-semibold">Right inline default</label>
+										<label class="radio-inline radio-right">
+											<input type="radio" name="radio-unstyled-inline-right" checked="checked">
+											Selected default
+										</label>
+
+										<label class="radio-inline radio-right">
+											<input type="radio" name="radio-unstyled-inline-right">
+											Unselected default
+										</label>
+									</div>
+
+									<div class="form-group pt-15">
+										<label class="text-semibold">Right stacked styled</label>
+										<div class="radio radio-right">
+											<label>
+												<input type="radio" name="stacked-radio-right" class="styled" checked="checked">
+												Selected styled
+											</label>
+										</div>
+
+										<div class="radio radio-right">
+											<label>
+												<input type="radio" name="stacked-radio-right" class="styled">
+												Unselected styled
+											</label>
+										</div>
+
+										<div class="radio radio-right disabled">
+											<label>
+												<input type="radio" class="styled" checked="checked" disabled="disabled">
+												Disabled styled
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="display-block text-semibold">Right inline styled</label>
+										<label class="radio-inline radio-right">
+											<input type="radio" name="radio-inline-right" class="styled" checked="checked">
+											Selected styled
+										</label>
+
+										<label class="radio-inline radio-right">
+											<input type="radio" name="radio-inline-right" class="styled">
+											Unselected styled
+										</label>
+									</div>
+            					</div>
+            				</div>
+						</div>
+					</div>
+					<!-- /radio buttons -->
+
+
+					<!-- Colors -->
+	            	<div class="panel panel-flat">
+						<div class="panel-heading">
+							<h5 class="panel-title">Color options</h5>
+							<div class="heading-elements">
+								<ul class="icons-list">
+			                		<li><a data-action="collapse"></a></li>
+			                		<li><a data-action="reload"></a></li>
+			                		<li><a data-action="close"></a></li>
+			                	</ul>
+		                	</div>
+						</div>
+
+	                	<div class="panel-body">
+            				<p class="content-group">Besides default color, both checkboxes and radio buttons support 5 additional contextual color classes and other custom colors from color system. Colors are adapted to use in different background colors of parent elements - dropdown menus, active list states, input group addons - all checkboxes and radios are white on dark backgrounds. To use, simply add <code>background</code> and <code>text</code> color classes to Uniform's <code>wrapperClass</code> options.</p>
+
+	                		<div class="row">
+		                		<div class="col-md-6">
+									<div class="form-group">
+										<label class="text-semibold">Checkboxes</label>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="checkbox">
+													<label>
+														<input type="checkbox" class="control-primary" checked="checked">
+														Primary checkbox
+													</label>
+												</div>
+
+												<div class="checkbox">
+													<label>
+														<input type="checkbox" class="control-danger" checked="checked">
+														Danger checkbox
+													</label>
+												</div>
+
+												<div class="checkbox">
+													<label>
+														<input type="checkbox" class="control-success" checked="checked">
+														Success checkbox
+													</label>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="checkbox">
+													<label>
+														<input type="checkbox" class="control-warning" checked="checked">
+														Warning checkbox
+													</label>
+												</div>
+
+												<div class="checkbox">
+													<label>
+														<input type="checkbox" class="control-info" checked="checked">
+														Info checkbox
+													</label>
+												</div>
+
+												<div class="checkbox">
+													<label>
+														<input type="checkbox" class="control-custom" checked="checked">
+														Custom color
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="text-semibold">Radio buttons</label>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="radio">
+													<label>
+														<input type="radio" name="radio-styled-color" class="control-primary" checked="checked">
+														Primary radio
+													</label>
+												</div>
+
+												<div class="radio">
+													<label>
+														<input type="radio" name="radio-styled-color" class="control-danger">
+														Danger radio
+													</label>
+												</div>
+
+												<div class="radio">
+													<label>
+														<input type="radio" name="radio-styled-color" class="control-success">
+														Success radio
+													</label>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="radio">
+													<label>
+														<input type="radio" name="radio-styled-color" class="control-warning">
+														Warning radio
+													</label>
+												</div>
+
+												<div class="radio">
+													<label>
+														<input type="radio" name="radio-styled-color" class="control-info">
+														Info radio
+													</label>
+												</div>
+
+												<div class="radio">
+													<label>
+														<input type="radio" name="radio-styled-color" class="control-custom">
+														Custom color
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+        				</div>
+    				</div>
+    				<!-- /colors -->
+
+
+					<!-- Switchery toggles -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Ace code editor</h5>
+							<h5 class="panel-title">Switchery toggles</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 			                		<li><a data-action="collapse"></a></li>
@@ -1081,343 +1559,442 @@
 						</div>
 
 						<div class="panel-body">
-							<p class="content-group">Ace is an embeddable code editor written in JavaScript. It matches the features and performance of native editors such as Sublime, Vim and TextMate. It can be easily embedded in any web page and JavaScript application. Ace is maintained as the primary editor for Cloud9 IDE and is the successor of the Mozilla Skywriter (Bespin) project.</p>
-
 							<div class="row">
 								<div class="col-md-6">
-									<div class="content-group">
-										<p><span class="text-semibold">Javascript</span> mode</p>
-										<div id="javascript_editor">
-/**
- * In fact, you're looking at ACE right now. Go ahead and play with it!
- *
- * We are currently showing off the JavaScript mode. ACE has support for 45
- * language modes and 24 color themes!
- */
+									<div class="content-group-lg">
+										<h6 class="text-semibold">Default switchers</h6>
+										<p class="content-group">You can add as many switches as you like, as long as their corresponding checkboxes have the same class. Select them and make new instance of the Switchery class for every of them.</p>
 
-function add(x, y) {
-    var resultString = "Hello, ACE! The result of your math is: ";
-    var result = x + y;
-    return resultString + result;
-}
-
-var addResult = add(3, 2);
-console.log(addResult);
+										<div class="checkbox checkbox-switchery">
+											<label>
+												<input type="checkbox" class="switchery" checked="checked">
+												Checked switch
+											</label>
 										</div>
-									</div>
 
-									<div class="content-group">
-										<p><span class="text-semibold">CSS</span> mode</p>
-										<div id="css_editor">
-.text-layer {
-    font-family: Monaco, "Courier New", monospace;
-    font-size: 12pX;
-    cursor: text;
-}
-
-.blinker {
-    animation-duration: 1s;
-    animation-name: blink;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: linear;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 0;
-    }
-    40% {
-        opacity: 0;
-    }
-    40.5% {
-        opacity: 1
-    }
-    100% {
-        opacity: 1
-    }
-}
+										<div class="checkbox checkbox-switchery">
+											<label>
+												<input type="checkbox" class="switchery">
+												Unchecked switch
+											</label>
 										</div>
-									</div>
 
-									<div class="content-group">
-										<p><span class="text-semibold">LESS</span> mode</p>
-										<div id="less_editor">
-/* styles.less */
-
-@base: #f938ab;
-
-.box-shadow(@style, @c) when (iscolor(@c)) {
-    box-shadow:         @style @c;
-    -webkit-box-shadow: @style @c;
-    -moz-box-shadow:    @style @c;
-}
-.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
-    .box-shadow(@style, rgba(0, 0, 0, @alpha));
-}
-
-// Box styles
-.box { 
-    color: saturate(@base, 5%);
-    border-color: lighten(@base, 30%);
-    
-    div { .box-shadow(0 0 5px, 30%) }
-  
-    a {
-        color: @base;
-        
-        &amp;:hover {
-            color: lighten(@base, 50%);
-        }
-    }
-}
+										<div class="checkbox checkbox-switchery disabled">
+											<label>
+												<input type="checkbox" class="switchery" checked="checked" disabled="disabled">
+												Checked disabled
+											</label>
 										</div>
-									</div>
 
-									<div class="content-group">
-										<p><span class="text-semibold">Ruby</span> mode</p>
-										<div id="ruby_editor">
-#!/usr/bin/ruby
-
-# Program to find the factorial of a number
-def fact(n)
-    if n == 0
-        1
-    else
-        n * fact(n-1)
-    end
-end
-
-puts fact(ARGV[0].to_i)
-
-class Range
-  def to_json(*a)
-    {
-      'json_class'   => self.class.name, # = 'Range'
-      'data'         => [ first, last, exclude_end? ]
-    }.to_json(*a)
-  end
-end
-
-{:id => 34, :key => "value"}
-
-
-    herDocs = [&lt;&lt;'FOO', &lt;&lt;BAR, &lt;&lt;-BAZ, &lt;&lt;-`EXEC`] #comment
-  FOO #{literal}
-FOO
-  BAR #{fact(10)}
-BAR
-  BAZ indented
-    BAZ
-        echo hi
-    EXEC
-puts herDocs
-										</div>
-									</div>
-
-
-									<div class="content-group">
-										<p><span class="text-semibold">Coffee</span> mode</p>
-										<div id="coffee_editor">
-#!/usr/bin/env coffee
-
-try
-    throw URIError decodeURI(0xC0ffee * 123456.7e-8 / .9)
-catch e
-    console.log 'qstring' + "qqstring" + '''
-        qdoc
-    ''' + """
-        qqdoc
-    """
-
-do ->
-    ###
-    herecommend
-    ###
-    re = /regex/imgy.test ///
-        heregex  # comment
-    ///imgy
-    this isnt: `just JavaScript`
-    undefined
-    
-sentence = "#{ 22 / 7 } is a decent approximation of π"
+										<div class="checkbox checkbox-switchery disabled">
+											<label>
+												<input type="checkbox" class="switchery" disabled="disabled">
+												Unchecked disabled
+											</label>
 										</div>
 									</div>
 								</div>
 
+								<div class="col-md-6">
+									<div class="content-group-lg">
+										<h6 class="text-semibold">Switcher colors</h6>
+										<p class="content-group">You can change the default color of the switch to fit your design perfectly. According to the color system, any of its color can be applied to the switchery. Custom colors are also supported.</p>
 
+										<div class="checkbox checkbox-switchery">
+											<label>
+												<input type="checkbox" class="switchery-primary" checked="checked">
+												Switch in <span class="text-semibold">primary</span> context
+											</label>
+										</div>
 
+										<div class="checkbox checkbox-switchery">
+											<label>
+												<input type="checkbox" class="switchery-danger" checked="checked">
+												Switch in <span class="text-semibold">danger</span> context
+											</label>
+										</div>
 
+										<div class="checkbox checkbox-switchery">
+											<label>
+												<input type="checkbox" class="switchery-info" checked="checked">
+												Switch in <span class="text-semibold">info</span> context
+											</label>
+										</div>
 
+										<div class="checkbox checkbox-switchery">
+											<label>
+												<input type="checkbox" class="switchery-warning" checked="checked">
+												Switch in <span class="text-semibold">warning</span> context
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="content-group-lg">
+										<h6 class="text-semibold">Single label</h6>
+										<p class="content-group">You can choose one of 4 main Switch sizes - large (29px height), default (25px height), small (21px height) and mini (17px height). Just add proper class to the <code>.checkbox</code> wrapper.</p>
+
+										<div class="checkbox checkbox-switchery switchery-lg">
+											<label>
+												<input type="checkbox" class="switchery" checked="checked">
+												Large size
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-switchery">
+											<label>
+												<input type="checkbox" class="switchery" checked="checked">
+												Default size
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-switchery switchery-sm">
+											<label>
+												<input type="checkbox" class="switchery" checked="checked">
+												Small size
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-switchery switchery-xs">
+											<label>
+												<input type="checkbox" class="switchery" checked="checked">
+												Mini size
+											</label>
+										</div>
+									</div>
+								</div>
 
 								<div class="col-md-6">
-									<div class="content-group">
-										<p><span class="text-semibold">HTML</span> mode</p>
-										<div id="html_editor">
-&lt;!-- Default panel -->
-&lt;div class="panel panel-default">
-	&lt;div class="panel-heading">
-		&lt;h5 class="panel-title">
-			WYSIHTML5
-			&lt;span class="text-semibold">Default&lt;/span>
-			&lt;small>Full featured toolbar&lt;/small>
-		&lt;/h5>
-		
-    	&lt;ul class="panel-heading-icons">
-    		&lt;li>&lt;a href="#" data-panel="collapse">&lt;i class="icon-arrow-down2">&lt;/i>&lt;/a>&lt;/li>
-    		&lt;li>&lt;a href="#" data-panel="reload">&lt;i class="icon-reload">&lt;/i>&lt;/a>&lt;/li>
-    		&lt;li>&lt;a href="#" data-panel="move">&lt;i class="icon-move">&lt;/i>&lt;/a>&lt;/li>
-    		&lt;li>&lt;a href="#" data-panel="close">&lt;i class="icon-close">&lt;/i>&lt;/a>&lt;/li>
-    	&lt;/ul>
-	&lt;/div>
+									<div class="content-group-lg">
+										<h6 class="text-semibold">Multiple labels</h6>
+										<p class="content-group">Switchery can be used with single label or with multiple labels. To use, add <code>.switchery-double</code> class to the container. All sizing options are available for this switchery type as well.</p>
 
-	&lt;div class="panel-body">
-		Panel body
-	&lt;/div>
-&lt;/div>
-&lt;!-- /default panel -->
+										<div class="checkbox checkbox-switchery switchery-lg switchery-double">
+											<label>
+												Option 1
+												<input type="checkbox" class="switchery" checked="checked">
+												Option 2
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-switchery switchery-double">
+											<label>
+												Option 1
+												<input type="checkbox" class="switchery" checked="checked">
+												Option 2
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-switchery switchery-sm switchery-double">
+											<label>
+												Option 1
+												<input type="checkbox" class="switchery" checked="checked">
+												Option 2
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-switchery switchery-xs switchery-double">
+											<label>
+												Option 1
+												<input type="checkbox" class="switchery" checked="checked">
+												Option 2
+											</label>
 										</div>
 									</div>
+								</div>
+							</div>
 
-									<div class="content-group">
-										<p><span class="text-semibold">JSON</span> mode</p>
-										<div id="json_editor">
-{
- "query": {
-  "count": 10,
-  "created": "2011-06-21T08:10:46Z",
-  "lang": "en-US",
-  "results": {
-   "photo": [
-    {
-     "farm": "6",
-     "id": "5855620975",
-     "isfamily": "0",
-     "isfriend": "0",
-     "ispublic": "1",
-     "owner": "32021554@N04",
-     "secret": "f1f5e8515d",
-     "server": "5110",
-     "title": "7087 bandit cat"
-    },
-    {
-     "farm": "4",
-     "id": "5856170534",
-     "isfamily": "0",
-     "isfriend": "0",
-     "ispublic": "1",
-     "owner": "32021554@N04",
-     "secret": "ff1efb2a6f",
-     "server": "3217",
-     "title": "6975 rusty cat"
-    },
-    {
-     "farm": "6",
-     "id": "5856172972",
-     "isfamily": "0",
-     "isfriend": "0",
-     "ispublic": "1",
-     "owner": "51249875@N03",
-     "secret": "6c6887347c",
-     "server": "5192",
-     "title": "watermarked-cats"
-    }
-   ]
-  }
- }
-}
+							<div class="row">
+								<div class="col-md-6">
+									<div class="content-group-lg">
+										<h6 class="text-semibold">Right alignment</h6>
+										<p class="content-group">Default switchery position is left. Use <code>.checkbox-right</code> class to change switchery position to right. This class sets correct side padding for label and changes main position.</p>
+
+										<div class="checkbox checkbox-right checkbox-switchery">
+											<label>
+												<input type="checkbox" class="switchery" checked="checked">
+												Checked switch
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-right checkbox-switchery">
+											<label>
+												<input type="checkbox" class="switchery">
+												Unchecked switch
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-right checkbox-switchery disabled">
+											<label>
+												<input type="checkbox" class="switchery" checked="checked" disabled="disabled">
+												Checked disabled
+											</label>
+										</div>
+
+										<div class="checkbox checkbox-right checkbox-switchery disabled">
+											<label>
+												<input type="checkbox" class="switchery" disabled="disabled">
+												Unchecked disabled
+											</label>
 										</div>
 									</div>
+								</div>
 
-									<div class="content-group">
-										<p><span class="text-semibold">PHP</span> mode</p>
-										<div id="php_editor">
-&lt;?php
+								<div class="col-md-6">
+									<div class="content-group-lg">
+										<h6 class="text-semibold">Sticked to the right</h6>
+										<p class="content-group">Sometimes it's very useful to have switches on the right side of the container. Just add <code>.display-block</code> class to the <code>&lt;label></code> for the very right side switcher alignment.</p>
 
-function nfact($n) {
-    if ($n == 0) {
-        return 1;
-    }
-    else {
-        return $n * nfact($n - 1);
-    }
-}
-
-echo "\n\nPlease enter a whole number ... ";
-$num = trim(fgets(STDIN));
-
-// ===== PROCESS - Determing the factorial of the input number =====
-$output = "\n\nFactorial " . $num . " = " . nfact($num) . "\n\n";
-echo $output;
-
-?>
+										<div class="checkbox checkbox-right checkbox-switchery">
+											<label class="display-block">
+												<input type="checkbox" class="switchery" checked="checked">
+												Checked switch
+											</label>
 										</div>
-									</div>
 
-									<div class="content-group">
-										<p><span class="text-semibold">SASS</span> mode</p>
-										<div id="sass_editor">
-// sass ace mode;
-
-@import url(http://fonts.googleapis.com/css?family=Ace:700)
-
-html, body
-  :background-color #ace
-  text-align: center
-  height: 100%
-  /*;*********;
-    ;comment  ;
-    ;*********;
-
-.toggle
-  $size: 14px
-
-  :background url(http://subtlepatterns.com/patterns/dark_stripes.png)
-  border-radius: 8px
-  height: $size
-
-  &amp;:before
-    $radius: $size * 0.845
-    $glow: $size * 0.125
-
-    box-shadow: 0 0 $glow $glow / 2 #fff
-    border-radius: $radius
-    
-    &amp;:active
-      ~ .button
-        box-shadow: 0 15px 25px -4px rgba(0,0,0,0.4)      
-      ~ .label
-        font-size: 40px
-        color: rgba(0,0,0,0.45)
-
-    &amp;:checked      
-      ~ .button
-        box-shadow: 0 15px 25px -4px #ace
-      ~ .label
-        font-size: 40px
-        color: #c9c9c9
+										<div class="checkbox checkbox-right checkbox-switchery">
+											<label class="display-block">
+												<input type="checkbox" class="switchery">
+												Unchecked switch
+											</label>
 										</div>
-									</div>
 
+										<div class="checkbox checkbox-right checkbox-switchery disabled">
+											<label class="display-block">
+												<input type="checkbox" class="switchery" checked="checked" disabled="disabled">
+												Checked disabled
+											</label>
+										</div>
 
-									<div class="content-group">
-										<p><span class="text-semibold">Handlebars</span> mode</p>
-										<div id="handlebars_editor">
-{{!-- Ace + :-}} --}}
-
-&lt;div id="comments">
-  {{#each comments}}
-  &lt;h2>&lt;a href="/posts/{{../permalink}}#{{id}}">{{title}}&lt;/a>&lt;/h2>
-  &lt;div>{{body}}&lt;/div>
-  {{/each}}
-&lt;/div>
+										<div class="checkbox checkbox-right checkbox-switchery disabled">
+											<label class="display-block">
+												<input type="checkbox" class="switchery" disabled="disabled">
+												Unchecked disabled
+											</label>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- ace code editor -->
+					<!-- /switchery toggles -->
+
+
+					<!-- Bootstrap switch -->
+					<div class="panel panel-flat">
+						<div class="panel-heading">
+							<h5 class="panel-title">Bootstrap switch</h5>
+							<div class="heading-elements">
+								<ul class="icons-list">
+			                		<li><a data-action="collapse"></a></li>
+			                		<li><a data-action="reload"></a></li>
+			                		<li><a data-action="close"></a></li>
+			                	</ul>
+		                	</div>
+						</div>
+
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="content-group">
+										<h6 class="text-semibold">Switch states</h6>
+										<p>By default Bootstrap Switch supports standard attributes for checkboxes such as <code>disabled</code>, <code>checked</code> and <code>readonly</code> or use <code>true</code> or <code>false</code> in plugin options.</p>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" class="switch" data-on-text="On" data-off-text="Off" checked="checked">
+														Checked switch
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-text="On" data-off-text="Off" class="switch" checked="checked" disabled="disabled">
+														Checked disabled
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-text="On" data-off-text="Off" class="switch" readonly="readonly" checked="checked">
+														Checked readonly
+													</label>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-text="On" data-off-text="Off" class="switch">
+														Unchecked switch
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-text="On" data-off-text="Off" class="switch" disabled="disabled">
+														Unchecked disabled
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-text="On" data-off-text="Off" class="switch" readonly="readonly">
+														Unchecked readonly
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="content-group">
+										<h6 class="text-semibold">Switch colors</h6>
+										<p>You can change the default color of the switch by choosing one of 6 predefined classes and use them in <code>data-on-color</code> and <code>data-off-color</code> attributes.</p>
+
+										<div class="row">
+											<div class="col-sm-6">
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" class="switch" data-on-text="On" data-off-text="Off" data-on-color="default" data-off-color="danger" checked="checked">
+														Default color
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" class="switch" data-on-text="On" data-off-text="Off" data-on-color="primary" data-off-color="default" checked="checked">
+														Primary color
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" class="switch" data-on-text="On" data-off-text="Off" data-on-color="danger" data-off-color="default" checked="checked">
+														Danger color
+													</label>
+												</div>
+											</div>
+
+											<div class="col-sm-6">
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" class="switch" data-on-text="On" data-off-text="Off" data-on-color="success" data-off-color="default" checked="checked">
+														Success color
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" class="switch" data-on-text="On" data-off-text="Off" data-on-color="warning" data-off-color="default" checked="checked">
+														Warning color
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" class="switch" data-on-text="On" data-off-text="Off" data-on-color="info" data-off-color="default" checked="checked">
+														Info color
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="content-group">
+										<h6 class="text-semibold">Switch sizes</h6>
+										<p>Default height is equal to input field height, but you can also choose one of 4 available sizes (large, small and mini) by changing <code>data-size</code> attribute.</p>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" class="switch" data-on-text="On" data-off-text="Off" data-size="large" checked="checked">
+														Large switch
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-text="On" data-off-text="Off" class="switch" data-size="small" checked="checked">
+														Small switch
+													</label>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-text="On" data-off-text="Off" class="switch" checked="checked">
+														Default switch
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-text="On" data-off-text="Off" class="switch" data-size="mini" checked="checked">
+														Mini switch
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="content-group">
+										<h6 class="text-semibold">Label options</h6>
+										<p>Labels support any text or icon via <code>data-on-text</code> and <code>data-off-text</code> attributes. If no custom text specified, switch will display default on/off text.</p>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-off-color="danger" data-on-text="Yes" data-off-text="No" class="switch" checked="checked">
+														Default text
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-color="warning" data-off-color="info" data-on-text="<i class='icon-link'></i>" data-off-text="<i class='icon-unlink'></i>" class="switch" checked="checked">
+														Icons only
+													</label>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-color="danger" data-off-color="primary" data-on-text="Enable" data-off-text="Disable" class="switch" checked="checked">
+														Enable/Disable
+													</label>
+												</div>
+
+												<div class="checkbox checkbox-switch">
+													<label>
+														<input type="checkbox" data-on-color="success" data-off-color="danger" data-on-text="Online" data-off-text="Offline" class="switch" checked="checked">
+														Online/Offline
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /bootstrap switch -->
 
 
 					<!-- Footer -->
@@ -1430,7 +2007,7 @@ html, body
 				<!-- /content area -->
 
 			</div>
-			<!-- /main content -->
+			<!-- /content wrapper -->
 
 		</div>
 		<!-- /page content -->
