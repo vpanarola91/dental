@@ -1,282 +1,166 @@
-<link href="<?= ADMIN_PLUGINS; ?>datepicker/datepicker.min.css" rel="stylesheet">
-<link href="<?= ADMIN_PLUGINS; ?>timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
-<link href="<?= ADMIN_CSS ?>jquery.tagsinput.css" rel="stylesheet">
-<style>
-    hr {
-        margin: 10px 0px;
-    }
-    h4 {
-        padding-left: 10px;
-    }
-</style>
-<div class="container-fluid"> 
-
-    <!-- Begin breadcrumb -->
-    <ol class="breadcrumb default square rsaquo sm">
-        <li><a href="<?= BASE_URL('admin/home'); ?>"><i class="fa fa-home"></i></a></li>
-        <li class="active">Settings</li>
-    </ol>
-    <!-- End breadcrumb -->
-
-    <div class="row">
-        <div class="col-sm-12"> 
-            <!-- Begin basic form elements -->
-            <form id="frmconfig" method="post" action="<?= BASE_URL('admin/settings/save'); ?>">
-                <div class="the-box">
-                    <legend>Configuration Settings</legend>
-                    <!-- ============ Error Message ================== -->
-                    <?php if ($this->session->flashdata('success')): ?>
-                        <div class="alert alert-success alert-bold-border square fade in alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <i class="alert-link">
-                                <?= $this->session->flashdata('success'); ?>
-                            </i> </div>
-                    <?php endif; ?>
-                    <!-- ============ Error Message ================== -->
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-sm-12 col-md-12 form"> 
-
-                                <!-- ============================= -->
-                                <div class="row">
-                                    <div class="col-sm-6 form">
-                                        <label> Site Name <span class="req-field">*</span> </label>
-                                        <input type="text" name="site_name" value="<?= $this->Common->config('site_name') ?>" class="form-control" tabindex="1">
-                                    </div>
-                                    <div class="col-sm-6 form">
-                                        <label> Sender Name <span class="req-field">*</span> </label>
-                                        <input type="text" name="sender_name" value="<?= $this->Common->config('sender_name') ?>" class="form-control" tabindex="6">
-                                    </div>
-                                </div>
-                                <!-- .row --> 
-                                <!-- ============================= --> 
-
-                                <!-- ============================= -->
-                                <div class="row">
-                                    <div class="col-sm-6 form">
-                                        <label> Site Title <span class="req-field">*</span> </label>
-                                        <input type="text" name="site_title" value="<?= $this->Common->config('site_title') ?>" class="form-control" tabindex="2">
-                                    </div>
-                                    <div class="col-sm-6 form">
-                                        <label> Copy Right <span class="req-field">*</span> </label>
-                                        <input type="text" name="copy_right" value="<?= $this->Common->config('copy_right') ?>" class="form-control" tabindex="7">
-                                    </div>
-
-                                    <!-- .col-sm-12 --> 
-                                </div>
-                                <!-- .row --> 
-
-                                <!-- ============================= -->
-                                <div class="row">
-
-                                    <div class="col-sm-6 form">
-                                        <label> Contact Email <span class="req-field">*</span> </label>
-                                        <input type="email" name="contact_email" value="<?= $this->Common->config('contact_email') ?>" class="form-control" tabindex="3">
-
-                                    </div>
-                                    <div class="col-sm-6 form">
-                                        <label> Record Per Page <span class="req-field">*</span> </label>
-                                        <input type="text" name="record_per_page" value="<?= $this->Common->config('record_per_page') ?>" class="form-control NumbersOnly" tabindex="8">
-
-                                    </div>
-
-                                    <!-- .col-sm-12 --> 
-                                </div>
-                                <!-- .row --> 
-                                <!-- ============================= --> 
-
-                                <!-- ============================= -->
-                                <div class="row">
-                                    <div class="col-sm-12 form">
-                                        <label> Site Description <span class="req-field">*</span> </label>
-                                        <textarea name="site_description" rows="5" class="form-control" tabindex="4"><?= $this->Common->config('site_description') ?>
-                                        </textarea>
-                                    </div>
-                                </div>    
-
-                                <div class="row">
-                                    <div class="col-sm-12 form">
-                                        <label> Site Keyword <span class="req-field">*</span> </label>
-                                        <textarea name="site_keywords" id="site_keywords" class="form-control" tabindex="5"><?= $this->Common->config('site_keywords') ?>
-                                        </textarea>
-                                    </div>
-
-                                    <!-- .col-sm-12 --> 
-                                </div>
-                                <!-- .row --> 
-                                <!-- ============================= --> 
-                            </div>
-                            <!-- .col-sm-12 .col-md-6 --> 
-
-                        </div>
-                        <!-- .form-group --> 
-
-
-                    </div>
-                    <!-- .row -->
-
-                    <!-- ============ Social setting================== -->
-                    <legend>Social Settings</legend>
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-sm-12 col-md-12 form"> 
-
-                                <!-- ============================= -->
-                                <div class="row">
-                                    <div class="col-sm-6 form">
-                                        <label> Facebook Link <span class="req-field">*</span> </label>
-                                        <input type="text" name="facebook_link" value="<?= $this->Common->config('facebook_link') ?>" class="form-control" tabindex="9">
-                                    </div>
-                                    <div class="col-sm-6 form">
-                                        <label> Twitter Link <span class="req-field">*</span> </label>
-                                        <input type="text" name="twitter_link" value="<?= $this->Common->config('twitter_link') ?>" class="form-control" tabindex="10">
-                                    </div>
-                                </div>
-                                <!-- .row --> 
-                                <!-- ============================= --> 
-
-                                <!-- ============================= -->
-                                <div class="row">
-                                    <div class="col-sm-6 form">
-                                        <label> Google Plus Link <span class="req-field">*</span> </label>
-                                        <input type="text" name="gplus_link" value="<?= $this->Common->config('gplus_link') ?>" class="form-control" tabindex="11">
-                                    </div>
-                                    <div class="col-sm-6 form">
-                                        <label> YouTube <span class="req-field">*</span> </label>
-                                        <input type="text" name="youtube_link" value="<?= $this->Common->config('youtube_link') ?>" class="form-control" tabindex="12">
-                                    </div>
-
-                                    <!-- .col-sm-12 --> 
-                                </div>
-                                <!-- .row --> 
-
-                            </div>    
-                        </div>    
-                    </div>    
-                    <!-- ============ Social setting================== -->
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-sm-6" style="margin-top:10px;">
-                                <button type="submit" class="btn btn-info" value="Save" name="Save"  style="margin:0px 10px 5px 0px;"><i class="fa fa-edit"></i>Edit</button>
-                                &nbsp;
-                                <button type="reset" class="btn btn-danger"  style="margin:0px 10px 5px 0px;"><i class="fa fa-eraser"></i> Reset</button>
-                                &nbsp;
-                                <button type="button" class="btn btn-primary" onclick="javascript:window.history.back()"  style="margin:0px 10px 5px 0px;"> <i class="fa fa-arrow-left"></i> Back </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============ Form Group ================== --> 
-                </div>
-            </form>
+<script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>plugins/forms/tags/tokenfield.min.js"></script>
+<div class="page-header page-header-default">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><i class="icon-user"></i> <span class="text-semibold"><?php echo $heading; ?></span></h4>
         </div>
     </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo site_url('admin/home'); ?>"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li><a href="<?php echo site_url('admin/settings'); ?>"><i class="icon-file-text position-left"></i> Settings</a></li>
+            <li class="active"><?php echo $heading; ?></li>
+        </ul>
+    </div>
 </div>
-<!-- /.container-fluid --> 
-<script src="<?= ADMIN_PLUGINS; ?>validator/jquery.validate.min.js"></script> 
-<script src="<?= ADMIN_PLUGINS; ?>datepicker/bootstrap-datepicker.js"></script> 
-<script src="<?= ADMIN_PLUGINS; ?>timepicker/bootstrap-timepicker.js"></script> 
-<script src="<?= ADMIN_JS; ?>jquery.tagsinput.min.js"></script> 
-<script type="text/javascript">
 
-                                    jQuery('#site_keywords').tagsInput({width: 'auto'});
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal form-validate" action="" id="frmcms" method="POST">
+                <input type="hidden" name="slug" id="slug" value="<?php echo (isset($record['slug'])) ? $record['slug'] : set_value('slug'); ?>">
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Site Name:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="site_name" id="site_name" placeholder="Enter Site Name" class="form-control" value="<?php echo (isset($record['site_name'])) ? $record['site_name'] : set_value('site_name'); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Site Title:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="site_title" id="site_title" placeholder="Enter Site title" class="form-control" value="<?php echo (isset($record['site_title'])) ? $record['site_title'] : set_value('site_title'); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Contact Email:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="contact_email" id="contact_email" placeholder="Enter Contact Email" class="form-control" value="<?php echo (isset($record['contact_email'])) ? $record['contact_email'] : set_value('contact_email'); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Site Keyword:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="site_keywords" id="site_keywords" placeholder="Enter Site Keyword" class="form-control tokenfield-teal" value="<?php echo (isset($record['site_keywords'])) ? $record['site_keywords'] : set_value('site_keywords'); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">SEO Description:</label>
+                            <div class="col-lg-9">
+                                <textarea name="seo_description" id="seo_description" placeholder="Enter SEO Description" class="form-control"><?php echo (isset($record['seo_description'])) ? $record['seo_description'] : set_value('seo_description'); ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Status:</label>
+                            <div class="col-lg-3">
+                                <label class="radio-inline">
+                                    <input type="radio" class="styled" name="is_blocked" value="0" checked <?php
+                                    if (isset($record['is_blocked']) && $record['is_blocked'] == '0') {
+                                        echo 'checked';
+                                    }
+                                    ?>>
+                                    Unblock
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" class="styled" name="is_blocked" value="1" <?php
+                                    if (isset($record['is_blocked']) && $record['is_blocked'] == '1') {
+                                        echo 'checked';
+                                    }
+                                    ?>>
+                                    Block
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Page Description:</label>
+                            <div class="col-lg-12">
+                                <textarea name="description" id="description" placeholder="Enter Page Description" class="summernote form-control"><?php echo (isset($record['description'])) ? $record['description'] : set_value('description'); ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Page Css:</label>
+                            <div class="col-lg-12">
+                               <textarea name="css_style" id="css_style" placeholder="Enter Page Style" class="form-control" rows="15"><?php echo (isset($record['css_style'])) ? $record['css_style'] : set_value('css_style'); ?></textarea>
+                           </div>
+                       </div>
+                       <div class="text-right">
+                        <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<script>
+ $(".styled, .multiselect-container input").uniform({
+        radioClass: 'choice'
+    });
 
-                                    $('.NumbersOnly').keyup(function () {
-                                        this.value = this.value.replace(/[^0-9]/g, '');
-                                    });
+$(function(){
+     // Add class on init
+     $('.tokenfield-teal').on('tokenfield:initialize', function (e) {
+        $(this).parent().find('.token').addClass('bg-teal')
+    });
 
-//===============================================================================
-                                    $("#frmconfig").validate({
-                                        highlight: function (element) {
-                                            $(element).closest('.form').removeClass('has-success').addClass('has-error');
-                                        },
-                                        success: function (element) {
-                                            $(element).closest('.form').removeClass('has-error').addClass('has-success');
-                                            $(element).closest('.error').remove();
-                                        },
-                                        rules: {
-                                            site_name: {
-                                                required: true,
-                                            },
-                                            site_title: {
-                                                required: true,
-                                            },
-                                            site_description: {
-                                                required: true,
-                                            },
-                                            site_keywords: {
-                                                required: true,
-                                            },
-                                            copy_right: {
-                                                required: true,
-                                            },
-                                            sender_name: {
-                                                required: true,
-                                            },
-                                            contact_email: {
-                                                required: true,
-                                            },
-                                            record_per_page: {
-                                                required: true,
-                                            },
-                                            facebook_link: {
-                                                required: true,
-                                                url: true,
-                                            },
-                                            twitter_link: {
-                                                required: true,
-                                                url: true,
-                                            },
-                                            gplus_link: {
-                                                required: true,
-                                                url: true,
-                                            },
-                                            youtube_link: {
-                                                required: true,
-                                                url: true,
-                                            },
+    // Initialize plugin
+    $('.tokenfield-teal').tokenfield();
 
-                                        },
-                                        messages: {
-                                            site_name: {
-                                                required: "Please provide a Site Name"
-                                            },
-                                            site_title: {
-                                                required: "Please provide a Site Title"
-                                            },
-                                            site_description: {
-                                                required: "Please provide a Site Description"
-                                            },
-                                            site_keywords: {
-                                                required: "Please provide a Site Keywords"
-                                            },
-                                            copy_right: {
-                                                required: "Please provide a Copy Right"
-                                            },
-                                            sender_name: {
-                                                required: "Please provide a Sender Name",
-                                            },
-                                            contact_email: {
-                                                required: "Please provide a Contact Mail Id"
-                                            },
-                                            record_per_page: {
-                                                required: "Please provide a How many Record Display Per page"
-                                            },
-                                            facebook_link: {
-                                                required: "Please provide a Facebook Link",
-                                                url: "Please Enter Valid URL",
-                                            },
-                                            twitter_link: {
-                                                required: "Please provide a Twitter Link",
-                                                url: "Please Enter Valid URL",
-                                            },
-                                            gplus_link: {
-                                                required: "Please provide a Google Plus Link",
-                                                url: "Please Enter Valid URL",
-                                            },
-                                            youtube_link: {
-                                                required: "Please provide a You Tube Link",
-                                                url: "Please Enter Valid URL",
-                                            },
-                                        }
-                                    });
+    // Add class when token is created
+    $('.tokenfield-teal').on('tokenfield:createdtoken', function (e) {
+        $(e.relatedTarget).addClass('bg-teal')
+    });
+
+    // CSS editor
+    // var css_editor = ace.edit("css_editor");
+    // css_editor.setTheme("ace/theme/monokai");
+    // css_editor.getSession().setMode("ace/mode/css");
+    // css_editor.setShowPrintMargin(false);
+});
+
+$("#title").blur(function () {
+    var Text = $(this).val();
+    Text = Text.toLowerCase();
+    Text = Text.replace(/[^a-zA-Z0-9]+/g, '-');
+    $("#slug").val(Text);
+});
+
+//---------------------- Validation -------------------
+$("#frmcms").validate({
+    errorClass: 'validation-error-label',
+    successClass: 'validation-valid-label',
+    highlight: function(element, errorClass) {
+        $(element).removeClass(errorClass);
+    },
+    unhighlight: function(element, errorClass) {
+        $(element).removeClass(errorClass);
+    },
+    validClass: "validation-valid-label",
+    success: function(label) {
+        label.addClass("validation-valid-label").text("Success.")
+    },
+    rules: {
+        title: {
+            required: true,
+            remote: {
+                url: "<?php echo base_url('admin/cms/check_cms_title_exists/' . (isset($record['id']) ? $record['id'] : '0')); ?>",
+                type: "post",
+                data: {
+                    title: function () {
+                        return $("#title").val();
+                    }
+                }
+            }
+        }
+
+    },
+    messages: {
+        title: {
+            required: "Please provide a Title",
+            remote: "Title is already exist, please choose diffrent Title"
+        }
+
+    }
+});
 </script>
