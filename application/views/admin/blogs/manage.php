@@ -65,20 +65,7 @@
                                 <textarea name="blog_description" id="blog_description" placeholder="Enter blog Description" class="summernote form-control"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Status:</label>
-                            <div class="col-lg-9">
-                                <label class="radio-inline">
-                                    <input type="radio" name="radio-inline-left" class="styled" checked="checked">
-                                    Selected styled
-                                </label>
-
-                                <label class="radio-inline">
-                                    <input type="radio" name="radio-inline-left" class="styled">
-                                    Unselected styled
-                                </label>
-                            </div>
-                        </div>
+                        
                         <div class="text-right">
                             <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
                         </div>

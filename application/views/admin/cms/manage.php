@@ -91,7 +91,9 @@
 </div>
 </div>
 <script>
-
+ $(".styled, .multiselect-container input").uniform({
+        radioClass: 'choice'
+    });
 
 $(function(){
      // Add class on init
