@@ -17,7 +17,12 @@ class Admin_settings extends CI_Model {
             $this->db->where($condition);
         }
         $query = $this->db->get($table);
-        return $query->result_array();
+        $data=$query->result_array();
+        $record='';
+        foreach($data as $k=>$val){
+            $record[$val['key']]=$val['val'];
+        }
+        return $record;
     }
 
 }

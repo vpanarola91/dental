@@ -56,7 +56,7 @@ function mail_config() {
         'smtp_host' => 'ssl://smtp.gmail.com',
         'smtp_port' => 465,
         'smtp_user' => 'demo.narola@gmail.com',
-        'smtp_pass' => 'Ke6g7sE70Orq3Rqaqa',
+        'smtp_pass' => 'narola21',
         'transport' => 'Smtp',
         'charset' => 'utf-8',
         'newline' => "\r\n",

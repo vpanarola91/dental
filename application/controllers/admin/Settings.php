@@ -11,6 +11,7 @@ class settings extends MY_Controller
     //===============================================================
 	function index()
 	{
+		$data['heading'] = 'Site Settings';
 		$data['record']=$this->Admin_settings->get_result('config');
 		$data['subview'] = 'admin/settings/index';
         $this->load->view('admin/layouts/layout_main', $data);
