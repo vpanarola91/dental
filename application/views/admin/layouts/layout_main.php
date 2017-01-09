@@ -51,14 +51,11 @@
             </div>
         </div>
         <!-- /main navbar -->
-
-
+        
         <!-- Page container -->
         <div class="page-container">
-
             <!-- Page content -->
             <div class="page-content">
-
                 <!-- Main sidebar -->
                 <div class="sidebar sidebar-main">
                     <div class="sidebar-content">
@@ -76,7 +73,6 @@
                             </div>
                         </div>
                         <!-- /user menu -->
-
 
                         <!-- Main navigation -->
                         <div class="sidebar-category sidebar-category-visible">
@@ -97,9 +93,15 @@
                                     <li class="<?php echo ($controller == 'cms') ? 'active' : ''; ?>">
                                         <a href="<?php echo base_url() . 'admin/cms'; ?>"><i class="icon-file-text"></i> <span>Cms Page</span></a>
                                     </li>  
-                                     <li class="<?php echo ($controller == 'contact_inquiry') ? 'active' : ''; ?>">
+                                    <li class="<?php echo ($controller == 'contact_inquiry') ? 'active' : ''; ?>">
                                         <a href="<?php echo base_url() . 'admin/contact_inquiry'; ?>"><i class="icon-bubbles9"></i> <span>Contact Inquiry</span></a>
-                                    </li>                                                           
+                                    </li>
+                                    <li class="<?php echo ($controller == 'survey') ? 'active' : ''; ?>">
+                                        <a href="<?php echo base_url() . 'admin/survey'; ?>">
+                                            <i class="icon-stats-growth"></i>
+                                            <span> Website Survey </span>
+                                        </a>
+                                    </li>
                                     <li class="">
                                         <a href="<?php echo base_url() . "admin/logout"; ?>"><i class="icon-switch2"></i> <span>Logout</span></a>
                                     </li>

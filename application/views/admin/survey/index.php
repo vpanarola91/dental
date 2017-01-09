@@ -1,74 +1,52 @@
-<style type="text/css">
-    table.dataTable thead .sorting, 
-table.dataTable thead .sorting_asc, 
-table.dataTable thead .sorting_desc {
-    background : none;
-}
-</style>
-<!--<script type="text/javascript" src="<?php // echo DEFAULT_ADMIN_JS_PATH . "pages/datatables_data_sources.js";              ?>"></script>-->
 <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/tables/datatables/datatables.min.js"; ?>"></script>
 <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/forms/selects/select2.min.js"; ?>"></script>
 <!-- Page header -->
 <div class="page-header page-header-default">
     <div class="page-header-content">
         <div class="page-title">
-            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Admin</span> - User List</h4>
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Survey List</h4>
         </div>
     </div>
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li><a href="<?php echo base_url() . "admin/dashboard" ?>"><i class="icon-home2 position-left"></i> Admin</a></li>
-            <li><i class="icon-users4 position-left"></i> Users</li>
+            <li><a href="<?php echo base_url() . "admin/dashboard" ?>"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Survey</li>
         </ul>
     </div>
 </div>
 <!-- /page header -->
-<?php
-    if ($this->session->flashdata('success')) {
-        ?>
-        <div class="alert alert-success">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('success') ?></strong>
-        </div>
-        <?php
-        $this->session->set_flashdata('success', false);
-    } else if ($this->session->flashdata('error')) {
-        ?>        
-        <div class="alert alert-danger">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('error') ?></strong>
-        </div>        
-        <?php
-        $this->session->set_flashdata('error', false);
-    } else {
-        echo validation_errors();
-    }
-?>
+
 <!-- Content area -->
 <div class="content">
-    <!-- content area -->
-    <div class="content">
-        <div class="panel panel-flat">
-            <!--<div class="panel-heading text-right">
-                <a href="<?php echo site_url('admin/users/add'); ?>" class="btn btn-success btn-labeled"><b><i class="icon-user-plus"></i></b> Add new user</a>
-            </div>-->
-            <table class="table datatable-basic">
-                <thead>
-                    <tr>
-                        <th>User ID.</th>
-                        <th>Survey Name</th>
-                        <th>Survey Description</th>
-                        <th>Status</th>                        
-                        <th>Created Date</th>                        
-                        <!-- <th width="100px">Action</th> -->
-                    </tr>
-                </thead>
-            </table>
+    <?php
+        $message = $this->session->flashdata('message');
+        echo my_flash($message);
+    ?>
+    <!-- content area -->    
+    <div class="panel panel-flat">
+        <div class="panel-heading text-right">
+            <a href="<?php echo site_url('admin/survey/add'); ?>" class="btn btn-success btn-labeled">
+                <b><i class="icon-stats-growth"></i></b>
+                Add New Survey
+            </a>
         </div>
-    </div>
+        <table class="table datatable-basic">
+            <thead>
+                <tr>
+                    <th>User ID.</th>
+                    <th>Survey Name</th>
+                    <th width="500px">Survey Description</th>
+                    <th>Status</th>                        
+                    <th>Created Date</th>                        
+                    <th width="100px">Action</th>
+                </tr>
+            </thead>
+        </table>        
+    </div>    
 </div>
-<script>
+
+<script type="text/javascript">
     $(function () {
         $('.datatable-basic').dataTable({
             processing: true,
@@ -107,20 +85,22 @@ table.dataTable thead .sorting_desc {
                     sortable: false,
                     data: "created_at",
                     visible: true
+                },
+                {                    
+                    visible: true,
+                    searchable: false,
+                    sortable: false,
+                    render: function (data, type, full, meta) {
+                        var new_str = '';
+                        new_str += '<div class="btn-group"><button type="button" class="btn btn-primary btn-icon dropdown-toggle" data-toggle="dropdown">';
+                        new_str += '<i class="icon-menu7"></i> &nbsp;<span class="caret"></span></button>';
+                        new_str += '<ul class="dropdown-menu dropdown-menu-right"><li><a href="#"><i class="icon-menu7"></i> Action</a></li>';
+                        new_str += '<li><a href="#"><i class="icon-screen-full"></i> Another action</a></li>';
+                        new_str += '<li><a class="for_pointer" onclick="delete_confirm('+full['id']+')" ><i class="icon-trash"></i> Delete</a></li>';
+                        new_str += '</ul></div>';
+                        return new_str;
+                    }
                 }
-                // {
-                //     data: "is_account_close",
-                //     visible: true,
-                //     searchable: false,
-                //     sortable: false,
-                //     width: 200,
-                //     render: function (data, type, full, meta) {
-                //         var action = '';                        
-                //         action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/users/activate/' + full.id + '" class="btn border-success text-success-600 btn-flat btn-icon btn-rounded"  title="Unblock"><i class="icon-user-plus"></i></a>'
-                //         action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/users/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded" title="Delete"><i class="icon-cross2"></i></a>'                        
-                //         return action;
-                //     }
-                // }
             ]
         });
 
@@ -129,4 +109,11 @@ table.dataTable thead .sorting_desc {
             width: 'auto'
         });
     });
+    
+    function delete_confirm(del_id){
+        bootbox.confirm('Are you sure ?',function(res){
+            console.log(res);
+        });
+    }
+
 </script>

@@ -16,7 +16,9 @@ $(function() {
     // ------------------------------
 
     // Default initialization
-    $('.summernote').summernote();
+    $('.summernote').summernote({
+        height: 400
+    });
 
 
     // Control editor height

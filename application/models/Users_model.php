@@ -36,7 +36,7 @@ class Users_model extends CI_Model {
         return $last_id;
     }
 
-    /* v! Insert data into users table */
+    /* v! Update data into users table */
 
     public function update_user_data($id, $data) {
         //$data['modified_date'] = date('Y-m-d H:i:s');

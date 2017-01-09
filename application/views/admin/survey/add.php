@@ -1,3 +1,4 @@
+
 <script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>plugins/editors/summernote/summernote.min.js"></script>
 <script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/editor_summernote.js"></script>
 <script type="text/javascript" src="<?=DEFAULT_ADMIN_JS_PATH?>pages/form_inputs.js"></script>
@@ -19,51 +20,49 @@
 <div class="content">
     <div class="row">
         <div class="col-md-12">
-            <form class="form-horizontal form-validate" action="" id="frmblog" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal form-validate" id="form_survey" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="blog_slug" id="blog_slug" value="<?php echo (isset($record['blog_slug'])) ? $record['blog_slug'] : set_value('blog_slug'); ?>">
                 <div class="panel panel-flat">
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Blog Title:</label>
+                            <label class="col-lg-3 control-label">Survey Title:</label>
                             <div class="col-lg-9">
-                                <input type="text" name="blog_title" id="blog_title" placeholder="Enter blog title" class="form-control" value="<?php echo (isset($record['blog_title'])) ? $record['blog_title'] : set_value('blog_title'); ?>">
+                                <input type="text" name="survey_title" id="survey_title" placeholder="Enter Survey title" class="form-control" >
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Blog Image:</label>
-                            <div class="col-lg-9">
-                                <input type="file" name="img_path" class="file-styled" tabindex="4">
-                                <input type="hidden" value="<?= isset($record['img_path']) ? $record['img_path'] : '' ?>" name="Himg_path">
-                            </div>
-                        </div>  
-
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Status:</label>
                             <div class="col-lg-9">
                                 <label class="radio-inline">
-                                    <input type="radio" name="radio-inline-left" class="styled" checked="checked">
-                                    Selected styled
+                                    <input type="radio" name="status" class="styled" value="active">
+                                    Active
                                 </label>
 
                                 <label class="radio-inline">
-                                    <input type="radio" name="radio-inline-left" class="styled">
-                                    Unselected styled
+                                    <input type="radio" name="status" class="styled" checked="checked" value="inactive">
+                                    Inactive
                                 </label>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="display-block text-semibold">Left inline styled</label>
-                            
-                        </div>
+                        </div>                        
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Blog Description:</label>
                             <div class="col-lg-12">
-                                <textarea name="blog_description" id="blog_description" placeholder="Enter blog Description" class="summernote form-control"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
+                                <textarea name="survey_description" id="survey_description" placeholder="Enter Survey Description"
+                                          class="summernote form-control"></textarea>
                             </div>
                         </div>
-                        <div class="text-right">
-                            <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
+                        <div class="form-group text-right">
+                            <div class="col-lg-5">
+
+                            </div>
+                            <div class="col-lg-5">
+
+
+                                <button class="btn btn-success" type="submit">
+                                    Save 
+                                    <i class="icon-arrow-right14 position-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,4 +75,34 @@
     $(".styled, .multiselect-container input").uniform({
         radioClass: 'choice'
     });
+
+    //---------------------- Validation -------------------
+    $("#form_survey").validate({
+        errorClass: 'validation-error-label',
+        successClass: 'validation-valid-label',
+        highlight: function(element, errorClass) {
+            $(element).removeClass(errorClass);
+        },
+        unhighlight: function(element, errorClass) {
+            $(element).removeClass(errorClass);
+        },
+        validClass: "validation-valid-label",
+        rules: {
+            survey_title: {
+                required: true
+            },
+            survey_description: {
+                required: true
+            }
+        },
+        messages: {
+            survey_title: {
+                required: "Please provide a Title"                
+            },
+            survey_description: {
+                required: "Please provide a Description"
+            }
+        }
+    });
+
 </script>

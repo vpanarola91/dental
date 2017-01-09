@@ -14,8 +14,34 @@ class Survey extends CI_Controller {
 	}
 
 	public function add(){
+
+		if($_POST){
+
+			$ins_data = [
+							'name'=>$this->input->post('survey_title'),
+							'survey_desc'=>$this->input->post('survey_description'),
+							'status'=>$this->input->post('status'),
+							'created_at'=>date('Y-m-d H:i:s')
+						];
+
+			$id = $this->Survey_model->insert_survey($ins_data);
+
+			if(is_int($id)){
+				$this->session->set_flashdata('message',['message'=>'Survey successfully added.','class'=>'success']);
+				redirect('admin/survey');
+			}else{
+				$this->session->set_flashdata('message',['message'=>'Something went wrong...!!','class'=>'danger']);
+				redirect('admin/survey');
+			}			
+		}
+
 		$data['subview'] = 'admin/survey/add';
-        $this->load->view('admin/layouts/layout_main', $data);	
+        $this->load->view('admin/layouts/layout_main', $data);
+	}
+
+	public function sort_questions(){
+		$data['subview'] = 'admin/survey/questions_sort';
+    	$this->load->view('admin/layouts/layout_main', $data);
 	}
 
 	public function test(){

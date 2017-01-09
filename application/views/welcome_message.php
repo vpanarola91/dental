@@ -85,5 +85,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<p class="footer">Page rendered in vdfgdtgdgh<strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
 
+  	<script src="//js.pusher.com/3.2/pusher.min.js"></script>
+    <script>
+    	Pusher.logToConsole = true;
+        var pusher = new Pusher("fd64588aa59825c4045b")
+        var channel = pusher.subscribe('test-channel');
+        channel.bind('test-event', function(data) {
+            alert('Here');
+        });
+    </script>  
+
 </body>
 </html>

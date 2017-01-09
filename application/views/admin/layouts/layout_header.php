@@ -13,6 +13,11 @@
     <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "colors.css"; ?>" rel="stylesheet" type="text/css">    
     <link href="<?php echo DEFAULT_ADMIN_CSS_PATH . "components.min.css"; ?>" rel="stylesheet" type="text/css">    
     <!-- /global stylesheets -->
+    
+    <style type="text/css">
+        .note-group-select-from-files {display: none; }
+        .for_pointer{ cursor: pointer; }        
+    </style>
 
     <!-- Core JS files -->
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "plugins/loaders/pace.min.js"; ?>"></script>
@@ -34,6 +39,7 @@
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "pages/user_pages_list.js"; ?>"></script>    
     <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "pages/login_validation.js"; ?>"></script> 
 
-    <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "core/cms_script.js"; ?>"></script>   
+    <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_JS_PATH . "core/cms_script.js"; ?>"></script>
     <!-- /theme JS files -->
+
 </head>

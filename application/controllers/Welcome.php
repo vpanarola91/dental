@@ -20,13 +20,21 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-
-		echo "Hello World";
+		$this->load->library('pusher');
+		$data['text'] = 'hello world';
+		$this->pusher->trigger('test-channel', 'test-event', $data);
+	}
+	 
+	public function test_1(){
+		$this->load->library('pusher');
+		$data['text'] = 'hello world';
+		$this->pusher->trigger('test-channel', 'test-event', $data);
 	}
 
-	public function test(){
-		// <img src="#5" class="_3QcZOBs-_0PFoUjz21NMOt" width="248" height="185">
-		$str_1 = htmlentities('<p><div><img src="#5" class="_3QcZOBs-_0PFoUjz21NMOt" width="248" height="185"></div></p>');
-		echo strip_tags($str_1,'<div><p>');
+	public function test_2(){
+		$this->load->library('pusher');
+		$this->load->view('welcome_message');
 	}
+
+
 }

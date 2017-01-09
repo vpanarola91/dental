@@ -17,10 +17,23 @@ function qry($is_die = false) {
     }
 }
  
- 
 function is_loggedin() {
     $CI = & get_instance();
     return $CI->session->userdata('loggedin');
+}
+
+// v! Custom Flash message to dispay flash message dynamically
+// For use this func you need to set flash message in an array
+// class 'danger' can be replace with success or primary
+// $this->session->set_flashdata('message',['message'=>'my message','class'=>'danger']);
+function my_flash($message){    
+    $ret_str = '';
+    if(!empty($message)){
+        $ret_str .= '<div class="alert alert-'.$message['class'].' alert-styled-left alert-arrow-left alert-bordered">';
+        $ret_str .= '<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>';
+        $ret_str .= '<span class="text-semibold">'.$message['message'].'</span></div>';
+    }
+    return $ret_str;
 }
 
 function pagination_config() {
@@ -56,7 +69,7 @@ function mail_config() {
         'smtp_host' => 'ssl://smtp.gmail.com',
         'smtp_port' => 465,
         'smtp_user' => 'demo.narola@gmail.com',
-        'smtp_pass' => 'Ke6g7sE70Orq3Rqaqa',
+        'smtp_pass' => 'narola21',
         'transport' => 'Smtp',
         'charset' => 'utf-8',
         'newline' => "\r\n",

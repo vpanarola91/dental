@@ -27,6 +27,24 @@ class Survey_model extends CI_Model {
         return $res_data;
 	}
 
+	public function insert_survey($data){
+		$this->db->insert('survey',$data);
+		$last_id = $this->db->insert_id();
+		return $last_id;
+	}
+
+	public function update_survey_data($id, $data) {
+
+        if (is_array($id)) {
+            $this->db->where($id);
+        } else {
+            $this->db->where(['id' => $id]);
+        }
+        $this->db->update('survey', $data);
+        $last_id = $this->db->affected_rows();
+        return $last_id;
+    }
+
 }
 
 /* End of file Survey_model.php */
