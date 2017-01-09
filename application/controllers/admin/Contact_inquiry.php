@@ -34,7 +34,7 @@ class Contact_inquiry extends MY_Controller {
     }
 
     /**
-     * Function is used to perform action (Delete,Block,Unblock)
+     * Function is used to perform action (Delete)
      */
     public function action($action, $inquiry_id) {
 
@@ -72,7 +72,7 @@ class Contact_inquiry extends MY_Controller {
         $this->email->initialize($email_config);
                  
         $this->email
-                ->from('dhk@narola.email', 'Dental')
+                ->from('demo.narola@gmail.com', 'Dental')
                 ->to($this->input->post('email'))
                 ->subject('Dental - Contact Inquiry Reply')
                 ->message($this->input->post('message'));

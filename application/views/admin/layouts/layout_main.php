@@ -2,7 +2,7 @@
     if (!empty($user_data['user_image'])) {
         $image = base_url() . $user_data['user_image'];
     } else {
-        $image = DEFAULT_IMAGE_PATH . "user-img.jpg";
+        $image = DEFAULT_IMAGE_PATH . "user/user-img.jpg";
     }
 ?>
 
@@ -87,7 +87,7 @@
                                     <li class="<?php echo ($controller == 'users') ? 'active' : ''; ?>">
                                         <a href="<?php echo base_url() . 'admin/users'; ?>"><i class="icon-users4"></i> <span>Users</span></a>
                                     </li>  
-                                     <li class="<?php echo ($controller == 'blogs') ? 'active' : ''; ?>">
+                                    <li class="<?php echo ($controller == 'blogs') ? 'active' : ''; ?>">
                                         <a href="<?php echo base_url() . 'admin/blogs'; ?>"><i class="icon-bubble"></i> <span>Blogs</span></a>
                                     </li>  
                                     <li class="<?php echo ($controller == 'cms') ? 'active' : ''; ?>">
@@ -95,13 +95,22 @@
                                     </li>  
                                     <li class="<?php echo ($controller == 'contact_inquiry') ? 'active' : ''; ?>">
                                         <a href="<?php echo base_url() . 'admin/contact_inquiry'; ?>"><i class="icon-bubbles9"></i> <span>Contact Inquiry</span></a>
-                                    </li>
+                                    </li> 
                                     <li class="<?php echo ($controller == 'survey') ? 'active' : ''; ?>">
                                         <a href="<?php echo base_url() . 'admin/survey'; ?>">
                                             <i class="icon-stats-growth"></i>
                                             <span> Website Survey </span>
                                         </a>
                                     </li>
+                                    <li class="<?php echo ($controller == 'promotional_code') ? 'active' : ''; ?>">
+                                        <a href="<?php echo base_url() . 'admin/promotional_code'; ?>"><i class="icon-price-tag"></i> <span>Promotional Code</span></a>
+                                    </li>
+                                    <li class="<?php echo ($controller == 'treatment_category') ? 'active' : ''; ?>">
+                                        <a href="<?php echo base_url() . 'admin/treatment_category'; ?>"><i class="icon-accessibility"></i> <span>Treatment Category</span></a>
+                                    </li>   
+                                    <li class="<?php echo ($controller == 'settings') ? 'active' : ''; ?>">
+                                        <a href="<?php echo base_url() . 'admin/settings'; ?>"><i class="icon-gear"></i> <span>Settings</span></a>
+                                    </li>                                                            
                                     <li class="">
                                         <a href="<?php echo base_url() . "admin/logout"; ?>"><i class="icon-switch2"></i> <span>Logout</span></a>
                                     </li>
