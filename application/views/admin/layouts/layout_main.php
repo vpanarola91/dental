@@ -3,7 +3,7 @@
         $image = base_url() . $user_data['user_image'];
     } else {
         $image = DEFAULT_IMAGE_PATH . "user/user-img.jpg";
-    }
+    }    
 ?>
 
 <!DOCTYPE html>

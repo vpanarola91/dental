@@ -8,7 +8,7 @@ class Survey_model extends CI_Model {
 	}
 	
 	public function get_survey_count(){
-		$res = $this->db->get('survey')->num_rows();
+		$res = $this->db->get_where('survey',['is_deleted'=>'0'])->num_rows();
 		return $res;
 	}
 
@@ -21,9 +21,10 @@ class Survey_model extends CI_Model {
         if (!empty($keyword['value'])) {
         	$this->db->having('name LIKE "%' . $keyword['value'] . '%" OR survey_desc LIKE "%' . $keyword['value'] . '%"', NULL);
         }
-        	
+
+        $this->db->where('is_deleted','0');
         $this->db->limit($this->input->get('length'), $this->input->get('start'));
-        $res_data = $this->db->get('survey,(SELECT @a:= 0) AS a')->result_array();
+        $res_data = $this->db->get('survey')->result_array();
         return $res_data;
 	}
 
@@ -32,6 +33,22 @@ class Survey_model extends CI_Model {
 		$last_id = $this->db->insert_id();
 		return $last_id;
 	}
+
+    // v! To delete Survey here we are using flag('is_deleted') for that
+    public function delete($survey_id){
+        $this->db->where('id',$survey_id);
+        $this->db->update('survey',['is_deleted'=>'1','status'=>'inactive']);
+    }
+
+    // v! Get Survey data id id is passed then it will take where cluse as id otherwise need to pass as key,value pair
+    public function get_survey_data($data,$is_single=TRUE){        
+        if(is_array($data) == false){ $this->db->where('id',$data); }else{ $this->db->where($data); }
+        $ret_data = $this->db->get('survey')->row_array();
+        if($is_single == FALSE){
+            $ret_data = $this->db->get('survey')->result_array();
+        }
+        return $ret_data;
+    }
 
 	public function update_survey_data($id, $data) {
 
@@ -43,6 +60,29 @@ class Survey_model extends CI_Model {
         $this->db->update('survey', $data);
         $last_id = $this->db->affected_rows();
         return $last_id;
+    }
+
+    // ------------------------------------------------------------------------
+
+
+    public function get_question_count($survey_id){
+        $res_data = $this->db->get_where('survey_ques',['survey_id'=>$survey_id])->num_rows();
+        return $res_data;
+    }
+
+    public function get_all_questions(){
+        $this->db->select('id,id AS test_id,ques,opt_type,opt_choice,status,DATE_FORMAT(created_at,"%d %b %Y <br> %l:%i %p") AS created_at', false);
+        
+        $keyword = $this->input->get('search');
+        $keyword = str_replace('"', '', $keyword);
+        
+        if (!empty($keyword['value'])) {
+            $this->db->having('name LIKE "%' . $keyword['value'] . '%" OR survey_desc LIKE "%' . $keyword['value'] . '%"', NULL);
+        }
+
+        $this->db->limit($this->input->get('length'), $this->input->get('start'));
+        $res_data = $this->db->get('survey_ques')->result_array();
+        return $res_data;
     }
 
 }
