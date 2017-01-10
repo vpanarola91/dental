@@ -46,6 +46,10 @@
     </div>    
 </div>
 
+<form action="<?php echo base_url().'admin/survey/delete_survey'; ?>" method="POST" id="delete_form">
+    <input type="hidden" name="survey_id" id="survey_id" value="">
+</form>
+
 <script type="text/javascript">
     $(function () {
         $('.datatable-basic').dataTable({
@@ -94,8 +98,8 @@
                         var new_str = '';
                         new_str += '<div class="btn-group"><button type="button" class="btn btn-primary btn-icon dropdown-toggle" data-toggle="dropdown">';
                         new_str += '<i class="icon-menu7"></i> &nbsp;<span class="caret"></span></button>';
-                        new_str += '<ul class="dropdown-menu dropdown-menu-right"><li><a href="#"><i class="icon-menu7"></i> Action</a></li>';
-                        new_str += '<li><a href="#"><i class="icon-screen-full"></i> Another action</a></li>';
+                        new_str += '<ul class="dropdown-menu dropdown-menu-right"><li><a href="<?php echo base_url();?>admin/survey/questions/'+full['id']+'"><i class="icon-question4"></i> View Questions </a></li>';
+                        new_str += '<li><a href="<?php echo base_url();?>admin/survey/edit/'+full['id']+'"><i class="icon-pencil7"></i>Edit</a></li>';
                         new_str += '<li><a class="for_pointer" onclick="delete_confirm('+full['id']+')" ><i class="icon-trash"></i> Delete</a></li>';
                         new_str += '</ul></div>';
                         return new_str;
@@ -109,11 +113,19 @@
             width: 'auto'
         });
     });
-    
+
     function delete_confirm(del_id){
+        $('#survey_id').val(del_id);
         bootbox.confirm('Are you sure ?',function(res){
-            console.log(res);
+            if(res){
+                $('#delete_form').submit();
+            }else{
+                $('#survey_id').val(''); 
+            }
         });
     }
+
+    // Auto hide Flash messages
+    $('div.alert').delay(4000).slideUp(350);
 
 </script>
