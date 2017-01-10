@@ -65,7 +65,6 @@
                                 <textarea name="blog_description" id="blog_description" placeholder="Enter blog Description" class="summernote form-control"><?php echo (isset($record['blog_description'])) ? $record['blog_description'] : set_value('blog_description'); ?></textarea>
                             </div>
                         </div>
-                        
                         <div class="text-right">
                             <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
                         </div>
@@ -102,6 +101,7 @@ $("#frmblog").validate({
     success: function(label) {
         label.addClass("validation-valid-label").text("Success.")
     },
+    ignore:[],
     rules: {
         blog_title: {
             required: true,
@@ -119,6 +119,13 @@ $("#frmblog").validate({
             required: true
         }
 
+    },
+    errorPlacement: function (error, element) {
+        if (element[0]['id'] == "blog_description") {
+            error.insertAfter(".note-editor");
+        } else {
+            error.insertAfter(element)
+        }
     },
     messages: {
         blog_title: {

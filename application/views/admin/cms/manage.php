@@ -137,6 +137,7 @@ $("#frmcms").validate({
     success: function(label) {
         label.addClass("validation-valid-label").text("Success.")
     },
+    ignore : [],
     rules: {
         title: {
             required: true,
@@ -149,14 +150,27 @@ $("#frmcms").validate({
                     }
                 }
             }
-        }
+        },
+        description: {
+            required: true,
+        },  
 
     },
+    errorPlacement: function (error, element) {
+            if (element[0]['id'] == "description") {
+                error.insertAfter(".note-editor");
+            } else {
+                error.insertAfter(element)
+            }
+        },
     messages: {
         title: {
             required: "Please provide a Title",
             remote: "Title is already exist, please choose diffrent Title"
-        }
+        },
+        description: {
+            required: "Please provide a Description",
+        },    
 
     }
 });

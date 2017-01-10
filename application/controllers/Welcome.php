@@ -20,21 +20,9 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->library('pusher');
-		$data['text'] = 'hello world';
-		$this->pusher->trigger('test-channel', 'test-event', $data);
+		 echo "Hello World";
 	}
 	 
-	public function test_1(){
-		$this->load->library('pusher');
-		$data['text'] = 'hello world';
-		$this->pusher->trigger('test-channel', 'test-event', $data);
-	}
-
-	public function test_2(){
-		$this->load->library('pusher');
-		$this->load->view('welcome_message');
-	}
-
+ 
 
 }

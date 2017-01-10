@@ -177,7 +177,7 @@ $(function () {
             render: function (data, type, full, meta) {
                 var action = '';
                 action += '<a href="#" data-id="'+full.id+'" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm contact-reply" title="Reply"><i class="icon-reply"></i></a>';
-                action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/contact_inquiry/action/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded" title="Delete"><i class="icon-cross2"></i></a>'
+                action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/contact_inquiry/action/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" title="Delete"><i class="icon-cross2"></i></a>'
                 return action;
             }
         }
@@ -207,7 +207,15 @@ $(document).on('click','.contact-reply',function(){
         
 });
 
-
+$(document).on( "click",".btn_delete", function(e) {    
+        e.preventDefault();
+        var lHref = $(this).attr('href');
+        bootbox.confirm('Are you sure ?',function(res){
+            if (res) {
+                window.location.href = lHref; 
+            }     
+        });
+    });
 //---------------------- Validation -------------------
 $("#frmcontact").validate({
     errorClass: 'validation-error-label',

@@ -142,6 +142,13 @@ $("#frmcode").validate({
             required: true,
         },   
     },
+    errorPlacement: function (error, element) {
+            if (element[0]['id'] == "discount") {
+                error.insertAfter(".bootstrap-touchspin");
+            } else {
+                error.insertAfter(element)
+            }
+        },
     messages: {
         title: {
             required: "Please provide a Title",
