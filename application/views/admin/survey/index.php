@@ -90,7 +90,7 @@
                     data: "created_at",
                     visible: true
                 },
-                {                    
+                {
                     visible: true,
                     searchable: false,
                     sortable: false,

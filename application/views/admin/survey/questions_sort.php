@@ -21,18 +21,18 @@
         <div class="panel panel-flat">
             <div class="panel-heading text-right">
                 <a href="<?php echo site_url('admin/survey/add'); ?>" class="btn btn-success btn-labeled">
-                    <b><i class="icon-stats-growth"></i></b>
-                    Add New Survey
+                    <b><i class="icon-question4"></i></b>
+                    Add New Question
                 </a>
             </div>
             <table class="table datatable-basic">
                 <thead>
                     <tr>
                         <th>User ID.</th>
-                        <th>Survey Name</th>
-                        <th width="500px">Survey Description</th>
-                        <th>Status</th>                        
-                        <th>Created Date</th>                        
+                        <th>Question</th>
+                        <th >Answer Type</th>
+                        <th>Answer Options</th>
+                        <th>Is Requried ?</th>
                         <th width="100px">Action</th>
                     </tr>
                 </thead>
@@ -51,11 +51,15 @@
                 <p class="content-group">You can sort questions order.Drag and drop as you like to set to order.</p>
                 <div class="text-center">
                     <ul class="selectable-demo-list" id="sortable-list-placeholder">
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                        <li>Item 4</li>
-                        <li>Item 5</li>
+                        <?php 
+                            if(!empty($all_survey_ques)){
+                                foreach($all_survey_ques as $ques){
+                        ?>
+                            <li id="<?php echo $ques['id']; ?>"><?php echo $ques['ques']; ?></li>
+                        <?php
+                                }
+                            }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -63,6 +67,12 @@
         <!-- /drop placeholder -->
     </div>    
 </div>
+
+<!-- Delete Question Form  Start-->
+<form action="<?php echo base_url().'admin/survey/delete_question'; ?>" method="POST" id="delete_form">
+    <input type="hidden" name="question_id" id="question_id" value="">
+</form>
+<!-- END Here -->
 
 <script type="text/javascript">
     
@@ -96,14 +106,24 @@
                     visible: true
                 },
                 {
-                    sortable: false,
-                    data: "opt_choice",
-                    visible: true
+                    sortable: false,                    
+                    visible: true,
+                    render:function(data, type, full, meta){
+                        if(full['opt_choice'] == null){
+                            return 'No Options';
+                        }
+                    }
                 },
                 {
-                    sortable: false,
-                    data: "order",
-                    visible: true
+                    sortable: false,                    
+                    visible: true,
+                    render:function(data, type, full, meta){                        
+                        if(full['is_required'] == '0'){
+                            return 'No';
+                        }else{
+                            return 'Yes';
+                        }
+                    }
                 },
                 {                    
                     visible: true,
@@ -111,12 +131,8 @@
                     sortable: false,
                     render: function (data, type, full, meta) {
                         var new_str = '';
-                        new_str += '<div class="btn-group"><button type="button" class="btn btn-primary btn-icon dropdown-toggle" data-toggle="dropdown">';
-                        new_str += '<i class="icon-menu7"></i> &nbsp;<span class="caret"></span></button>';
-                        new_str += '<ul class="dropdown-menu dropdown-menu-right"><li><a href="<?php echo base_url();?>admin/survey/questions/'+full['id']+'"><i class="icon-question4"></i> View Questions </a></li>';
-                        new_str += '<li><a href="<?php echo base_url();?>admin/survey/edit/'+full['id']+'"><i class="icon-pencil7"></i>Edit</a></li>';
-                        new_str += '<li><a class="for_pointer" onclick="delete_confirm('+full['id']+')" ><i class="icon-trash"></i> Delete</a></li>';
-                        new_str += '</ul></div>';
+                        new_str += '<a class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" onclick="delete_confirm('+full['id']+')">';
+                        new_str += '<i class="icon-cross2"></i></a>';
                         return new_str;
                     }
                 }
@@ -127,16 +143,41 @@
             minimumResultsForSearch: Infinity,
             width: 'auto'
         });
-    });
 
-    // Sortable || Placeholder
-    $( "#sortable-list-placeholder" ).sortable({
-        placeholder: "sortable-placeholder",
-        start: function(e, ui){
-            ui.placeholder.height(ui.item.outerHeight());
+        // Sortable || Placeholder
+        $( "#sortable-list-placeholder" ).sortable({
+            placeholder: "sortable-placeholder",
+            start: function(e, ui){
+                ui.placeholder.height(ui.item.outerHeight());
+            },
+            stop:function(e,ui){
+                // console.log(JSON.stringify($( "#sortable-list-placeholder").sortable("toArray")));
+                
+                $.ajax({
+                    url:'<?php echo base_url()."admin/survey/save_order"; ?>',
+                    method:'POST',
+                    dataType:'JSON',
+                    data:{'survey_order':$( "#sortable-list-placeholder").sortable("toArray"),'survey_id':'<?php echo $survey_id; ?>'},
+                    success:function(){
+                                               
+                    }
+                });
+            }
+        });
+
+        $( "#sortable-list-placeholder" ).disableSelection();
+
+        function delete_confirm(del_id){
+            $('#question_id').val(del_id);
+            bootbox.confirm('Are you sure ?',function(res){
+                if(res){
+                    $('#delete_form').submit();
+                }else{
+                    $('#question_id').val(''); 
+                }
+            });
         }
     });
-    $( "#sortable-list-placeholder" ).disableSelection();
 
 </script>
 

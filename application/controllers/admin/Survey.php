@@ -39,7 +39,6 @@ class Survey extends CI_Controller {
         $this->load->view('admin/layouts/layout_main', $data);
 	}
 
-
 	public function edit($survey_id){
 		
 		$data['survey_data'] = $this->Survey_model->get_survey_data($survey_id);
@@ -70,6 +69,7 @@ class Survey extends CI_Controller {
 
 	public function questions($survey_id){
 		$data['survey_id'] = $survey_id;
+		$data['all_survey_ques'] = $this->Survey_model->get_all_questions($survey_id);		
 		$data['subview'] = 'admin/survey/questions_sort';
     	$this->load->view('admin/layouts/layout_main', $data);
 	}
@@ -95,9 +95,9 @@ class Survey extends CI_Controller {
         $final['data'] = $this->Survey_model->get_all_survey();
         echo json_encode($final);
 	}
+
+	// v! Get list of all questions
 	// ------------------------------------------------------------------------
-
-
 	public function list_questions(){
 
 		$all_segments = $this->uri->segment_array();
@@ -110,6 +110,27 @@ class Survey extends CI_Controller {
         echo json_encode($final);
 	}
 
+	//Save Question Order
+	// ------------------------------------------------------------------------
+	public function save_order(){
+		$survey_order = $this->input->post('survey_order');
+		$survey_id = $this->input->post('survey_id');
+
+		$i=1;
+		foreach($survey_order as $s_order){
+			$this->Survey_model->update_ques_data($s_order,['ques_order'=>$i]);
+			$i++;
+		}
+
+		echo json_encode('success');
+	}
+
+	public function delete_question(){
+		$question_id = $this->input->post('question_id');
+		$this->Survey_model->delete_ques($question_id);
+		$this->session->set_flashdata('message',['message'=>'Survey Question successfully deleted.','class'=>'success']);
+		redirect('admin/survey');
+	}
 }
 
 /* End of file Survey.php */

@@ -40,6 +40,7 @@ class Survey_model extends CI_Model {
         $this->db->update('survey',['is_deleted'=>'1','status'=>'inactive']);
     }
 
+
     // v! Get Survey data id id is passed then it will take where cluse as id otherwise need to pass as key,value pair
     public function get_survey_data($data,$is_single=TRUE){        
         if(is_array($data) == false){ $this->db->where('id',$data); }else{ $this->db->where($data); }
@@ -71,7 +72,7 @@ class Survey_model extends CI_Model {
     }
 
     public function get_all_questions(){
-        $this->db->select('id,id AS test_id,ques,opt_type,opt_choice,status,DATE_FORMAT(created_at,"%d %b %Y <br> %l:%i %p") AS created_at', false);
+        $this->db->select('id,id AS test_id,ques,opt_type,opt_choice,status,ques_order,is_required,DATE_FORMAT(created_at,"%d %b %Y <br> %l:%i %p") AS created_at', false);
         
         $keyword = $this->input->get('search');
         $keyword = str_replace('"', '', $keyword);
@@ -80,9 +81,27 @@ class Survey_model extends CI_Model {
             $this->db->having('name LIKE "%' . $keyword['value'] . '%" OR survey_desc LIKE "%' . $keyword['value'] . '%"', NULL);
         }
 
+        $this->db->order_by('ques_order');
         $this->db->limit($this->input->get('length'), $this->input->get('start'));
         $res_data = $this->db->get('survey_ques')->result_array();
         return $res_data;
+    }
+
+    public function delete_ques($ques_id){
+        $this->db->where('id',$ques_id);
+        $this->db->delete('survey_ques');
+    }
+
+    public function update_ques_data($id, $data) {
+
+        if (is_array($id)) {
+            $this->db->where($id);
+        } else {
+            $this->db->where(['id' => $id]);
+        }
+        $this->db->update('survey_ques', $data);
+        $last_id = $this->db->affected_rows();
+        return $last_id;
     }
 
 }
