@@ -19,25 +19,10 @@
 
 <!-- Content area -->
 <div class="content">
-    <?php
-    if ($this->session->flashdata('success')) {
-        ?>
-        <div class="alert alert-success">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('success') ?></strong>
-        </div>
-        <?php
-        $this->session->set_flashdata('success', false);
-    } else if ($this->session->flashdata('error')) {
-        ?>        
-        <div class="alert alert-danger">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('error') ?></strong>
-        </div>        
-        <?php
-        $this->session->set_flashdata('error', false);
-    } 
-    ?>    
+   <?php
+        $message = $this->session->flashdata('message');
+        echo my_flash($message);
+    ?>
     <!-- content area -->
     
     <div class="panel panel-flat">
@@ -176,8 +161,9 @@ $(function () {
             width: 200,
             render: function (data, type, full, meta) {
                 var action = '';
+                var id= encodeURIComponent(btoa(full.id));
                 action += '<a href="#" data-id="'+full.id+'" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm contact-reply" title="Reply"><i class="icon-reply"></i></a>';
-                action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/contact_inquiry/action/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" title="Delete"><i class="icon-cross2"></i></a>'
+                action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/contact_inquiry/action/delete/' + id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" title="Delete"><i class="icon-cross2"></i></a>'
                 return action;
             }
         }
@@ -243,4 +229,7 @@ $("#frmcontact").validate({
 
     }
 });
+
+// Auto hide Flash messages
+    $('div.alert').delay(4000).slideUp(350);
 </script>

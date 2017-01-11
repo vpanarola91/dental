@@ -38,28 +38,28 @@ class Blogs extends MY_Controller {
      */
     public function action($action, $blog_id) {
 
-        $where = 'id = ' . $this->db->escape($blog_id);
+        $where = 'id = ' . decode($this->db->escape($blog_id));
         $check_blog = $this->Blogs_model->get_result('blog', $where);
         if ($check_blog) {
             if ($action == 'delete') {
                 $update_array = array(
                     'is_deleted' => 1
                     );
-                $this->session->set_flashdata('success', 'Blogs successfully deleted!');
+                $this->session->set_flashdata('message', ['message'=>'Blogs successfully deleted!','class'=>'success']);
             } elseif ($action == 'block') {
                 $update_array = array(
                     'is_blocked' => 1
                     );
-                $this->session->set_flashdata('success', 'Blogs successfully blocked!');
+                $this->session->set_flashdata('message', ['message'=>'Blogs successfully blocked!','class'=>'success']);
             } else {
                 $update_array = array(
                     'is_blocked' => 0
                     );
-                $this->session->set_flashdata('success', 'Blogs successfully unblocked!');
+                $this->session->set_flashdata('message', ['message'=>'Blogs successfully unblocked!','class'=>'success']);
             }
             $this->Blogs_model->update_record('blog', $where, $update_array);
         } else {
-            $this->session->set_flashdata('error', 'Invalid request. Please try again!');
+            $this->session->set_flashdata('message', ['message'=>'Invalid request. Please try again!','class'=>'danger']);
         }
         redirect(site_url('admin/blogs'));
     }
@@ -69,7 +69,7 @@ class Blogs extends MY_Controller {
      * */
     public function edit() {
         
-        $blog_id = $this->uri->segment(4);
+        $blog_id = decode($this->uri->segment(4));
         if (is_numeric($blog_id)) {
             $where = 'id = ' . $this->db->escape($blog_id);
             $check_blog = $this->Blogs_model->get_result('blog', $where);
@@ -97,7 +97,7 @@ class Blogs extends MY_Controller {
             $avtar = $this->filestorage->FileInsert($path, 'img_path', 'image', 2097152,$this->input->post('Himg_path'));
             //----------------------------------------
             if ($avtar['status'] == 0) {
-               $this->session->set_flashdata('error', $avtar['msg']);
+               $this->session->set_flashdata('message', ['message'=> $avtar['msg'],'class'=>'danger']);
            }
            else{
             $update_array = [
@@ -105,16 +105,16 @@ class Blogs extends MY_Controller {
                 'blog_slug'         => $this->input->post('blog_slug'),
                 'blog_description'  => $this->input->post('blog_description'),
                 'img_path'          => $avtar['msg'],
-                'created_by'        => $this->session->userdata['admin']['id'],
                 'is_blocked'        => $this->input->post('is_blocked'),
             ];
 
             $result=$this->Blogs_model->update_record('blog', $where, $update_array);
             if($result){
-                $this->session->set_flashdata('success', 'Blog successfully updated!');
+                 $this->session->set_flashdata('message', ['message'=>'Blog successfully updated!','class'=>'success']);
             }
             else{
-                $this->session->set_flashdata('error', 'Error Into Update Blog!');
+  
+                 $this->session->set_flashdata('message', ['message'=>'Error Into Update Blog!','class'=>'danger']);
             } 
         }               
         redirect('admin/blogs');
@@ -147,7 +147,7 @@ class Blogs extends MY_Controller {
                 $avtar = $this->filestorage->FileInsert($path, 'img_path', 'image', 2097152);
                 //----------------------------------------
                 if ($avtar['status'] == 0) {
-                   $this->session->set_flashdata('error', $avtar['msg']);
+                   $this->session->set_flashdata('message', ['message'=> $avtar['msg'],'class'=>'danger']);
                }
                else{
                 $insert_array = [
@@ -161,10 +161,10 @@ class Blogs extends MY_Controller {
                 ];
                 $result=$this->Blogs_model->insert_record('blog',$insert_array);
                 if($result){
-                    $this->session->set_flashdata('success', 'Blog successfully Inserted!');
+                     $this->session->set_flashdata('message', ['message'=>'Blog successfully Inserted!','class'=>'success']);
                 }
                 else{
-                    $this->session->set_flashdata('error', 'Error Into Insert Blog!');
+                     $this->session->set_flashdata('message', ['message'=>'Error Into Insert Blog!','class'=>'danger']);
                 }       
             }
             redirect('admin/blogs');

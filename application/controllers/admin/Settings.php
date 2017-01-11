@@ -25,7 +25,7 @@ class settings extends MY_Controller
 			if($v!='Save')
 			$this->db->set('val',$v)->where('key',$k)->update('config');
 		}
-		$this->session->set_flashdata('success','Settings Saved Successfully.');
+		$this->session->set_flashdata('message',['message'=>'Settings Saved Successfully.','class'=>'success']);
 		redirect('admin/settings');
 	}
 	

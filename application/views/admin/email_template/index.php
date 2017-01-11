@@ -4,13 +4,13 @@
 <div class="page-header page-header-default">
     <div class="page-header-content">
         <div class="page-title">
-            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Admin</span> - Blog List</h4>
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Admin</span> - Email Template List</h4>
         </div>
     </div>
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
             <li><a href="<?php echo base_url() . "admin/dashboard" ?>"><i class="icon-home2 position-left"></i> Admin</a></li>
-            <li><i class="icon-bubble position-left"></i> Blogs</li>
+            <li><i class="icon-envelop position-left"></i> Email Templates</li>
         </ul>
     </div>
 </div>
@@ -27,13 +27,13 @@
     
     <div class="panel panel-flat">
         <div class="panel-heading text-right">
-            <a href="<?php echo site_url('admin/blogs/add'); ?>" class="btn btn-success btn-labeled"><b><i class="icon-user-plus"></i></b> Add New Blog</a>
+            <a href="<?php echo site_url('admin/email_template/add'); ?>" class="btn btn-success btn-labeled"><b><i class="icon-user-plus"></i></b> Add New Email Template</a>
         </div>
         <table class="table datatable-basic">
             <thead>
                 <tr>
-                    <th>Blog ID.</th>
-                    <th>Blog Title</th>                     
+                    <th>Email ID.</th>
+                    <th>Email Template Title</th>                     
                     <th>Created Date</th>                        
                     <th width="100px">Action</th>
                 </tr>
@@ -55,7 +55,7 @@ $(function () {
         dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
         order: [[0, "asc"]],
         ordering: false,
-        ajax: 'blogs/list_blog',
+        ajax: 'email_template/list_email',
         columns: [
         {
             data: "id",
@@ -63,7 +63,7 @@ $(function () {
         },
         {
             sortable: false,
-            data: "blog_title",
+            data: "title",
             visible: true
         },
         {
@@ -72,7 +72,7 @@ $(function () {
             visible: true
         },
         {
-            data: "is_blocked",
+            data: "",
             visible: true,
             searchable: false,
             sortable: false,
@@ -80,14 +80,7 @@ $(function () {
             render: function (data, type, full, meta) {
                 var action = '';
                 var id= encodeURIComponent(btoa(full.id));
-                if (full.is_blocked == '0') {
-                    action += '<a href="<?php echo base_url(); ?>admin/blogs/edit/' + id + '" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm" title="Edit"><i class="icon-pencil3"></i></a>';
-                    action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/blogs/action/block/' + id + '" class="btn border-warning text-warning-600 btn-flat btn-icon btn-rounded"  title="Block"><i class="icon-user-block"></i></a>'
-                    action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/blogs/action/delete/' + id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" title="Delete"><i class="icon-cross2"></i></a>'
-                } else if (full.is_blocked == 1) {
-                    action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/blogs/action/activate/' + id + '" class="btn border-success text-success-600 btn-flat btn-icon btn-rounded"  title="Unblock"><i class="icon-user-plus"></i></a>'
-                    action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/blogs/action/delete/' + id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" title="Delete"><i class="icon-cross2"></i></a>'
-                }
+                action += '<a href="<?php echo base_url(); ?>admin/email_template/edit/' + id + '" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm" title="Edit"><i class="icon-pencil3"></i></a>'; 
                 return action;
             }
         }

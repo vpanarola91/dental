@@ -108,6 +108,9 @@
                                     <li class="<?php echo ($controller == 'treatment_category') ? 'active' : ''; ?>">
                                         <a href="<?php echo base_url() . 'admin/treatment_category'; ?>"><i class="icon-accessibility"></i> <span>Treatment Category</span></a>
                                     </li>   
+                                    <li class="<?php echo ($controller == 'email_template') ? 'active' : ''; ?>">
+                                        <a href="<?php echo base_url() . 'admin/email_template'; ?>"><i class="icon-envelop"></i> <span>Email Template</span></a>
+                                    </li> 
                                     <li class="<?php echo ($controller == 'settings') ? 'active' : ''; ?>">
                                         <a href="<?php echo base_url() . 'admin/settings'; ?>"><i class="icon-gear"></i> <span>Settings</span></a>
                                     </li>                                                            

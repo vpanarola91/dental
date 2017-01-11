@@ -37,28 +37,28 @@ class Treatment_category extends MY_Controller {
      */
     public function action($action, $cat_id) {
 
-        $where = 'id = ' . $this->db->escape($cat_id);
+        $where = 'id = ' . decode($this->db->escape($cat_id));
         $check_cat = $this->Treatment_category_model->get_result('treatment_category', $where);
         if ($check_cat) {
             if ($action == 'delete') {
                 $update_array = array(
                     'is_deleted' => 1
                     );
-                $this->session->set_flashdata('success', 'Treatment Category successfully deleted!');
+                $this->session->set_flashdata('message',['message'=>'Treatment Category successfully deleted!','class'=>'success']);
             } elseif ($action == 'block') {
                 $update_array = array(
                     'is_blocked' => 1
                     );
-                $this->session->set_flashdata('success', 'Treatment Category successfully blocked!');
+                $this->session->set_flashdata('message',['message'=>'Treatment Category successfully blocked!','class'=>'success']);
             } else {
                 $update_array = array(
                     'is_blocked' => 0
                     );
-                $this->session->set_flashdata('success', 'Treatment Category successfully unblocked!');
+                $this->session->set_flashdata('message',['message'=>'Treatment Category successfully unblocked!','class'=>'success']);
             }
             $this->Treatment_category_model->update_record('treatment_category', $where, $update_array);
         } else {
-            $this->session->set_flashdata('error', 'Invalid request. Please try again!');
+            $this->session->set_flashdata('message',['message'=>'Invalid request. Please try again!','class'=>'danger']);
         }
         redirect('admin/treatment_category');
     }
@@ -68,7 +68,7 @@ class Treatment_category extends MY_Controller {
      * */
     public function edit() {
 
-        $cat_id = $this->uri->segment(4);
+        $cat_id = decode($this->uri->segment(4));
         if (is_numeric($cat_id)) {
             $where = 'id = ' . $this->db->escape($cat_id);
             $check_cat = $this->Treatment_category_model->get_result('treatment_category', $where);
@@ -89,10 +89,10 @@ class Treatment_category extends MY_Controller {
 
             $result=$this->Treatment_category_model->update_record('treatment_category', $where, $update_array);
             if($result){
-                $this->session->set_flashdata('success', 'Treatment Category successfully updated!');
+                $this->session->set_flashdata('message',['message'=>'Treatment Category successfully updated!','class'=>'success']);
             }
             else{
-                $this->session->set_flashdata('error', 'Error Into Update Treatment Category!');
+                $this->session->set_flashdata('message',['message'=>'Error Into Update Treatment Category!','class'=>'danger']);
             }               
             redirect('admin/treatment_category');
             
@@ -119,10 +119,10 @@ class Treatment_category extends MY_Controller {
 
             $result=$this->Treatment_category_model->insert_record('treatment_category',$insert_array);
             if($result){
-                $this->session->set_flashdata('success', 'Treatment Category successfully Inserted!');
+                $this->session->set_flashdata('message',['message'=>'Treatment Category successfully Inserted!','class'=>'success']);
             }
             else{
-                $this->session->set_flashdata('error', 'Error Into Insert Treatment Category!');
+                $this->session->set_flashdata('message',['message'=>'Error Into Insert Treatment Category!','class'=>'danger']);
             }       
             redirect('admin/treatment_category');
         }
