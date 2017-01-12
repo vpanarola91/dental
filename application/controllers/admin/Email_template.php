@@ -85,7 +85,7 @@ class Email_template extends MY_Controller {
                     'description'       => $this->input->post('description'),
                     'created_at'        => date("Y-m-d H:i:s a"),
                 ];
-                $result=$this->Blogs_model->insert_record('email_template',$insert_array);
+                $result=$this->Email_template_model->insert_record('email_template',$insert_array);
                 if($result){
                      $this->session->set_flashdata('message', ['message'=>'Email Template successfully Inserted!','class'=>'success']);
                 }
@@ -110,6 +110,18 @@ class Email_template extends MY_Controller {
             else
                 echo json_encode(TRUE);
         }
+    }
+
+    /**
+     * Fetch Default Email Template Using Template Id
+     * */
+    public function get_template_desc(){
+        $where = 'id = ' . $this->input->post('template_id');
+        $check_email = $this->Email_template_model->get_result('email_template', $where);
+        if(isset($check_email[0])){
+            echo $check_email[0]['default_description'];
+        }
+        echo false;
     }
 
 }

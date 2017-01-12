@@ -19,23 +19,35 @@
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontal form-validate" action="" id="frmemail" method="POST" >
+                <input type="hidden" name="id" id="id" value="<?php echo (isset($record['id'])) ? $record['id'] : set_value('id'); ?>">
                 <div class="panel panel-flat">
                     <div class="panel-body">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Email Template Title:</label>
-                            <div class="col-lg-9">
-                                <input type="text" name="title" id="title" placeholder="Enter email template title" class="form-control" value="<?php echo (isset($record['title'])) ? $record['title'] : set_value('title'); ?>">
+                        <div class="col-lg-9">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Email Template Title:</label>
+                                <div class="col-lg-9">
+                                    <input type="text" name="title" id="title" placeholder="Enter email template title" class="form-control" value="<?php echo (isset($record['title'])) ? $record['title'] : set_value('title'); ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Description:</label>
+                                <div class="col-lg-12">
+                                    <textarea rows="15" name="description" id="description" placeholder="Enter email template Description" class="form-control summernote"><?php echo (isset($record['description'])) ? $record['description'] : set_value('description'); ?></textarea>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <a class="btn btn-info btn_default">Default <i class="icon-undo position-right"></i></a>
+                                <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Description:</label>
-                            <div class="col-lg-12">
-                                <textarea name="description" id="description" placeholder="Enter email template Description" class="summernote form-control"><?php echo (isset($record['description'])) ? $record['description'] : set_value('description'); ?></textarea>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
-                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="col-lg-12 control-label">Reference Variable</label>
+                                <div class="col-lg-12">
+                                    <?php echo (isset($record['ref_variable'])) ? $record['ref_variable'] : '' ?>
+                                </div>
+                            </div>        
+                        </div>    
                     </div>
                 </div>
             </form>
@@ -43,7 +55,7 @@
     </div>
 </div>
 <script type="text/javascript">
-   
+
 //---------------------- Validation -------------------
 $("#frmemail").validate({
     errorClass: 'validation-error-label',
@@ -95,6 +107,23 @@ $("#frmemail").validate({
 
     }
 });
+    
 
+
+$(document).on( "click",".btn_default", function(e) {
+    e.preventDefault();
+    var template_id= $("#id").val();
+    bootbox.confirm('Are you sure for set default template?',function(res){
+        if (res) 
+        {
+            $.post("<?=base_url('admin/email_template/get_template_desc')?>",{'template_id':template_id},function(data){
+                if(data){
+                    $("#description").html(data);
+                    $(".note-editable").html(data);
+                }
+            });
+        }     
+    });
+});
 </script>
 

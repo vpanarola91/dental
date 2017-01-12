@@ -100,9 +100,11 @@ defined('Asset_path') OR define('Asset_path', 'http://localhost/dental/');
 // AIzaSyCa2Z6_KWmvPTRlf11a7nFOGr8dWR07lQQ
 
 defined('API_KEY') OR define('API_KEY', 'AIzaSyCa2Z6_KWmvPTRlf11a7nFOGr8dWR07lQQ'); // v! Default API Key use fot whole site
-defined('DEFAULT_IMAGE_PATH') OR define('DEFAULT_IMAGE_PATH', Asset_path . 'public/front/img/'); // highest automatically-assigned error code
+defined('DEFAULT_IMAGE_PATH') OR define('DEFAULT_IMAGE_PATH', Asset_path . 'public/front/images/'); // highest automatically-assigned error code
 defined('DEFAULT_JS_PATH') OR define('DEFAULT_JS_PATH', Asset_path . 'public/front/js/'); // highest automatically-assigned error code
 defined('DEFAULT_CSS_PATH') OR define('DEFAULT_CSS_PATH', Asset_path . 'public/front/css/'); // highest automatically-assigned error code
+defined('DEFAULT_FONT_PATH') OR define('DEFAULT_FONT_PATH', Asset_path . 'public/front/fonts/'); // highest automatically-assigned error code
+defined('DEFAULT_PLUGINS_PATH') OR define('DEFAULT_PLUGINS_PATH', Asset_path . 'public/front/plugins/'); // highest automatically-assigned error code
 
 defined('DEFAULT_ADMIN_IMAGE_PATH') OR define('DEFAULT_ADMIN_IMAGE_PATH', Asset_path . 'public/back/img/'); // highest automatically-assigned error code
 defined('DEFAULT_ADMIN_JS_PATH') OR define('DEFAULT_ADMIN_JS_PATH', Asset_path . 'public/back/js/'); // highest automatically-assigned error code
