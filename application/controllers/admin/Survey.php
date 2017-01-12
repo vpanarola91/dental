@@ -6,6 +6,9 @@ class Survey extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model(array('Survey_model'));
+
+		// $class_methods = get_class_methods($this->router->fetch_class());
+		// pr($class_methods,1);
 	}
 
 	public function index(){
@@ -127,10 +130,9 @@ class Survey extends CI_Controller {
 
 	public function add_question($survey_id){
 
-		if($_POST){
-				
+		$data['survey_id'] = $survey_id;
+		if($_POST){				
 			pr($_POST,1);
-
 		}
 
 		$data['subview'] = 'admin/survey/ques_add';

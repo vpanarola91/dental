@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends MY_Controller {
+class Dashboard extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -26,9 +26,8 @@ class Dashboard extends MY_Controller {
     /**
      * function use for logout from admin panel.(HDA)
      */
-    public function log_out() {        
-        $this->session->sess_destroy();
-        delete_cookie('Remember_me');
+    public function log_out() {                
+        $this->session->unset_userdata('');
         $this->session->set_flashdata('message', array('message' => 'Log out Successfully.', 'class' => 'alert alert-success'));
         redirect('admin/login');
     }

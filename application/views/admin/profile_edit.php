@@ -90,31 +90,12 @@ if ($this->session->flashdata('success')) {
                                     <?php } ?>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Gender:</label>
-                            <div class="col-lg-9">
-                                <label class="radio-inline">
-                                    <input type="radio" class="styled" name="gender" value="male" <?php
-                                    if ($user_data['gender'] == 'male') {
-                                        echo 'checked';
-                                    }
-                                    ?>>
-                                    Male
-                                </label>
-
-                                <label class="radio-inline">
-                                    <input type="radio" class="styled" name="gender" value="female" <?php
-                                    if ($user_data['gender'] == 'female') {
-                                        echo 'checked';
-                                    }
-                                    ?>>
-                                    Female
-                                </label>
-                            </div>
-                        </div>
+                        </div>                        
                         <div class="text-right">
-                            <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-6 text-center">                                
+                                <button class="btn btn-success" type="submit">Save <i class="icon-arrow-right14 position-right"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>

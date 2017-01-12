@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Contact_inquiry extends MY_Controller {
+class Contact_inquiry extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -23,14 +23,11 @@ class Contact_inquiry extends MY_Controller {
      * Function is used to get result based on datatable in Contact Inquiry list page
      */
     public function list_inquiry() {
-
         $final['recordsTotal'] = $this->Admin_contact_inquiry_model->get_inquiry_count();
         $final['redraw'] = 1;
         $final['recordsFiltered'] = $final['recordsTotal'];
         $final['data'] = $this->Admin_contact_inquiry_model->get_all_inquiry();
         echo json_encode($final);
-        
-
     }
 
     /**

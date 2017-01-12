@@ -1,13 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class settings extends MY_Controller 
+class settings extends CI_Controller 
 {
-	function __construct()
-	{
+	
+	function __construct(){
 		parent::__construct();
 		$this->load->model(['admin/Admin_settings']);
 	}		
+    
     //===============================================================
 	function index()
 	{
@@ -16,9 +17,9 @@ class settings extends MY_Controller
 		$data['subview'] = 'admin/settings/index';
         $this->load->view('admin/layouts/layout_main', $data);
 	}
+	
 	//===============================================================
-	function save()
-	{
+	function save(){
 		$post_data = $this->input->post();
 		foreach($post_data as $k=>$v)
 		{

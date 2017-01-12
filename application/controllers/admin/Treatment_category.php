@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Treatment_category extends MY_Controller {
+class Treatment_category extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
