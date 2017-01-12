@@ -188,129 +188,7 @@
                             -->
                             <ul id="topMain" class="nav nav-pills nav-main">
                                 <li class="dropdown active"><!-- HOME -->
-                                    <a class="dropdown-toggle" href="#">
-                                        HOME
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" href="#">
-                                                HOME CORPORATE
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index-corporate-1.html">CORPORATE LAYOUT 1</a></li>
-                                                <li><a href="index-corporate-2.html">CORPORATE LAYOUT 2</a></li>
-                                                <li><a href="index-corporate-3.html">CORPORATE LAYOUT 3</a></li>
-                                                <li><a href="index-corporate-4.html">CORPORATE LAYOUT 4</a></li>
-                                                <li><a href="index-corporate-5.html">CORPORATE LAYOUT 5</a></li>
-                                                <li><a href="index-corporate-6.html">CORPORATE LAYOUT 6</a></li>
-                                                <li><a href="index-corporate-7.html">CORPORATE LAYOUT 7</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" href="#">
-                                                HOME PORTFOLIO
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index-portfolio-1.html">PORTFOLIO LAYOUT 1</a></li>
-                                                <li><a href="index-portfolio-2.html">PORTFOLIO LAYOUT 2</a></li>
-                                                <li><a href="index-portfolio-masonry.html">PORTFOLIO MASONRY</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" href="#">
-                                                HOME BLOG
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index-blog-1.html">BLOG LAYOUT 1</a></li>
-                                                <li><a href="index-blog-2.html">BLOG LAYOUT 2</a></li>
-                                                <li><a href="index-blog-3.html">BLOG LAYOUT 3</a></li>
-                                                <li><a href="index-blog-4.html">BLOG LAYOUT 4</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" href="#">
-                                                HOME SHOP
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index-shop-1.html">SHOP LAYOUT 1</a></li>
-                                                <li><a href="index-shop-2.html">SHOP LAYOUT 2</a></li>
-                                                <li><a href="index-shop-3.html">SHOP LAYOUT 3</a></li>
-                                                <li><a href="index-shop-4.html">SHOP LAYOUT 4</a></li>
-                                                <li><a href="index-shop-5.html">SHOP LAYOUT 5</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" href="#">
-                                                HOME MAGAZINE
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index-magazine-1.html">MAGAZINE LAYOUT 1</a></li>
-                                                <li><a href="index-magazine-2.html">MAGAZINE LAYOUT 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" href="#">
-                                                HOME LANDING PAGE
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index-landing-1.html">LANDING PAGE LAYOUT 1</a></li>
-                                                <li><a href="index-landing-2.html">LANDING PAGE LAYOUT 2</a></li>
-                                                <li><a href="index-landing-3.html">LANDING PAGE LAYOUT 3</a></li>
-                                                <li><a href="index-landing-4.html">LANDING PAGE LAYOUT 4</a></li>
-                                                <li><a href="index-landing-5.html">LANDING PAGE LAYOUT 5</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" href="#">
-                                                HOME FULLSCREEN
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index-fullscreen-revolution.html">FULLSCREEN - REVOLUTION</a></li>
-                                                <li><a href="index-fullscreen-youtube.html">FULLSCREEN - YOUTUBE</a></li>
-                                                <li><a href="index-fullscreen-local-video.html">FULLSCREEN - LOCAL VIDEO</a></li>
-                                                <li><a href="index-fullscreen-image.html">FULLSCREEN - IMAGE</a></li>
-                                                <li><a href="index-fullscreen-txt-rotator.html">FULLSCREEN - TEXT ROTATOR</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" href="#">
-                                                HOME ONE PAGE
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index-onepage-default.html">ONE PAGE - DEFAULT</a></li>
-                                                <li><a href="index-onepage-revolution.html">ONE PAGE - REVOLUTION</a></li>
-                                                <li><a href="index-onepage-image.html">ONE PAGE - IMAGE</a></li>
-                                                <li><a href="index-onepage-parallax.html">ONE PAGE - PARALLAX</a></li>
-                                                <li><a href="index-onepage-youtube.html">ONE PAGE - YOUTUBE</a></li>
-                                                <li><a href="index-onepage-text-rotator.html">ONE PAGE - TEXT ROTATOR</a></li>
-                                                <li><a href="start.html#onepage"><span class="label label-success pull-right">new</span> MORE LAYOUTS</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li class="dropdown active">
-                                            <a class="dropdown-toggle" href="#">
-                                                HOME - THEMATICS <i class="fa fa-heart margin-left-10"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index-thematics-restaurant.html">HOME - RESTAURANT</a></li>
-                                                <li><a href="index-thematics-education.html">HOME - EDUCATION</a></li>
-                                                <li><a href="index-thematics-construction.html">HOME - CONSTRUCTION</a></li>
-                                                <li class="active"><a href="index-thematics-medical.html">HOME - MEDICAL</a></li>
-                                                <li><a href="index-thematics-church.html">HOME - CHURCH</a></li>
-                                                <li><a href="index-thematics-fashion.html">HOME - FASHION</a></li>
-                                                <li><a href="index-thematics-wedding.html">HOME - WEDDING</a></li>
-                                                <li><a href="index-thematics-events.html">HOME - EVENTS</a></li>
-                                                <li><a href="http://www.stepofweb.com/propose-design.html" data-toggle="tooltip" data-placement="top" title="Do you need a specific home design? We can include it in the next update!" target="_blank"><span class="label label-danger pull-right">hot</span> PROPOSE THEMATIC</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="start.html#newrevslider" data-toggle="tooltip" data-placement="top" title="32 More Revolution Slider V5"><span class="label label-danger pull-right">new</span> 32 MORE LAYOUTS</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="index-simple-revolution.html">HOME SIMPLE - REVOLUTION</a></li>
-                                        <li><a href="index-simple-layerslider.html">HOME SIMPLE - LAYERSLIDER</a></li>
-                                        <li><a href="index-simple-parallax.html">HOME SIMPLE - PARALLAX</a></li>
-                                        <li><a href="index-simple-youtube.html">HOME SIMPLE - YOUTUBE</a></li>
-                                    </ul>
+                                    <a href="<?=base_url()?>">HOME</a>
                                 </li>
                                 <li class="dropdown"><!-- PAGES -->
                                     <a class="dropdown-toggle" href="#">
@@ -1135,13 +1013,12 @@
 
 
     <!-- JAVASCRIPT FILES -->
-    <script type="text/javascript">var plugin_path = '<?= DEFAULT_PLUGINS_PATH ?>';</script>
-    <script type="text/javascript" src="<?= DEFAULT_PLUGINS_PATH ?>jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">var plugin_path = '<?= DEFAULT_PLUGINS_PATH ?>';</script> 
+    
 
     <script type="text/javascript" src="<?= DEFAULT_JS_PATH ?>scripts.js"></script>
 
-    <!-- STYLESWITCHER - REMOVE -->
-    <script async type="text/javascript" src="<?= DEFAULT_PLUGINS_PATH ?>styleswitcher/styleswitcher.js"></script>
+    
 
     <!-- REVOLUTION SLIDER -->
     <script type="text/javascript" src="<?= DEFAULT_PLUGINS_PATH ?>slider.revolution/js/jquery.themepunch.tools.min.js"></script>
