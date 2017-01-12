@@ -38,28 +38,28 @@ class Promotional_code extends MY_Controller {
      */
     public function action($action, $code_id) {
 
-        $where = 'id = ' . $this->db->escape($code_id);
+        $where = 'id = ' . decode($this->db->escape($code_id));
         $check_code = $this->Promotional_code_model->get_result('promotional_code', $where);
         if ($check_code) {
             if ($action == 'delete') {
                 $update_array = array(
                     'is_deleted' => 1
                     );
-                $this->session->set_flashdata('success', 'Promotional Code successfully deleted!');
+                $this->session->set_flashdata('message',['message'=>'Promotional Code successfully deleted!','class'=>'success']);
             } elseif ($action == 'block') {
                 $update_array = array(
                     'is_blocked' => 1
                     );
-                $this->session->set_flashdata('success', 'Promotional Code successfully blocked!');
+                $this->session->set_flashdata('message',['message'=>'Promotional Code successfully blocked!','class'=>'success']);
             } else {
                 $update_array = array(
                     'is_blocked' => 0
                     );
-                $this->session->set_flashdata('success', 'Promotional Code successfully unblocked!');
+                $this->session->set_flashdata('message',['message'=>'Promotional Code successfully unblocked!','class'=>'success']);
             }
             $this->Promotional_code_model->update_record('promotional_code', $where, $update_array);
         } else {
-            $this->session->set_flashdata('error', 'Invalid request. Please try again!');
+            $this->session->set_flashdata('message',['message'=>'Invalid request. Please try again!','class'=>'danger']);
         }
         redirect('admin/promotional_code');
     }
@@ -69,7 +69,7 @@ class Promotional_code extends MY_Controller {
      * */
     public function edit() {
 
-        $code_id = $this->uri->segment(4);
+        $code_id = decode($this->uri->segment(4));
         if (is_numeric($code_id)) {
             $where = 'id = ' . $this->db->escape($code_id);
             $check_code = $this->Promotional_code_model->get_result('promotional_code', $where);
@@ -96,10 +96,10 @@ class Promotional_code extends MY_Controller {
 
             $result=$this->Promotional_code_model->update_record('promotional_code', $where, $update_array);
             if($result){
-                $this->session->set_flashdata('success', 'Promotional Code successfully updated!');
+                $this->session->set_flashdata('message',['message'=>'Promotional Code successfully updated!','class'=>'success']);
             }
             else{
-                $this->session->set_flashdata('error', 'Error Into Update Promotional Code!');
+                $this->session->set_flashdata('message',['message'=>'Error Into Update Promotional Code!','class'=>'danger']);
             }               
             redirect('admin/promotional_code');
             
@@ -132,10 +132,10 @@ class Promotional_code extends MY_Controller {
 
             $result=$this->Promotional_code_model->insert_record('promotional_code',$insert_array);
             if($result){
-                $this->session->set_flashdata('success', 'Promotional Code successfully Inserted!');
+                $this->session->set_flashdata('message',['message'=>'Promotional Code successfully Inserted!','class'=>'success']);
             }
             else{
-                $this->session->set_flashdata('error', 'Error Into Insert Promotional Code!');
+                $this->session->set_flashdata('message',['message'=>'Error Into Insert Promotional Code!','class'=>'danger']);
             }       
             redirect('admin/promotional_code');
         }

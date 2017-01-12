@@ -79,3 +79,22 @@ function mail_config() {
 
     return $configs;
 }
+
+
+/* For Encode ID  (DHK)
+/* Param 1 : ID
+*/
+function encode($input) 
+{
+    return urlencode(base64_encode($input));
+}
+
+/* For Decode ID  (DHK)
+/* Param 1 : ID
+*/
+
+function decode($input) 
+{
+    return base64_decode(urldecode($input));
+}
+

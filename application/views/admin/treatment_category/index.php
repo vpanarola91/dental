@@ -19,25 +19,10 @@
 
 <!-- Content area -->
 <div class="content">
-    <?php
-    if ($this->session->flashdata('success')) {
-        ?>
-        <div class="alert alert-success">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('success') ?></strong>
-        </div>
-        <?php
-        $this->session->set_flashdata('success', false);
-    } else if ($this->session->flashdata('error')) {
-        ?>        
-        <div class="alert alert-danger">
-            <a class="close" data-dismiss="alert">X</a>
-            <strong><?= $this->session->flashdata('error') ?></strong>
-        </div>        
-        <?php
-        $this->session->set_flashdata('error', false);
-    } 
-?>    
+     <?php
+        $message = $this->session->flashdata('message');
+        echo my_flash($message);
+    ?>
     <!-- content area -->
     
         <div class="panel panel-flat">
@@ -94,13 +79,14 @@
                     width: 200,
                     render: function (data, type, full, meta) {
                         var action = '';
+                        var id= encodeURIComponent(btoa(full.id));
                         if (full.is_blocked == '0') {
-                            action += '<a href="<?php echo base_url(); ?>admin/treatment_category/edit/' + full.id + '" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm" title="Edit"><i class="icon-pencil3"></i></a>';
-                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/treatment_category/action/block/' + full.id + '" class="btn border-warning text-warning-600 btn-flat btn-icon btn-rounded"  title="Block"><i class="icon-user-block"></i></a>'
-                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/treatment_category/action/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" title="Delete"><i class="icon-cross2"></i></a>'
+                            action += '<a href="<?php echo base_url(); ?>admin/treatment_category/edit/' + id + '" class="btn border-primary text-primary-600 btn-flat btn-icon btn-rounded btn-sm" title="Edit"><i class="icon-pencil3"></i></a>';
+                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/treatment_category/action/block/' + id + '" class="btn border-warning text-warning-600 btn-flat btn-icon btn-rounded"  title="Block"><i class="icon-user-block"></i></a>'
+                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/treatment_category/action/delete/' + id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" title="Delete"><i class="icon-cross2"></i></a>'
                         } else if (full.is_blocked == 1) {
-                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/treatment_category/action/activate/' + full.id + '" class="btn border-success text-success-600 btn-flat btn-icon btn-rounded"  title="Unblock"><i class="icon-user-plus"></i></a>'
-                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/treatment_category/action/delete/' + full.id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" title="Delete"><i class="icon-cross2"></i></a>'
+                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/treatment_category/action/activate/' + id + '" class="btn border-success text-success-600 btn-flat btn-icon btn-rounded"  title="Unblock"><i class="icon-user-plus"></i></a>'
+                            action += '&nbsp;&nbsp;<a href="<?php echo base_url(); ?>admin/treatment_category/action/delete/' + id + '" class="btn border-danger text-danger-600 btn-flat btn-icon btn-rounded btn_delete" title="Delete"><i class="icon-cross2"></i></a>'
                         }
                         return action;
                     }
@@ -123,4 +109,7 @@ $(document).on( "click",".btn_delete", function(e) {
             }     
         });
     });
+
+ // Auto hide Flash messages
+    $('div.alert').delay(4000).slideUp(350);
 </script>

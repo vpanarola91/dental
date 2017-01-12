@@ -38,28 +38,32 @@ class Cms extends MY_Controller {
      */
     public function action($action, $cms_id) {
 
-        $where = 'id = ' . $this->db->escape($cms_id);
+        $where = 'id = ' . decode($this->db->escape($cms_id));
         $check_cms = $this->Cms_model->get_result('cms_page', $where);
         if ($check_cms) {
             if ($action == 'delete') {
                 $update_array = array(
                     'is_deleted' => 1
                     );
-                $this->session->set_flashdata('success', 'Cms Page successfully deleted!');
+                $this->session->set_flashdata('message',['message'=>'Cms Page successfully deleted!','class'=>'success']);
+                
             } elseif ($action == 'block') {
                 $update_array = array(
                     'is_blocked' => 1
                     );
-                $this->session->set_flashdata('success', 'Cms Page successfully blocked!');
+                $this->session->set_flashdata('message',['message'=>'Cms Page successfully blocked!','class'=>'success']);
+                
             } else {
                 $update_array = array(
                     'is_blocked' => 0
                     );
-                $this->session->set_flashdata('success', 'Cms Page successfully unblocked!');
+                $this->session->set_flashdata('message',['message'=>'Cms Page successfully unblocked!','class'=>'success']);
+                
             }
             $this->Cms_model->update_record('cms_page', $where, $update_array);
         } else {
-            $this->session->set_flashdata('error', 'Invalid request. Please try again!');
+            $this->session->set_flashdata('message',['message'=>'Invalid request. Please try again!','class'=>'danger']);
+                
         }
         redirect(site_url('admin/cms'));
     }
@@ -69,7 +73,7 @@ class Cms extends MY_Controller {
      * */
     public function edit() {
 
-        $cms_id = $this->uri->segment(4);
+        $cms_id = decode($this->uri->segment(4));
         if (is_numeric($cms_id)) {
             $where = 'id = ' . $this->db->escape($cms_id);
             $check_cms = $this->Cms_model->get_result('cms_page', $where);
@@ -96,10 +100,12 @@ class Cms extends MY_Controller {
 
             $result=$this->Cms_model->update_record('cms_page', $where, $update_array);
             if($result){
-                $this->session->set_flashdata('success', 'Cms Page successfully updated!');
+                $this->session->set_flashdata('message',['message'=>'Cms Page successfully updated!','class'=>'success']);
+                
             }
             else{
-                $this->session->set_flashdata('error', 'Error Into Update Cms Page!');
+                $this->session->set_flashdata('message',['message'=>'Error Into Update Cms Page!','class'=>'danger']);
+                
             }               
             redirect('admin/cms');
             
@@ -132,10 +138,12 @@ class Cms extends MY_Controller {
 
             $result=$this->Cms_model->insert_record('cms_page',$insert_array);
             if($result){
-                $this->session->set_flashdata('success', 'Cms Page successfully Inserted!');
+                $this->session->set_flashdata('message',['message'=>'Cms Page successfully Inserted!','class'=>'success']);
+                
             }
             else{
-                $this->session->set_flashdata('error', 'Error Into Insert Cms Page!');
+                $this->session->set_flashdata('message',['message'=>'Error Into Insert Cms Page!','class'=>'danger']);
+                
             }       
             redirect('admin/cms');
         }

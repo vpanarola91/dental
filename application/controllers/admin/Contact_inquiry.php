@@ -38,18 +38,18 @@ class Contact_inquiry extends MY_Controller {
      */
     public function action($action, $inquiry_id) {
 
-        $where = 'id = ' . $this->db->escape($inquiry_id);
+        $where = 'id = ' . decode($this->db->escape($inquiry_id));
         $check_inquiry = $this->Admin_contact_inquiry_model->get_result('contact_inquiry', $where);
         if ($check_inquiry) {
             if ($action == 'delete') {
                 $update_array = array(
                     'is_deleted' => 1
                     );
-                $this->session->set_flashdata('success', 'Contact Inquiry successfully deleted!');
+                $this->session->set_flashdata('message',['message'=>'Contact Inquiry successfully deleted!','class'=>'success']);
             }
             $this->Admin_contact_inquiry_model->update_record('contact_inquiry', $where, $update_array);
         } else {
-            $this->session->set_flashdata('error', 'Invalid request. Please try again!');
+           $this->session->set_flashdata('message',['message'=>'Invalid request. Please try again!','class'=>'danger']);
         }
         redirect(site_url('admin/contact_inquiry'));
     }
@@ -83,9 +83,9 @@ class Contact_inquiry extends MY_Controller {
             'status' => 1
             );
         $this->Admin_contact_inquiry_model->update_record('contact_inquiry', $where, $update_array);
-        $this->session->set_flashdata('success', 'Replied to Contact Inquiry successfully !');
+        $this->session->set_flashdata('message',['message'=>'Replied to Contact Inquiry successfully !','class'=>'success']);
     }else{
-        $this->session->set_flashdata('error', 'Error Into Contact Inquiry Reply.Please try again!');
+       $this->session->set_flashdata('message',['message'=>'Error Into Contact Inquiry Reply.Please try again!','class'=>'danger']);
     }
     redirect(site_url('admin/contact_inquiry'));
 }
