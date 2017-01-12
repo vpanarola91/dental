@@ -8,7 +8,7 @@ class Survey extends CI_Controller {
 		$this->load->model(array('Survey_model'));
 	}
 
-	public function index(){        
+	public function index(){
         $data['subview'] = 'admin/survey/index';
         $this->load->view('admin/layouts/layout_main', $data);
 	}
@@ -123,6 +123,18 @@ class Survey extends CI_Controller {
 		}
 
 		echo json_encode('success');
+	}
+
+	public function add_question($survey_id){
+
+		if($_POST){
+				
+			pr($_POST,1);
+
+		}
+
+		$data['subview'] = 'admin/survey/ques_add';
+        $this->load->view('admin/layouts/layout_main', $data);
 	}
 
 	public function delete_question(){

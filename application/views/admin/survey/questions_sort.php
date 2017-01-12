@@ -20,7 +20,7 @@
     <div class="row">
         <div class="panel panel-flat">
             <div class="panel-heading text-right">
-                <a href="<?php echo site_url('admin/survey/add'); ?>" class="btn btn-success btn-labeled">
+                <a href="<?php echo site_url('admin/survey/add_question/'.$survey_id); ?>" class="btn btn-success btn-labeled">
                     <b><i class="icon-question4"></i></b>
                     Add New Question
                 </a>

@@ -1,9 +1,5 @@
-<?php
-    if (!empty($user_data['user_image'])) {
-        $image = base_url() . $user_data['user_image'];
-    } else {
-        $image = DEFAULT_IMAGE_PATH . "user/user-img.jpg";
-    }    
+<?php    
+    $image = DEFAULT_IMAGE_PATH . "user/user-img.jpg";      
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +9,9 @@
         <!-- Main navbar -->
         <div class="navbar navbar-inverse">
             <div class="navbar-header">
-                <h4><i class="icon-tree5"></i><a href="<?php echo base_url() . "admin/dashboard" ?>"> Dental Project</a></h4>
-
+                <h4>
+                    <!-- <a href="<?php echo base_url() . "admin/dashboard" ?>"> Dental Project</a> -->
+                </h4>
                 <ul class="nav navbar-nav visible-xs-block">
                     <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
                     <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
@@ -27,25 +24,17 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-
-                    <li class="dropdown dropdown-user">
-                        <?php
-                        if (!empty($user_data) && isset($user_data)) {
-                            ?>
-                            <a class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?php echo $image ?>" alt="">                                
-                                <i class="caret"></i>
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="<?php echo base_url() . "admin/edit_profile" ?>"><i class="icon-user-plus"></i> My profile</a></li>
-                                <li><a href="<?php echo base_url() . "admin/change_password" ?>"><i class="icon-comment-discussion"></i> Change Password</a></li>
-                                <li class="divider"></li>
-                                <li><a href="<?php echo base_url() . 'admin/logout'; ?>"><i class="icon-switch2"></i> Logout</a></li>
-                            </ul>
-                            <?php
-                        }
-                        ?>
+                    <li class="dropdown dropdown-user">                       
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="<?php echo $image ?>" alt="">                                
+                            <i class="caret"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="<?php echo base_url() . "admin/edit_profile" ?>"><i class="icon-user-plus"></i> My profile</a></li>
+                            <li><a href="<?php echo base_url() . "admin/change_password" ?>"><i class="icon-comment-discussion"></i> Change Password</a></li>
+                            <li class="divider"></li>
+                            <li><a href="<?php echo base_url() . 'admin/logout'; ?>"><i class="icon-switch2"></i> Logout</a></li>
+                        </ul>                          
                     </li>
                 </ul>
             </div>
